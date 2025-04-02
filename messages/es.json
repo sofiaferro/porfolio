@@ -1,0 +1,156 @@
+{
+  "navigation": {
+    "home": "INICIO",
+    "projects": "PROYECTOS",
+    "blog": "BLOG"
+  },
+  "home": {
+    "about": "SOBRE MÍ",
+    "role": "Ingeniera de Software, Ingeniera de IA y Tecnóloga Creativa",
+    "intro": {
+      "part1": "Explorando la intersección entre el desarrollo de software, la inteligencia artificial y la creatividad tecnológica. Mi trabajo se enfoca en crear experiencias digitales que combinen funcionalidad con diseño editorial.",
+      "part2": "Con un enfoque en la tipografía como elemento estructural, mis proyectos buscan el equilibrio perfecto entre minimalismo y experimentación."
+    },
+    "specialties": {
+      "software": {
+        "title": "Software Engineering",
+        "description": "Desarrollo de aplicaciones web y móviles con enfoque en arquitecturas limpias."
+      },
+      "ai": {
+        "title": "AI Engineering",
+        "description": "Implementación de soluciones de inteligencia artificial y aprendizaje automático."
+      },
+      "creative": {
+        "title": "Creative Technology",
+        "description": "Exploración de nuevas formas de interacción entre humanos y tecnología."
+      }
+    },
+    "cta": {
+      "projects": "Ver proyectos",
+      "blog": "Leer blog"
+    },
+    "latestPosts": {
+      "title": "Últimas publicaciones",
+      "readMore": "Leer más",
+      "viewAll": "Ver todas las publicaciones",
+      "noPosts": "No hay publicaciones disponibles."
+    }
+  },
+  "projects": {
+    "title": "Proyectos",
+    "description": "Una colección de trabajos que exploran la intersección entre el diseño editorial y las experiencias digitales modernas.",
+    "count": "{count} PROYECTOS",
+    "filter": "FILTRAR",
+    "categories": {
+      "all": "Todos",
+      "editorial": "Editorial",
+      "web": "Web",
+      "branding": "Branding"
+    },
+    "viewProject": "Ver proyecto",
+    "detail": {
+      "backToProjects": "Volver a proyectos",
+      "description": "Descripción del proyecto",
+      "details": "Detalles",
+      "category": "Categoría",
+      "year": "Año",
+      "client": "Cliente",
+      "technologies": "Tecnologías",
+      "viewLive": "Ver proyecto en vivo",
+      "gallery": "Galería",
+      "image": "Imagen {number} del proyecto",
+      "prevProject": "PROYECTO ANTERIOR",
+      "nextProject": "PROYECTO SIGUIENTE"
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "description": "Reflexiones sobre desarrollo de software, inteligencia artificial y la intersección entre lo técnico y lo creativo.",
+    "readArticle": "Leer artículo",
+    "categories": {
+      "title": "Categorías",
+      "software": "Desarrollo de Software",
+      "ai": "Inteligencia Artificial",
+      "web": "Diseño Web",
+      "creative": "Tecnología Creativa",
+      "experimental": "Experimentación"
+    },
+    "tags": {
+      "title": "Etiquetas"
+    },
+    "post": {
+      "backToBlog": "Volver al blog",
+      "comments": {
+        "title": "Comentarios",
+        "noComments": "No hay comentarios todavía. ¡Sé el primero en comentar!",
+        "leaveComment": "Deja un comentario",
+        "name": "Nombre",
+        "comment": "Comentario",
+        "submit": "Enviar comentario",
+        "submitting": "Enviando...",
+        "success": "¡Comentario añadido con éxito!",
+        "error": "Error al añadir el comentario",
+        "fillFields": "Por favor completa todos los campos"
+      }
+    }
+  },
+  "admin": {
+    "title": "Área de Administración",
+    "darkMode": "Modo Oscuro",
+    "edit": "EDITAR",
+    "preview": "VISTA PREVIA",
+    "tabs": {
+      "post": "PUBLICACIÓN",
+      "posts": "GESTIONAR POSTS",
+      "settings": "AJUSTES"
+    },
+    "postForm": {
+      "title": "Título",
+      "titlePlaceholder": "Título de la publicación",
+      "excerpt": "Extracto",
+      "excerptPlaceholder": "Breve descripción de la publicación",
+      "content": "Contenido",
+      "contentPlaceholder": "Escribe el contenido de tu publicación aquí...",
+      "save": "GUARDAR",
+      "update": "ACTUALIZAR",
+      "newPost": "NUEVO POST",
+      "featuredImage": "IMAGEN DESTACADA",
+      "dragImage": "Arrastra una imagen o haz clic para seleccionar",
+      "select": "SELECCIONAR",
+      "categories": "Categorías",
+      "tags": "Etiquetas (separadas por comas)",
+      "tagsPlaceholder": "javascript, react, ai..."
+    },
+    "posts": {
+      "manageTitle": "Gestionar Publicaciones",
+      "newPost": "NUEVA PUBLICACIÓN",
+      "loading": "Cargando publicaciones...",
+      "noPosts": "No hay publicaciones disponibles.",
+      "createFirst": "CREAR PRIMERA PUBLICACIÓN",
+      "edit": "EDITAR",
+      "delete": "ELIMINAR",
+      "confirmDelete": "¿Estás seguro de que quieres eliminar este post?",
+      "deleteSuccess": "Post eliminado con éxito",
+      "deleteError": "Error al eliminar el post"
+    },
+    "settings": {
+      "profile": "Perfil",
+      "name": "Nombre",
+      "bio": "Biografía",
+      "email": "Email",
+      "updateProfile": "ACTUALIZAR PERFIL",
+      "preferences": "Preferencias",
+      "darkModeTitle": "Modo Oscuro",
+      "darkModeDesc": "Cambiar entre modo claro y oscuro",
+      "emailNotifications": "Notificaciones por Email",
+      "emailNotificationsDesc": "Recibir notificaciones por email",
+      "autoPreview": "Vista Previa Automática",
+      "autoPreviewDesc": "Mostrar vista previa al escribir",
+      "resetSettings": "RESTABLECER AJUSTES"
+    }
+  },
+  "footer": {
+    "copyright": "© {year} Sofia Ferro. All rights reserved."
+  }
+}
+

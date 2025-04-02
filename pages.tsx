@@ -1,34 +1,26 @@
-"use client";
+"use client"
 
-import { useState, useEffect } from "react";
-import Link from "next/link";
-import { motion } from "framer-motion";
-import {
-  ArrowRight,
-  Code,
-  Cpu,
-  Lightbulb,
-  Github,
-  Linkedin,
-  Mail,
-} from "lucide-react";
-import { getBlogPosts } from "@/lib/actions";
-import type { BlogPost } from "@/lib/actions";
+import { useState, useEffect } from "react"
+import Link from "next/link"
+import { motion } from "framer-motion"
+import { ArrowRight, Code, Cpu, Lightbulb, Github, Linkedin, Mail } from "lucide-react"
+import { getBlogPosts } from "@/lib/actions"
+import type { BlogPost } from "@/lib/actions"
 
 export default function Home() {
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [latestPosts, setLatestPosts] = useState<BlogPost[]>([]);
+  const [isLoaded, setIsLoaded] = useState(false)
+  const [latestPosts, setLatestPosts] = useState<BlogPost[]>([])
 
   useEffect(() => {
-    setIsLoaded(true);
+    setIsLoaded(true)
 
     const fetchPosts = async () => {
-      const posts = await getBlogPosts();
-      setLatestPosts(posts.slice(0, 2));
-    };
+      const posts = await getBlogPosts()
+      setLatestPosts(posts.slice(0, 2)) // Get only the 2 most recent posts
+    }
 
-    fetchPosts();
-  }, []);
+    fetchPosts()
+  }, [])
 
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
@@ -37,7 +29,7 @@ export default function Home() {
       y: 0,
       transition: { duration: 0.6 },
     },
-  };
+  }
 
   const staggerContainer = {
     hidden: { opacity: 0 },
@@ -47,68 +39,52 @@ export default function Home() {
         staggerChildren: 0.2,
       },
     },
-  };
+  }
 
   return (
-    <div className="min-h-screen">
+    <div className="pt-20 min-h-screen">
       {/* Hero Section with Integrated Specialties */}
-      <section className="container mx-auto px-4 sm:px-6">
-        <div className="max-w-4xl mx-auto pt-24 pb-16 md:pt-32 md:pb-24 lg:py-36">
+      <section className="container mx-auto px-4 md:px-6 pt-12 md:pt-24 lg:pt-32">
+        <div className="max-w-4xl mx-auto">
           <motion.div
             initial="hidden"
             animate={isLoaded ? "visible" : "hidden"}
             variants={staggerContainer}
             className="space-y-6"
           >
-            <motion.p
-              variants={fadeIn}
-              className="text-sm font-mono tracking-wider text-muted-foreground"
-            >
-              SOBRE MÍ
+            <motion.p variants={fadeIn} className="text-sm font-mono tracking-wider text-muted-foreground">
+              ABOUT ME
             </motion.p>
             <motion.h1
               variants={fadeIn}
               className="text-4xl md:text-6xl lg:text-7xl font-serif leading-tight tracking-tight"
             >
-              Sofía Ferro
+              Sofia Ferro
             </motion.h1>
-            <motion.p
-              variants={fadeIn}
-              className="text-lg md:text-xl text-muted-foreground max-w-2xl font-sans"
-            >
-              Product Engineer, AI & Creative Technologist
+            <motion.p variants={fadeIn} className="text-lg md:text-xl text-muted-foreground max-w-2xl font-sans">
+              Software Engineer, AI Engineer & Creative Technologist
             </motion.p>
-            <motion.div
-              variants={fadeIn}
-              className="pt-4 max-w-2xl text-foreground/90 space-y-4"
-            >
+            <motion.div variants={fadeIn} className="pt-4 max-w-2xl text-foreground/90 space-y-4">
               <p>
-                Me gusta crear cosas. Pensar una idea hasta encontrar su mejor
-                forma. Creo que el proceso creativo es el mismo en todo lo que
-                hago: la obsesión por el detalle, la artesanía de hacer que todo
-                encaje, ya sea una app o
-                un proyecto de literatura electrónica.
+                Explorando la intersección entre el desarrollo de software, la inteligencia artificial y la creatividad
+                tecnológica. Mi trabajo se enfoca en crear experiencias digitales que combinen funcionalidad con diseño
+                editorial.
               </p>
               <p>
-                Mi trabajo se enfoca en crear experiencias digitales que
-                combinen funcionalidad, diseño y arte. Exploro la intersección
-                entre el desarrollo de software, la inteligencia artificial, la
-                electrónica y la robótica.
+                Con un enfoque en la tipografía como elemento estructural, mis proyectos buscan el equilibrio perfecto
+                entre minimalismo y experimentación.
               </p>
             </motion.div>
 
             {/* Specialties Grid */}
-{/*             <motion.div
-              variants={fadeIn}
-              className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-8 pb-4"
-            >
+            <motion.div variants={fadeIn} className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-8 pb-4">
               <div className="space-y-3">
                 <div className="bg-primary/10 dark:bg-primary/5 p-3 rounded-full w-12 h-12 flex items-center justify-center">
                   <Code className="h-6 w-6 text-primary" />
                 </div>
                 <h3 className="text-lg font-serif">Software Engineering</h3>
                 <p className="text-sm text-muted-foreground">
-                Desarrollo full-stack: frontend dinámico, backend escalable y aplicaciones web/mobile optimizadas.
+                  Desarrollo de aplicaciones web y móviles con enfoque en arquitecturas limpias.
                 </p>
               </div>
 
@@ -118,7 +94,7 @@ export default function Home() {
                 </div>
                 <h3 className="text-lg font-serif">AI Engineering</h3>
                 <p className="text-sm text-muted-foreground">
-                  Implementación de soluciones con modelos fundacionales.
+                  Implementación de soluciones de inteligencia artificial y aprendizaje automático.
                 </p>
               </div>
 
@@ -128,19 +104,15 @@ export default function Home() {
                 </div>
                 <h3 className="text-lg font-serif">Creative Technology</h3>
                 <p className="text-sm text-muted-foreground">
-                  Exploración de nuevas formas de interacción entre humanos y
-                  tecnología.
+                  Exploración de nuevas formas de interacción entre humanos y tecnología.
                 </p>
               </div>
-            </motion.div> */}
+            </motion.div>
 
             {/* Contact Links */}
-            <motion.div
-              variants={fadeIn}
-              className="flex items-center space-x-6 pt-4"
-            >
+            <motion.div variants={fadeIn} className="flex items-center space-x-6 pt-4">
               <Link
-                href="https://github.com/sofiaferro"
+                href="https://github.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-foreground hover:text-primary transition-colors flex items-center"
@@ -150,7 +122,7 @@ export default function Home() {
                 <span className="font-mono text-sm">GitHub</span>
               </Link>
               <Link
-                href="https://www.linkedin.com/in/sofiaferro"
+                href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-foreground hover:text-primary transition-colors flex items-center"
@@ -160,7 +132,7 @@ export default function Home() {
                 <span className="font-mono text-sm">LinkedIn</span>
               </Link>
               <Link
-                href="mailto:sofiavictoriaferro@gmail.com"
+                href="mailto:contact@example.com"
                 className="text-foreground hover:text-primary transition-colors flex items-center"
                 aria-label="Email"
               >
@@ -191,15 +163,11 @@ export default function Home() {
       </section>
 
       {/* Latest Posts */}
-      <section className="bg-muted">
-        <div className="container mx-auto px-4 md:px-6 py-12 md:py-24">
-          {" "}
-          {/* Consistent padding */}
+      <section className="bg-muted py-24 md:py-32">
+        <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-4xl mx-auto">
             <div className="mb-12 md:mb-16">
-              <h2 className="text-3xl md:text-4xl font-serif mb-4">
-                Últimas publicaciones
-              </h2>
+              <h2 className="text-3xl md:text-4xl font-serif mb-4">Últimas publicaciones</h2>
               <div className="h-px w-24 bg-primary"></div>
             </div>
 
@@ -209,9 +177,7 @@ export default function Home() {
                   <motion.article
                     key={post.id}
                     initial={{ opacity: 0, y: 20 }}
-                    animate={
-                      isLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
-                    }
+                    animate={isLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                     transition={{ duration: 0.5, delay: 0.1 * index }}
                     className="group"
                   >
@@ -228,9 +194,7 @@ export default function Home() {
                       <h3 className="text-xl md:text-2xl font-serif mb-3 group-hover:text-primary transition-colors">
                         {post.title}
                       </h3>
-                      <p className="text-muted-foreground mb-4">
-                        {post.excerpt}
-                      </p>
+                      <p className="text-muted-foreground mb-4">{post.excerpt}</p>
                       <div className="flex items-center text-sm font-mono">
                         <span className="mr-2">Leer más</span>
                         <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform" />
@@ -241,9 +205,7 @@ export default function Home() {
               </div>
             ) : (
               <div className="text-center py-12">
-                <p className="text-muted-foreground">
-                  No hay publicaciones disponibles.
-                </p>
+                <p className="text-muted-foreground">No hay publicaciones disponibles.</p>
               </div>
             )}
 
@@ -260,5 +222,6 @@ export default function Home() {
         </div>
       </section>
     </div>
-  );
+  )
 }
+
