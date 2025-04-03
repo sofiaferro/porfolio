@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { useState } from "react"
-import { addComment } from "@/lib/actions"
+import { addComment } from "@/lib/blog-actions"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"

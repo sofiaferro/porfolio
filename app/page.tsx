@@ -12,8 +12,8 @@ import {
   Linkedin,
   Mail,
 } from "lucide-react";
-import { getBlogPosts } from "@/lib/actions";
-import type { BlogPost } from "@/lib/actions";
+import { getBlogPosts } from "@/lib/blog-actions";
+import { BlogPost } from "@/lib/types";
 
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -92,8 +92,8 @@ export default function Home() {
               <p>
                 Mi trabajo se enfoca en crear experiencias digitales que
                 combinen funcionalidad, diseño y arte. Exploro la intersección
-                entre el desarrollo de software, la inteligencia artificial, la
-                electrónica y la robótica.
+                entre el desarrollo de software, la inteligencia artificial y la
+                electrónica.
               </p>
             </motion.div>
 
@@ -176,13 +176,6 @@ export default function Home() {
                 className="inline-flex items-center group text-lg font-mono border-b-2 border-primary pb-1 hover:border-primary/70 transition-colors"
               >
                 Ver proyectos
-                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <Link
-                href="/blog"
-                className="inline-flex items-center group text-lg font-mono border-b-2 border-primary pb-1 hover:border-primary/70 transition-colors"
-              >
-                Leer blog
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </motion.div>

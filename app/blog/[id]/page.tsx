@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
-import { getBlogPost, getPostComments } from "@/lib/actions"
+import { getBlogPost, getComments } from "@/lib/blog-actions"
 import CommentForm from "@/components/comment-form"
 import { notFound } from "next/navigation"
 
@@ -11,7 +11,7 @@ export default async function BlogPostPage({ params }: { params: { id: string } 
     notFound()
   }
 
-  const comments = await getPostComments(params.id)
+  const comments = await getComments(params.id)
 
   const formattedDate = new Date(post.date).toLocaleDateString("es-ES", {
     day: "2-digit",

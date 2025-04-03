@@ -6,6 +6,7 @@ import Image from "next/image"
 import { motion } from "framer-motion"
 import { ArrowLeft, ArrowRight, ExternalLink } from "lucide-react"
 import { useParams, notFound } from "next/navigation"
+import { projectsData } from "@/app/data/projects"
 
 export default function ProjectDetailPage() {
   const params = useParams()
@@ -64,7 +65,7 @@ export default function ProjectDetailPage() {
             className="mb-12"
           >
             <p className="text-xs font-mono text-muted-foreground mb-3">{project.categoryLabel}</p>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif mb-6">{project.title}</h1>
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-sans mb-6">{project.title}</h1>
             <div className="flex flex-wrap gap-4 text-sm font-mono">
               <span className="text-muted-foreground">Año: {project.year || "2025"}</span>
             </div>
@@ -211,7 +212,7 @@ interface Project {
   technologies?: string[]
   link?: string
 }
-
+/* 
 const projectsData: Project[] = [
   {
     id: "01",
@@ -286,3 +287,4 @@ const projectsData: Project[] = [
   },
 ]
 
+ */
