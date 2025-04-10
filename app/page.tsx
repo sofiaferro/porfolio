@@ -2,31 +2,24 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
-import {
-  ArrowRight,
-  Code,
-  Cpu,
-  Lightbulb,
-  Github,
-  Linkedin,
-  Mail,
-} from "lucide-react";
+import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
 import { getBlogPosts } from "@/lib/blog-actions";
 import { BlogPost } from "@/lib/types";
+import { projectsData } from "@/data/projects";
 
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [latestPosts, setLatestPosts] = useState<BlogPost[]>([]);
+  const latestProjects = projectsData.slice(0, 3);
 
   useEffect(() => {
     setIsLoaded(true);
-
     const fetchPosts = async () => {
       const posts = await getBlogPosts();
       setLatestPosts(posts.slice(0, 2));
     };
-
     fetchPosts();
   }, []);
 
@@ -43,22 +36,20 @@ export default function Home() {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
+      transition: { staggerChildren: 0.2 },
     },
   };
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section with Integrated Specialties */}
+      {/* Hero Section */}
       <section className="container mx-auto px-4 sm:px-6">
         <div className="max-w-4xl mx-auto pt-24 pb-16 md:pt-32 md:pb-24 lg:py-36">
           <motion.div
             initial="hidden"
             animate={isLoaded ? "visible" : "hidden"}
             variants={staggerContainer}
-            className="space-y-6"
+            className="space-y-8"
           >
             <motion.p
               variants={fadeIn}
@@ -66,28 +57,25 @@ export default function Home() {
             >
               SOBRE MÍ
             </motion.p>
-            <motion.h1
-              variants={fadeIn}
-              className="text-4xl md:text-6xl lg:text-7xl font-serif leading-tight tracking-tight"
-            >
-              Sofía Ferro
-            </motion.h1>
-            <motion.p
-              variants={fadeIn}
-              className="text-lg md:text-xl text-muted-foreground max-w-2xl font-sans"
-            >
-              Product Engineer, AI & Creative Technologist
-            </motion.p>
+
+            <motion.div variants={fadeIn} className="space-y-4">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif leading-tight">
+                Sofía Ferro
+              </h1>
+              <p className="text-lg md:text-xl text-muted-foreground font-sans">
+                Product Engineer, AI & Creative Technologist
+              </p>
+            </motion.div>
+
             <motion.div
               variants={fadeIn}
-              className="pt-4 max-w-2xl text-foreground/90 space-y-4"
+              className="prose prose-lg max-w-2xl text-foreground/90 space-y-4"
             >
               <p>
                 Me gusta crear cosas. Pensar una idea hasta encontrar su mejor
                 forma. Creo que el proceso creativo es el mismo en todo lo que
                 hago: la obsesión por el detalle, la artesanía de hacer que todo
-                encaje, ya sea una app o
-                un proyecto de literatura electrónica.
+                encaje, ya sea una app o un proyecto de literatura electrónica.
               </p>
               <p>
                 Mi trabajo se enfoca en crear experiencias digitales que
@@ -97,54 +85,16 @@ export default function Home() {
               </p>
             </motion.div>
 
-            {/* Specialties Grid */}
-{/*             <motion.div
-              variants={fadeIn}
-              className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-8 pb-4"
-            >
-              <div className="space-y-3">
-                <div className="bg-primary/10 dark:bg-primary/5 p-3 rounded-full w-12 h-12 flex items-center justify-center">
-                  <Code className="h-6 w-6 text-primary" />
-                </div>
-                <h3 className="text-lg font-serif">Software Engineering</h3>
-                <p className="text-sm text-muted-foreground">
-                Desarrollo full-stack: frontend dinámico, backend escalable y aplicaciones web/mobile optimizadas.
-                </p>
-              </div>
-
-              <div className="space-y-3">
-                <div className="bg-primary/10 dark:bg-primary/5 p-3 rounded-full w-12 h-12 flex items-center justify-center">
-                  <Cpu className="h-6 w-6 text-primary" />
-                </div>
-                <h3 className="text-lg font-serif">AI Engineering</h3>
-                <p className="text-sm text-muted-foreground">
-                  Implementación de soluciones con modelos fundacionales.
-                </p>
-              </div>
-
-              <div className="space-y-3">
-                <div className="bg-primary/10 dark:bg-primary/5 p-3 rounded-full w-12 h-12 flex items-center justify-center">
-                  <Lightbulb className="h-6 w-6 text-primary" />
-                </div>
-                <h3 className="text-lg font-serif">Creative Technology</h3>
-                <p className="text-sm text-muted-foreground">
-                  Exploración de nuevas formas de interacción entre humanos y
-                  tecnología.
-                </p>
-              </div>
-            </motion.div> */}
-
             {/* Contact Links */}
             <motion.div
               variants={fadeIn}
-              className="flex items-center space-x-6 pt-4"
+              className="flex flex-wrap items-center gap-6 pt-4"
             >
               <Link
                 href="https://github.com/sofiaferro"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-foreground hover:text-primary transition-colors flex items-center"
-                aria-label="GitHub"
+                className="flex items-center text-foreground hover:text-primary transition-colors"
               >
                 <Github className="h-5 w-5 mr-2" />
                 <span className="font-mono text-sm">GitHub</span>
@@ -153,41 +103,81 @@ export default function Home() {
                 href="https://www.linkedin.com/in/sofiaferro"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-foreground hover:text-primary transition-colors flex items-center"
-                aria-label="LinkedIn"
+                className="flex items-center text-foreground hover:text-primary transition-colors"
               >
                 <Linkedin className="h-5 w-5 mr-2" />
                 <span className="font-mono text-sm">LinkedIn</span>
               </Link>
               <Link
                 href="mailto:sofiavictoriaferro@gmail.com"
-                className="text-foreground hover:text-primary transition-colors flex items-center"
-                aria-label="Email"
+                className="flex items-center text-foreground hover:text-primary transition-colors"
               >
                 <Mail className="h-5 w-5 mr-2" />
                 <span className="font-mono text-sm">Email</span>
               </Link>
             </motion.div>
 
-            {/* CTA Links */}
-            <motion.div variants={fadeIn} className="pt-8 flex flex-wrap gap-4">
-              <Link
-                href="/projects"
-                className="inline-flex items-center group text-lg font-mono border-b-2 border-primary pb-1 hover:border-primary/70 transition-colors"
-              >
-                Ver proyectos
-                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
+            {/* Projects Grid */}
+            <motion.div variants={fadeIn} className="pt-12">
+              <h2 className="text-2xl md:text-3xl font-serif mb-6">
+                Proyectos recientes
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {latestProjects.map((project, index) => (
+                  <motion.div
+                    key={project.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={
+                      isLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
+                    }
+                    transition={{ duration: 0.5, delay: 0.1 * index }}
+                    className="group"
+                  >
+                    <Link
+                      href={`/projects/${project.id}`}
+                      className="block h-full"
+                    >
+                      <div className="relative aspect-[4/3] overflow-hidden rounded-lg mb-4 bg-gray-50">
+                        <Image
+                          src={project.image}
+                          alt={project.title}
+                          fill
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          priority={index < 2}
+                        />
+                      </div>
+                      <h3 className="text-xl font-medium mb-2 group-hover:text-primary transition-colors">
+                        {project.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground mb-3 font-mono">
+                        {project.categoryLabel}
+                      </p>
+                      <div className="flex items-center text-sm font-mono text-primary">
+                        <span className="mr-2">Ver proyecto</span>
+                        <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform" />
+                      </div>
+                    </Link>
+                  </motion.div>
+                ))}
+              </div>
+              <div className="mt-8">
+                <Link
+                  href="/projects"
+                  className="inline-flex items-center text-lg font-mono border-b border-primary pb-1 hover:border-primary/70 transition-colors"
+                >
+                  Ver todos los proyectos
+                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
       {/* Latest Posts */}
-      <section className="bg-muted">
-        <div className="container mx-auto px-4 md:px-6 py-12 md:py-24">
-          {" "}
-          {/* Consistent padding */}
+      <section className="bg-muted py-12 md:py-24">
+        <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-4xl mx-auto">
             <div className="mb-12 md:mb-16">
               <h2 className="text-3xl md:text-4xl font-serif mb-4">
@@ -197,7 +187,7 @@ export default function Home() {
             </div>
 
             {latestPosts.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
                 {latestPosts.map((post, index) => (
                   <motion.article
                     key={post.id}

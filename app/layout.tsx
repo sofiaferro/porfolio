@@ -23,11 +23,11 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-  title: "Sofia Ferro | Portfolio",
+  title: "Sofia Ferro | Porfolio",
   description: "Software Engineer, AI Engineer, and Creative Technologist",
   generator: 'v0.dev',
   icons: {
-    icon: '/icon.ico', // Standard favicon
+    icon: '/icon.ico',
   }
 }
 

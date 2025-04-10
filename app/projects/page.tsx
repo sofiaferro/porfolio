@@ -13,7 +13,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { projectsData } from "../data/projects";
+import { projectsData } from "../../data/projects";
 
 export default function ProjectsPage() {
   const [isLoaded, setIsLoaded] = useState(false);
