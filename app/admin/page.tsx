@@ -3,11 +3,10 @@ import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
 import Link from "next/link"
 import { getBlogPosts } from "@/lib/blog-actions"
+import { supabase } from "@/lib/supabase"
 
 export default async function AdminDashboard() {
   console.log("Admin page - Rendering started")
-
-  const supabase = createServerComponentClient({ cookies })
 
   const {
     data: { user },
