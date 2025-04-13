@@ -24,6 +24,6 @@ export async function getUserId() {
 
 export async function isAdmin() {
   const userId = await getUserId()
-  return userId === process.env.NEXT_PUBLIC_ADMIN_USER_ID
+  return userId === process.env.ADMIN_USER_ID
 }
 

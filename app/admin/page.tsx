@@ -21,7 +21,7 @@ export default async function AdminDashboard() {
     redirect("/login")
   }
 
-  if (user.id !== process.env.NEXT_PUBLIC_ADMIN_USER_ID) {
+  if (user.id !== process.env.ADMIN_USER_ID) {
     console.log("Admin page - User is not admin, redirecting to home")
     redirect("/")
   }

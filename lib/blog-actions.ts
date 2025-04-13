@@ -4,9 +4,9 @@ import { createServerActionClient } from "@supabase/auth-helpers-nextjs"
 import { cookies } from "next/headers"
 import { revalidatePath } from "next/cache"
 import type { BlogComment, BlogPost } from "./types"
+import { supabase } from "./supabase"
 
 export async function getBlogPosts(): Promise<BlogPost[]> {
-  const supabase = createServerActionClient({ cookies })
   const { data, error } = await supabase.from("blog_posts").select("*").order("date", { ascending: false })
 
   if (error) {
@@ -18,7 +18,6 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
 }
 
 export async function getBlogPost(id: string): Promise<BlogPost | null> {
-  const supabase = createServerActionClient({ cookies })
   const { data, error } = await supabase.from("blog_posts").select("*").eq("id", id).single()
 
   if (error) {
@@ -30,7 +29,6 @@ export async function getBlogPost(id: string): Promise<BlogPost | null> {
 }
 
 export async function getComments(postId: string): Promise<BlogComment[]> {
-  const supabase = createServerActionClient({ cookies })
   const { data, error } = await supabase
     .from("blog_comments")
     .select("*")
@@ -46,7 +44,6 @@ export async function getComments(postId: string): Promise<BlogComment[]> {
 }
 
 export async function addComment(formData: FormData) {
-  const supabase = createServerActionClient({ cookies })
   const postId = formData.get("postId") as string
   const authorName = formData.get("authorName") as string
   const content = formData.get("content") as string
@@ -72,7 +69,6 @@ export async function addComment(formData: FormData) {
 }
 
 export async function incrementVisitorCount(): Promise<number> {
-  const supabase = createServerActionClient({ cookies })
   const { data, error } = await supabase.rpc("increment_visitor_count")
 
   if (error) {
@@ -84,7 +80,6 @@ export async function incrementVisitorCount(): Promise<number> {
 }
 
 export async function getVisitorCount(): Promise<number> {
-  const supabase = createServerActionClient({ cookies })
   const { data, error } = await supabase.from("visitor_counter").select("count").single()
 
   if (error) {
@@ -96,14 +91,13 @@ export async function getVisitorCount(): Promise<number> {
 }
 
 export async function createBlogPost(formData: FormData): Promise<{ error?: string; success?: boolean }> {
-  const supabase = createServerActionClient({ cookies })
 
   // Check if the user is authenticated
   const {
     data: { user },
     error: userError,
   } = await supabase.auth.getUser()
-  if (userError || !user || user.id !== process.env.NEXT_PUBLIC_ADMIN_USER_ID) {
+  if (userError || !user || user.id !== process.env.ADMIN_USER_ID) {
     return { error: "Unauthorized. Please log in as an admin." }
   }
 
@@ -135,14 +129,13 @@ export async function createBlogPost(formData: FormData): Promise<{ error?: stri
 }
 
 export async function updateBlogPost(formData: FormData) {
-  const supabase = createServerActionClient({ cookies })
 
   // Check if the user is authenticated
   const {
     data: { user },
     error: userError,
   } = await supabase.auth.getUser()
-  if (userError || !user || user.id !== process.env.NEXT_PUBLIC_ADMIN_USER_ID) {
+  if (userError || !user || user.id !== process.env.ADMIN_USER_ID) {
     return { error: "Unauthorized. Please log in as an admin." }
   }
 
@@ -176,14 +169,13 @@ export async function updateBlogPost(formData: FormData) {
 }
 
 export async function deleteBlogPost(id: string) {
-  const supabase = createServerActionClient({ cookies })
 
   // Check if the user is authenticated
   const {
     data: { user },
     error: userError,
   } = await supabase.auth.getUser()
-  if (userError || !user || user.id !== process.env.NEXT_PUBLIC_ADMIN_USER_ID) {
+  if (userError || !user || user.id !== process.env.ADMIN_USER_ID) {
     return { error: "Unauthorized. Please log in as an admin." }
   }
 

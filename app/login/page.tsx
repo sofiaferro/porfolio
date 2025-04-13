@@ -19,7 +19,7 @@ export default function Login() {
       error,
     } = await supabase.auth.getUser()
     console.log("Login page - User check:", { user, error })
-    if (user && user.id === process.env.NEXT_PUBLIC_ADMIN_USER_ID) {
+    if (user && user.id === process.env.ADMIN_USER_ID) {
       console.log("Login page - User is authenticated and admin, redirecting to admin")
       router.push("/admin")
     } else {
