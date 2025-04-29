@@ -1,7 +1,5 @@
 "use server"
 
-import { createServerActionClient } from "@supabase/auth-helpers-nextjs"
-import { cookies } from "next/headers"
 import { revalidatePath } from "next/cache"
 import type { BlogComment, BlogPost } from "./types"
 import { supabase } from "./supabase"
@@ -103,6 +101,8 @@ export async function createBlogPost(formData: FormData): Promise<{ error?: stri
 
   const title = formData.get("title") as string
   const content = formData.get("content") as string
+  const subtitle = formData.get("subtitle") as string
+  const image = formData.get("image") as string
 
   if (!title || !content) {
     return { error: "Title and content are required" }
@@ -114,6 +114,8 @@ export async function createBlogPost(formData: FormData): Promise<{ error?: stri
     title,
     content,
     excerpt,
+    subtitle,
+    image
   }
 
   const { error } = await supabase.from("blog_posts").insert(newPost).select()
@@ -142,6 +144,8 @@ export async function updateBlogPost(formData: FormData) {
   const id = formData.get("id") as string
   const title = formData.get("title") as string
   const content = formData.get("content") as string
+  const subtitle = formData.get("subtitle") as string
+  const image = formData.get("image") as string
 
   if (!id || !title || !content) {
     return { error: "ID, title, and content are required" }
@@ -154,6 +158,8 @@ export async function updateBlogPost(formData: FormData) {
     title,
     content,
     excerpt,
+    subtitle,
+    image
   }
 
   const { error } = await supabase.from("blog_posts").update(updatedPost).eq("id", id)

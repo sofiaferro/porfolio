@@ -47,8 +47,7 @@ export default function ProjectsPage() {
         >
           <h1 className="text-4xl md:text-6xl font-serif mb-6">Proyectos</h1>
           <p className="text-lg md:text-xl text-muted-foreground">
-            Una colección de trabajos que exploran la intersección entre el
-            diseño editorial y las experiencias digitales modernas.
+            Exploraciones acerca de la intersección entre la programación y el arte.
           </p>
         </motion.div>
 

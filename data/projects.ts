@@ -16,93 +16,31 @@ export const projectsData = [
     },
     {
       id: "02",
-      title: "Exposición Tipográfica",
-      categoryLabel: "BRANDING",
-      category: "branding",
-      image: "/images/arduino-mega.jpeg",
+      title: "mc-txt",
+      categoryLabel: "LITERATURA EXPANDIDA",
+      category: "literatura",
+      description: `
+      mc-txt es un generador de texto gamificado. A partir de búsquedas en la API de Wikipedia, mc-txt recibe extractos relacionados a los inputs ingresados y utiliza cadenas de Markov para generar texto nuevo.
+      \n
+      Este proyecto fue desarrollado en el marco del taller *Escribir como máquinas*, de Matías Buonfrate y Gerardo Montoya, e incluido en la antología de [Lit(e)Lat 2024](https://litelat.net/). 
+      `,
+      image: "/images/mc-txt.png",
+      link: 'https://mc-txt.netlify.app/',
+      year: "2021",
+      technologies: ["React", "Nes.CSS"],
     },
     {
       id: "03",
-      title: "Plataforma Minimalista",
-      categoryLabel: "DISEÑO WEB",
-      category: "web",
-      image: "/images/esp32.jpeg",
+      title: "botkowski",
+      categoryLabel: "BOT",
+      category: "bots",
+      description: `
+@_botkowski es un bot de X inspirado en el poema *My Computer*, donde el autor relata cómo, tras adquirir una computadora, sus colegas —incluso su editor— lo critican bajo la premisa de que la máquina terminará escribiendo sus poemas.      \n
+La idea fue desarrollada en el marco del taller *Jardín de Bots*, de [Canek Zapata](https://canekzapata.net/index.html). 
+      `,
+      image: "/images/botkowski.png",
+      link: 'https://x.com/_botkowski',
+      year: "2022",
+      technologies: ["Gimmick bots", "No-code"],
     },
   ]
-
-  /* 
-const projectsData: Project[] = [
-  {
-    id: "01",
-    title: "Revista Digital Vanguardia",
-    categoryLabel: "DISEÑO EDITORIAL",
-    category: "editorial",
-    image: "/placeholder.svg?height=600&width=480",
-    description:
-      "Diseño y desarrollo de una revista digital que combina la estética editorial tradicional con interacciones digitales modernas.",
-    year: "2025",
-    client: "Editorial Vanguardia",
-    technologies: ["HTML", "CSS", "JavaScript", "React"],
-    link: "https://example.com/vanguardia",
-  },
-  {
-    id: "02",
-    title: "Exposición Tipográfica",
-    categoryLabel: "BRANDING",
-    category: "branding",
-    image: "/placeholder.svg?height=600&width=480",
-    description: "Identidad visual y materiales promocionales para una exposición de tipografía experimental.",
-    year: "2024",
-    client: "Museo de Diseño",
-    technologies: ["Illustrator", "Photoshop", "InDesign"],
-  },
-  {
-    id: "03",
-    title: "Plataforma Minimalista",
-    categoryLabel: "DISEÑO WEB",
-    category: "web",
-    image: "/placeholder.svg?height=600&width=480",
-    description: "Diseño y desarrollo de una plataforma web con enfoque minimalista para una startup de tecnología.",
-    year: "2024",
-    client: "TechMinimal",
-    technologies: ["React", "Next.js", "Tailwind CSS", "Framer Motion"],
-    link: "https://example.com/techminimal",
-  },
-  {
-    id: "04",
-    title: "Catálogo Interactivo",
-    categoryLabel: "DISEÑO EDITORIAL",
-    category: "editorial",
-    image: "/placeholder.svg?height=600&width=480",
-    description: "Catálogo digital interactivo para una colección de arte contemporáneo.",
-    year: "2023",
-    client: "Galería Moderna",
-    technologies: ["HTML", "CSS", "JavaScript", "GSAP"],
-    link: "https://example.com/catalogo",
-  },
-  {
-    id: "05",
-    title: "Identidad Visual Estudio",
-    categoryLabel: "BRANDING",
-    category: "branding",
-    image: "/placeholder.svg?height=600&width=480",
-    description: "Desarrollo de identidad visual completa para un estudio de diseño multidisciplinar.",
-    year: "2023",
-    client: "Estudio Creativo",
-    technologies: ["Illustrator", "Photoshop", "After Effects"],
-  },
-  {
-    id: "06",
-    title: "Aplicación Móvil Minimalista",
-    categoryLabel: "DISEÑO WEB",
-    category: "web",
-    image: "/placeholder.svg?height=600&width=480",
-    description: "Diseño de interfaz y experiencia de usuario para una aplicación móvil de productividad.",
-    year: "2022",
-    client: "ProductivApp",
-    technologies: ["Figma", "React Native", "TypeScript"],
-    link: "https://example.com/productivapp",
-  },
-]
-
- */

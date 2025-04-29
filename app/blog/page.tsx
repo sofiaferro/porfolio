@@ -1,9 +1,10 @@
-import Link from "next/link"
-import { ArrowRight } from "lucide-react"
-import { getBlogPosts } from "@/lib/blog-actions"
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { getBlogPosts } from "@/lib/blog-actions";
+import Image from "next/image";
 
 export default async function BlogPage() {
-  const blogPosts = await getBlogPosts()
+  const blogPosts = await getBlogPosts();
 
   return (
     <div className="pt-20 min-h-screen">
@@ -11,8 +12,8 @@ export default async function BlogPage() {
         <div className="max-w-3xl mb-16 md:mb-24">
           <h1 className="text-4xl md:text-6xl font-serif mb-6">Blog</h1>
           <p className="text-lg md:text-xl text-muted-foreground">
-            Reflexiones sobre desarrollo de software, inteligencia artificial y la intersección entre lo técnico y lo
-            creativo.
+            Reflexiones sobre desarrollo de software, inteligencia artificial y
+            la intersección entre lo técnico y lo creativo.
           </p>
         </div>
 
@@ -30,8 +31,12 @@ export default async function BlogPage() {
                     })
                     .toUpperCase()}
                 </p>
-                <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif mb-4">{blogPosts[0].title}</h2>
-                <p className="text-muted-foreground mb-6">{blogPosts[0].excerpt}</p>
+                <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif mb-4">
+                  {blogPosts[0].title}
+                </h2>
+                <p className="text-muted-foreground mb-6">
+                  {blogPosts[0].excerpt}
+                </p>
                 <Link
                   href={`/blog/${blogPosts[0].id}`}
                   className="inline-flex items-center group text-sm font-mono border-b-2 border-primary pb-1 hover:border-primary/70 transition-colors self-start"
@@ -41,8 +46,15 @@ export default async function BlogPage() {
                 </Link>
               </div>
               <div className="md:col-span-7 md:order-2">
-                <div className="relative aspect-[4/3] bg-muted flex items-center justify-center">
-                  <p className="text-muted-foreground font-mono text-sm">Imagen del artículo</p>
+                <div className="relative aspect-[4/3] bg-muted overflow-hidden rounded-lg">
+                  <Image
+                    src={blogPosts[0].image}
+                    alt={blogPosts[0].title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    priority
+                  />
                 </div>
               </div>
             </article>
@@ -53,9 +65,14 @@ export default async function BlogPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
               {blogPosts.slice(1).map((post) => (
                 <article key={post.id} className="group">
-                  <Link href={`/blog/${post.id}`}>
+                  <Link href={`/blog/${post.id}`} className="group">
                     <div className="relative aspect-[3/2] bg-muted mb-4 flex items-center justify-center">
-                      <p className="text-muted-foreground font-mono text-sm">Imagen del artículo</p>
+                      <Image
+                        src={post.image}
+                        alt={post.title}
+                        width={300}
+                        height={200}
+                      />
                     </div>
                     <p className="text-xs font-mono text-muted-foreground mb-2">
                       {new Date(post.date)
@@ -80,13 +97,15 @@ export default async function BlogPage() {
             </div>
           ) : blogPosts.length === 0 ? (
             <div className="text-center py-12">
-              <p className="text-muted-foreground">No hay publicaciones disponibles.</p>
+              <p className="text-muted-foreground">
+                No hay publicaciones disponibles.
+              </p>
             </div>
           ) : null}
         </div>
 
         {/* Categories and Tags */}
-        <div className="mt-24 md:mt-32 grid grid-cols-1 md:grid-cols-12 gap-8">
+{/*         <div className="mt-24 md:mt-32 grid grid-cols-1 md:grid-cols-12 gap-8">
           <div className="md:col-span-4">
             <h3 className="text-lg font-serif mb-4">Categorías</h3>
             <ul className="space-y-2 font-mono text-sm">
@@ -131,10 +150,10 @@ export default async function BlogPage() {
               ))}
             </div>
           </div>
-        </div>
+        </div> */}
       </section>
     </div>
-  )
+  );
 }
 
 const tags = [
@@ -149,5 +168,4 @@ const tags = [
   "CREATIVE CODING",
   "PYTHON",
   "SUPABASE",
-]
-
+];

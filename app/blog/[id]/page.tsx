@@ -1,23 +1,28 @@
-import Link from "next/link"
-import { ArrowLeft } from "lucide-react"
-import { getBlogPost, getComments } from "@/lib/blog-actions"
-import CommentForm from "@/components/comment-form"
-import { notFound } from "next/navigation"
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
+import { getBlogPost, getComments } from "@/lib/blog-actions";
+import CommentForm from "@/components/comment-form";
+import { notFound } from "next/navigation";
+import ReactMarkdown from "react-markdown";
 
-export default async function BlogPostPage({ params }: { params: { id: string } }) {
-  const post = await getBlogPost(params.id)
+export default async function BlogPostPage({
+  params,
+}: {
+  params: { id: string };
+}) {
+  const post = await getBlogPost(params.id);
 
   if (!post) {
-    notFound()
+    notFound();
   }
 
-  const comments = await getComments(params.id)
+  // const comments = await getComments(params.id);
 
   const formattedDate = new Date(post.date).toLocaleDateString("es-ES", {
     day: "2-digit",
     month: "long",
     year: "numeric",
-  })
+  });
 
   return (
     <div className="pt-20 min-h-screen">
@@ -32,18 +37,42 @@ export default async function BlogPostPage({ params }: { params: { id: string } 
           </Link>
 
           <header className="mb-12">
-            <p className="text-xs font-mono text-muted-foreground mb-3">{formattedDate.toUpperCase()}</p>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif mb-6">{post.title}</h1>
+            <p className="text-xs font-mono text-muted-foreground mb-3">
+              {formattedDate.toUpperCase()}
+            </p>
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif mb-6">
+              {post.title}
+            </h1>
+            {post.excerpt && (
+              <p className="prose prose-lg dark:prose-invert max-w-none">
+                <em>{post.excerpt}</em>
+              </p>
+            )}
+            {post.subtitle && (
+              <h2 className="text-xl md:text-2xl font-serif text-muted-foreground mb-4">
+                {post.subtitle}
+              </h2>
+            )}
           </header>
 
-          <div className="prose prose-lg dark:prose-invert max-w-none">
-            {post.content.split("\n").map((paragraph, index) => (
-              <p key={index}>{paragraph}</p>
-            ))}
+          <div className="prose prose-lg dark:prose-invert max-w-none text-left">
+            <ReactMarkdown
+              components={{
+                img: ({ node, ...props }) => (
+                  <img
+                    src={props.src}
+                    alt={props.alt || ""}
+                    className="max-w-full h-auto block mx-auto"
+                    />
+                ),
+              }}
+            >
+              {post.content}
+            </ReactMarkdown>
           </div>
 
           {/* Comments Section */}
-          <section className="mt-16 pt-8 border-t">
+          {/* <section className="mt-16 pt-8 border-t">
             <h2 className="text-2xl font-serif mb-8">Comentarios</h2>
 
             {comments.length > 0 ? (
@@ -61,14 +90,15 @@ export default async function BlogPostPage({ params }: { params: { id: string } 
                 ))}
               </div>
             ) : (
-              <p className="text-muted-foreground mb-8">No hay comentarios todavía. ¡Sé el primero en comentar!</p>
+              <p className="text-muted-foreground mb-8">
+                No hay comentarios todavía. ¡Sé el primero en comentar!
+              </p>
             )}
 
             <CommentForm postId={params.id} />
-          </section>
+          </section> */}
         </div>
       </article>
     </div>
-  )
+  );
 }
-

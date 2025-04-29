@@ -72,10 +72,7 @@ export default function Home() {
               className="prose prose-lg max-w-2xl text-foreground/90 space-y-4"
             >
               <p>
-                Me gusta crear cosas. Pensar una idea hasta encontrar su mejor
-                forma. Creo que el proceso creativo es el mismo en todo lo que
-                hago: la obsesión por el detalle, la artesanía de hacer que todo
-                encaje, ya sea una app o un proyecto de literatura electrónica.
+              Me gusta construir cosas, desde aplicaciones hasta proyectos de arte digital. Disfruto imaginar una idea y trabajar en ella hasta encontrar la forma que mejor la exprese. En todo lo que hago, me interesa cuidar los detalles y lograr que cada parte encaje con las demás.
               </p>
               <p>
                 Mi trabajo se enfoca en crear experiencias digitales que
@@ -109,7 +106,7 @@ export default function Home() {
                 <span className="font-mono text-sm">LinkedIn</span>
               </Link>
               <Link
-                href="mailto:sofiavictoriaferro@gmail.com"
+                href="mailto:svf.inbox@gmail.com"
                 className="flex items-center text-foreground hover:text-primary transition-colors"
               >
                 <Mail className="h-5 w-5 mr-2" />

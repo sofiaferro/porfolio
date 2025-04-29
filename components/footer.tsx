@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-6 md:mb-0">
             <p className="text-sm font-mono text-muted-foreground">
-              © {new Date().getFullYear()} Sofia Ferro. All rights reserved.
+              © {new Date().getFullYear()} Sofia Ferro. Made with love using v0 🖤. All rights reserved.
             </p>
           </div>
 
@@ -32,7 +32,7 @@ export default function Footer() {
               <Linkedin className="h-5 w-5" />
             </Link>
             <Link
-              href="mailto:sofiavictoriaferro@gmail.com"
+              href="mailto:svf.inbox@gmail.com"
               className="text-muted-foreground hover:text-foreground transition-colors"
               aria-label="Email"
             >
