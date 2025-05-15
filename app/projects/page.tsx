@@ -4,15 +4,8 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowRight, Filter } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { projectsData } from "../../data/projects";
 
 export default function ProjectsPage() {
@@ -53,28 +46,6 @@ export default function ProjectsPage() {
 
         <div className="flex justify-between items-center mb-8 md:mb-12">
           <div className="text-sm font-mono">{projects.length} PROYECTOS</div>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="outline" size="sm" className="font-mono text-xs">
-                <Filter className="h-3 w-3 mr-2" />
-                FILTRAR
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuItem onClick={() => setFilter("all")}>
-                Todos
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => setFilter("editorial")}>
-                Editorial
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => setFilter("web")}>
-                Web
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => setFilter("branding")}>
-                Branding
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
@@ -95,7 +66,7 @@ export default function ProjectsPage() {
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                     placeholder={project.image ? "blur" : "empty"}
-                    blurDataURL="data:image/svg+xml;base64,[YOUR_BASE64_PLACEHOLDER]"
+                    blurDataURL="data:image/svg+xml;base64"
                     priority={index < 3}
                   />
                 </div>

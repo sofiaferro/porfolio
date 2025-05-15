@@ -12,7 +12,7 @@ import { projectsData } from "@/data/projects";
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [latestPosts, setLatestPosts] = useState<BlogPost[]>([]);
-  const latestProjects = projectsData.slice(0, 3);
+  const latestProjects = projectsData.slice(-3).reverse();
 
   useEffect(() => {
     setIsLoaded(true);
@@ -72,12 +72,15 @@ export default function Home() {
               className="prose prose-lg max-w-2xl text-foreground/90 space-y-4"
             >
               <p>
-              Me gusta construir cosas, desde aplicaciones hasta proyectos de arte digital. Disfruto imaginar una idea y trabajar en ella hasta encontrar la forma que mejor la exprese. En todo lo que hago, me interesa cuidar los detalles y lograr que cada parte encaje con las demás.
+                En otras palabras: me gusta construir cosas, desde aplicaciones
+                hasta experiencias digitales que conecten la tecnología con lo
+                sensible. Disfruto imaginar una idea y trabajarla hasta que
+                encuentre su forma más precisa.
               </p>
               <p>
-                Mi trabajo se enfoca en crear experiencias digitales que
-                combinen funcionalidad, diseño y arte. Exploro la intersección
-                entre el desarrollo de software, la inteligencia artificial y la
+                Mi trabajo se enfoca en desarrollar proyectos que combinen
+                funcionalidad, diseño y arte. Me dedico a explorar la
+                intersección entre el software, la inteligencia artificial y la
                 electrónica.
               </p>
             </motion.div>

@@ -24,8 +24,8 @@ export default function Navigation() {
 
   // Modificar el array navLinks para eliminar la opción de ADMIN
   const navLinks = [
-    { href: "/", label: "HOME" },
-    { href: "/projects", label: "PROJECTS" },
+    { href: "/", label: "INICIO" },
+    { href: "/projects", label: "PROYECTOS" },
     { href: "/blog", label: "BLOG" },
   ]
 

@@ -44,7 +44,7 @@ export default function ProjectDetailPage() {
   }, [id]);
 
   if (!project) {
-    return null; // This will be replaced by notFound() in the useEffect
+    return null;
   }
 
   return (
