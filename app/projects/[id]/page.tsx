@@ -8,7 +8,6 @@ import { ArrowLeft, ArrowRight, ChevronLeft, ChevronRight, ExternalLink } from "
 import { useParams, notFound } from "next/navigation";
 import { projectsData } from "@/data/projects";
 import { parseDescription } from "../utils";
-import LinkPreview from "@/components/ui/link-preview";
 
 export default function ProjectDetailPage() {
   const { id } = useParams() as { id: string };
