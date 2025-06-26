@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { getBlogPosts } from "@/lib/blog-actions";
 import { BlogPost } from "@/lib/types";
 import { projectsData } from "@/data/projects";
@@ -63,7 +63,7 @@ export default function Home() {
                 Sofía Ferro
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground font-sans">
-                Product Engineer, AI & Creative Technologist
+                Product Engineer
               </p>
             </motion.div>
 
@@ -72,16 +72,13 @@ export default function Home() {
               className="prose prose-lg max-w-2xl text-foreground/90 space-y-4"
             >
               <p>
-                En otras palabras: me gusta construir cosas, desde aplicaciones
-                hasta experiencias digitales que conecten la tecnología con lo
-                sensible. Disfruto imaginar una idea y trabajarla hasta que
-                encuentre su forma más precisa.
+              Me apasiona construir cosas, desde aplicaciones hasta experiencias 
+              digitales que conecten la tecnología con lo sensible. Disfruto el 
+              proceso de imaginar una idea y trabajarla hasta que encuentre su forma más precisa.
               </p>
               <p>
-                Mi trabajo se enfoca en desarrollar proyectos que combinen
-                funcionalidad, diseño y arte. Me dedico a explorar la
-                intersección entre el software, la inteligencia artificial y la
-                electrónica.
+              Desarrollo proyectos que combinan funcionalidad, diseño y arte, explorando la 
+              intersección entre el desarrollo de software, la inteligencia artificial y la electrónica.
               </p>
             </motion.div>
 
@@ -96,7 +93,6 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="flex items-center text-foreground hover:text-primary transition-colors"
               >
-                <Github className="h-5 w-5 mr-2" />
                 <span className="font-mono text-sm">GitHub</span>
               </Link>
               <Link
@@ -105,14 +101,12 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="flex items-center text-foreground hover:text-primary transition-colors"
               >
-                <Linkedin className="h-5 w-5 mr-2" />
                 <span className="font-mono text-sm">LinkedIn</span>
               </Link>
               <Link
                 href="mailto:svf.inbox@gmail.com"
                 className="flex items-center text-foreground hover:text-primary transition-colors"
               >
-                <Mail className="h-5 w-5 mr-2" />
                 <span className="font-mono text-sm">Email</span>
               </Link>
             </motion.div>

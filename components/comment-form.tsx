@@ -26,7 +26,7 @@ export default function CommentForm({ postId }: { postId: string }) {
     setIsSubmitting(true)
     setMessage(null)
 
-    try {
+/*     try {
       const result = await addComment(postId, authorName, content)
 
       if (result.success) {
@@ -41,12 +41,12 @@ export default function CommentForm({ postId }: { postId: string }) {
       console.error("Error submitting comment:", error)
     } finally {
       setIsSubmitting(false)
-    }
+    } */
   }
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
-      <h3 className="text-xl font-serif mb-4">Deja un comentario</h3>
+      <h3 className="text-xl font-medium mb-4">Deja un comentario</h3>
 
       <div className="space-y-2">
         <Label htmlFor="author-name">Nombre</Label>

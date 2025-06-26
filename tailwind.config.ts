@@ -60,9 +60,9 @@ const config = {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        sans: ["var(--font-inter)"],
-        serif: ["var(--font-playfair)"],
-        mono: ["var(--font-space-mono)"],
+        sans: ["var(--font-jetbrains-mono)", "monospace"],
+        serif: ["var(--font-jetbrains-mono)", "monospace"],
+        mono: ["var(--font-jetbrains-mono)", "monospace"],
       },
       keyframes: {
         "accordion-down": {

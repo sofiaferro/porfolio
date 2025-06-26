@@ -54,29 +54,30 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-mono;
+    font-feature-settings: "liga" 1, "calt" 1;
   }
 
-  /* Custom Typography */
+  /* Typography - All JetBrains Mono */
   h1,
   h2,
   h3,
   h4,
   h5,
   h6 {
-    @apply font-serif;
+    @apply font-mono font-semibold;
   }
 
-  .font-mono {
-    @apply font-['var(--font-space-mono)'];
+  h1 {
+    @apply font-bold;
   }
 
-  .font-serif {
-    @apply font-['var(--font-playfair)'];
+  h2 {
+    @apply font-semibold;
   }
 
-  .font-sans {
-    @apply font-['var(--font-inter)'];
+  p {
+    @apply font-normal;
   }
 }
 
@@ -86,15 +87,15 @@
   }
 
   .prose p {
-    @apply mb-4 leading-relaxed;
+    @apply mb-4 leading-relaxed font-normal;
   }
 
   .prose h2 {
-    @apply text-2xl font-serif mt-8 mb-4;
+    @apply text-2xl font-semibold mt-8 mb-4;
   }
 
   .prose h3 {
-    @apply text-xl font-serif mt-6 mb-3;
+    @apply text-xl font-medium mt-6 mb-3;
   }
 
   .prose ul {

@@ -1,25 +1,15 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter, Space_Mono, Playfair_Display } from "next/font/google"
+import { JetBrains_Mono } from "next/font/google"
 import "./globals.css"
 import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import { ThemeProvider } from "@/components/theme-provider"
 
-const inter = Inter({
+const jetbrainsMono = JetBrains_Mono({
+  weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"],
-  variable: "--font-inter",
-})
-
-const spaceMono = Space_Mono({
-  weight: ["400", "700"],
-  subsets: ["latin"],
-  variable: "--font-space-mono",
-})
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  variable: "--font-playfair",
+  variable: "--font-jetbrains-mono",
 })
 
 export const metadata: Metadata = {
@@ -33,20 +23,20 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} ${spaceMono.variable} ${playfair.variable} font-sans bg-background`}>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+      <body className={`${jetbrainsMono.variable} font-mono bg-background`}>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <Navigation />
           <main className="min-h-screen">{children}</main>
           <Footer />
         </ThemeProvider>
       </body>
     </html>
-  )
+  );
 }
 
 
