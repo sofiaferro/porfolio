@@ -5,7 +5,7 @@ import { ArrowLeft } from "lucide-react";
 import { getBlogPost } from "@/lib/blog-actions";
 import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { use, useEffect, useState } from "react";
 
 export default function BlogPostPage({ params }: { params: Promise<{ id: string; locale: string }> }) {

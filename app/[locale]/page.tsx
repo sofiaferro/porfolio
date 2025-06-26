@@ -182,7 +182,11 @@ export default function Home() {
 
             {latestPosts.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
-                {latestPosts.map((post, index) => (
+                {latestPosts.map((post, index) => {
+                  
+  const title = locale === "es" ? post.title_es : post.title_en;
+  const excerpt = locale === "es" ? post.excerpt_es : post.excerpt_en;
+                  return (
                   <motion.article
                     key={post.id}
                     initial={{ opacity: 0, y: 20 }}
@@ -203,10 +207,10 @@ export default function Home() {
                           .toLowerCase()}
                       </p>
                       <h3 className="text-lg font-medium mb-2 group-hover:text-primary transition-colors">
-                        {post.title}
+                        {title}
                       </h3>
                       <p className="text-sm text-muted-foreground mb-3 line-clamp-2">
-                        {post.excerpt}
+                        {excerpt}
                       </p>
                       <div className="flex items-center text-sm font-mono text-primary">
                         <span className="mr-2">{t('readMore')}</span>
@@ -214,7 +218,7 @@ export default function Home() {
                       </div>
                     </Link>
                   </motion.article>
-                ))}
+                )})}
               </div>
             ) : (
               <p className="text-muted-foreground text-center py-8">
