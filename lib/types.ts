@@ -1,14 +1,14 @@
 export interface BlogPost {
-  title_es: any
-  title_en: any
-  excerpt_es: any
-  excerpt_en: any
-  image: string
-  subtitle: string
   id: string
-  content_es: string
-  content_en: string
   date: string
+  image: string
+  content_en: string
+  excerpt_en: any
+  title_en: any
+  content_es: string
+  excerpt_es: any
+  title_es: any
+  subtitle: string
 }
 
 export interface BlogComment {

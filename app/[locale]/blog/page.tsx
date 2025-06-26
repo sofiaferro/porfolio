@@ -26,9 +26,8 @@ export default function BlogPage() {
   }, []);
 
   // TODO: REFACTOR FOR MORE POSTS
-  const title = locale === "es" ? posts[0].title_es : posts[0].title_en;
-  const excerpt = locale === "es" ? posts[0].excerpt_es : posts[0].excerpt_en;
-
+  const title = locale === "es" ? posts[0]?.title_es : posts[0]?.title_en;
+  const excerpt = locale === "es" ? posts[0]?.excerpt_es : posts[0]?.excerpt_en;
   return (
     <div className="pt-20 min-h-screen">
       <section className="container mx-auto px-4 md:px-6 pt-12 md:pt-24 lg:pt-32">
