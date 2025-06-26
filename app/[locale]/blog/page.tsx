@@ -1,58 +1,77 @@
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import { getBlogPosts } from "@/lib/blog-actions";
-import Image from "next/image";
+"use client";
 
-export default async function BlogPage() {
-  const blogPosts = await getBlogPosts();
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { getBlogPosts } from "@/lib/blog-actions";
+import { useLocale, useTranslations } from 'next-intl';
+import Image from "next/image";
+import { ArrowRight } from "lucide-react";
+import { BlogPost } from "@/lib/types";
+
+export default function BlogPage() {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [posts, setPosts] = useState<BlogPost[]>([]);
+  const t = useTranslations('blog');
+
+  useEffect(() => {
+    setIsLoaded(true);
+    const fetchPosts = async () => {
+      const posts = await getBlogPosts();
+      setPosts(posts);
+    };
+    fetchPosts();
+  }, []);
 
   return (
     <div className="pt-20 min-h-screen">
       <section className="container mx-auto px-4 md:px-6 pt-12 md:pt-24 lg:pt-32">
-        <div className="max-w-3xl mb-16 md:mb-24">
-          <h1 className="text-4xl md:text-6xl font-serif mb-6">Blog</h1>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.5 }}
+          className="max-w-3xl mb-16 md:mb-24"
+        >
+          <h1 className="text-4xl md:text-6xl font-serif mb-6">{t('title')}</h1>
           <p className="text-lg md:text-xl text-muted-foreground">
-            Mensajes en una botella digital.
+            {t('subtitle')}
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 gap-16 md:gap-24">
           {/* Featured Post (if there are posts) */}
-          {blogPosts.length > 0 && (
+          {posts.length > 0 && (
             <article className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
               <div className="md:col-span-5 md:order-1 flex flex-col justify-center">
                 <p className="text-xs font-mono text-muted-foreground mb-3">
-                  {new Date(blogPosts[0].date)
+                  {new Date(posts[0].date)
                     .toLocaleDateString("es-ES", {
                       day: "2-digit",
                       month: "long",
                       year: "numeric",
-                    })
-                    .toUpperCase()}
+                    })}
                 </p>
                 <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif mb-4">
-                  {blogPosts[0].title}
+                  {posts[0].title}
                 </h2>
                 <p className="text-muted-foreground mb-6">
-                  {blogPosts[0].excerpt}
+                  {posts[0].excerpt}
                 </p>
                 <Link
-                  href={`/blog/${blogPosts[0].id}`}
+                  href={`./blog/${posts[0].id}`}
                   className="inline-flex items-center group text-sm font-mono border-b-2 border-primary pb-1 hover:border-primary/70 transition-colors self-start"
                 >
-                  Leer artículo
-                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  <span className="mr-2">{t('readMore')}</span>
+                  <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
               <div className="md:col-span-7 md:order-2">
                 <div className="relative aspect-[4/3] bg-muted overflow-hidden rounded-lg">
                   <Image
-                    src={blogPosts[0].image}
-                    alt={blogPosts[0].title}
+                    src={posts[0].image}
+                    alt={posts[0].title}
                     fill
                     className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    priority
                   />
                 </div>
               </div>
@@ -60,44 +79,40 @@ export default async function BlogPage() {
           )}
 
           {/* Post Grid */}
-          {blogPosts.length > 1 ? (
+          {posts.length > 1 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-              {blogPosts.slice(1).map((post) => (
-                <article key={post.id} className="group">
-                  <Link href={`/blog/${post.id}`} className="group">
+              {posts.slice(1).map((post, index) => (
+                <motion.div
+                  key={post.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  transition={{ duration: 0.5, delay: 0.1 * (index % 6) }}
+                  className="group"
+                >
+                  <Link href={`./blog/${post.id}`} className="group">
                     <div className="relative aspect-[3/2] bg-muted mb-4 flex items-center justify-center">
                       <Image
                         src={post.image}
                         alt={post.title}
-                        width={300}
-                        height={200}
+                        fill
+                        className="object-cover"
                       />
                     </div>
-                    <p className="text-xs font-mono text-muted-foreground mb-2">
-                      {new Date(post.date)
-                        .toLocaleDateString("es-ES", {
-                          day: "2-digit",
-                          month: "long",
-                          year: "numeric",
-                        })
-                        .toUpperCase()}
-                    </p>
-                    <h3 className="text-xl md:text-2xl font-serif mb-3 group-hover:text-primary transition-colors">
+                    <h3 className="text-xl font-sans mb-2 group-hover:text-primary transition-colors">
                       {post.title}
                     </h3>
                     <p className="text-muted-foreground mb-4">{post.excerpt}</p>
                     <div className="flex items-center text-sm font-mono">
-                      <span className="mr-2">Leer artículo</span>
-                      <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform" />
+                      <span className="mr-2">{t('readMore')}</span>
                     </div>
                   </Link>
-                </article>
+                </motion.div>
               ))}
             </div>
-          ) : blogPosts.length === 0 ? (
+          ) : posts.length === 0 ? (
             <div className="text-center py-12">
               <p className="text-muted-foreground">
-                No hay publicaciones disponibles.
+                {t('noPostsAvailable')}
               </p>
             </div>
           ) : null}

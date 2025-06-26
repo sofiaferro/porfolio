@@ -5,11 +5,15 @@ import { usePathname } from "next/navigation"
 import { useState, useEffect } from "react"
 import { Menu, X } from "lucide-react"
 import { ModeToggle } from "@/components/mode-toggle"
+import LanguageSwitcher from "@/components/language-switcher"
+import { useTranslations, useLocale } from 'next-intl'
 
 export default function Navigation() {
   const pathname = usePathname()
+  const locale = useLocale()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const t = useTranslations('navigation')
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,15 +24,13 @@ export default function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const isActive = (path: string) => pathname === path
+  const isActive = (path: string) => pathname === `/${locale}${path}`
 
-  // Modificar el array navLinks para eliminar la opción de ADMIN
   const navLinks = [
-    { href: "/", label: "INICIO" },
-    { href: "/projects", label: "PROYECTOS" },
-    { href: "/blog", label: "BLOG" },
+    { href: "/", label: t('home') },
+    { href: "/projects", label: t('projects') },
+    { href: "/blog", label: t('blog') },
   ]
-
 
   return (
     <header
@@ -38,7 +40,7 @@ export default function Navigation() {
     >
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between h-16 md:h-20">
-          <Link href="/" className="text-xl md:text-2xl font-mono tracking-tighter hover:opacity-80 transition-opacity">
+          <Link href={`/${locale}`} className="text-xl md:text-2xl font-mono tracking-tighter hover:opacity-80 transition-opacity">
             svf
           </Link>
 
@@ -47,7 +49,7 @@ export default function Navigation() {
             {navLinks.map((link) => (
               <Link
                 key={link.href}
-                href={link.href}
+                href={`/${locale}${link.href}`}
                 className={`text-sm tracking-wide hover:opacity-60 transition-opacity ${
                   isActive(link.href) ? "font-bold border-b-2 border-primary" : "font-normal"
                 }`}
@@ -55,13 +57,13 @@ export default function Navigation() {
                 {link.label}
               </Link>
             ))}
-            <div className="ml-4">
-              <ModeToggle />
-            </div>
+            <LanguageSwitcher />
+            <ModeToggle />
           </nav>
 
           {/* Mobile Navigation Toggle */}
           <div className="flex items-center md:hidden">
+            <LanguageSwitcher />
             <ModeToggle />
             <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="ml-4 p-1" aria-label="Toggle menu">
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -77,7 +79,7 @@ export default function Navigation() {
             {navLinks.map((link) => (
               <Link
                 key={link.href}
-                href={link.href}
+                href={`/${locale}${link.href}`}
                 className={`px-6 py-3 text-sm ${isActive(link.href) ? "font-bold bg-muted" : "font-normal"}`}
                 onClick={() => setIsMenuOpen(false)}
               >

@@ -1,0 +1,74 @@
+{
+  "navigation": {
+    "home": "INICIO",
+    "projects": "PROYECTOS",
+    "blog": "BLOG"
+  },
+  "home": {
+    "aboutMe": "SOBRE MÍ",
+    "title": "Sofía Ferro",
+    "subtitle": "Software Engineer",
+    "description1": "Me apasiona construir cosas, desde aplicaciones hasta experiencias digitales que conecten la tecnología con lo sensible. Disfruto el proceso de imaginar una idea y trabajarla hasta que encuentre su forma más precisa.",
+    "description2": "Desarrollo proyectos que combinan funcionalidad, diseño y arte, explorando la intersección entre el desarrollo de software, la inteligencia artificial y la electrónica.",
+    "recentProjects": "Proyectos recientes",
+    "viewProject": "Ver proyecto",
+    "viewAllProjects": "Ver todos los proyectos",
+    "latestPosts": "Últimas publicaciones",
+    "readMore": "Leer más",
+    "readFullArticle": "Leer artículo completo",
+    "viewAllPosts": "Ver todas las publicaciones",
+    "noPostsAvailable": "No hay publicaciones disponibles."
+  },
+
+  "footer": {
+    "copyright": "© {year} Sofia Ferro. Made with love using v0 🖤. All rights reserved."
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Un mensaje en una botella digital.",
+    "description": "Reflexiones sobre tecnología, arte y el proceso creativo.",
+    "readMore": "Leer más",
+    "viewAllPosts": "Ver todas las publicaciones",
+    "categories": "Categorías",
+    "tags": "Etiquetas",
+    "backToBlog": "Volver al blog",
+    "publishedOn": "Publicado el",
+    "noPostsAvailable": "No hay publicaciones disponibles.",
+    "comments": "Comentarios",
+    "noComments": "No hay comentarios todavía. ¡Sé el primero en comentar!",
+    "leaveComment": "Deja un comentario",
+    "submit": "Enviar",
+    "name": "Nombre",
+    "comment": "Comentario",
+    "post": "Publicar"
+  },
+  "projects": {
+    "backToProjects": "Volver a proyectos",
+    "description": "Descripción del proyecto",
+    "details": "Detalles",
+    "year": "Año",
+    "category": "Categoría",
+    "technologies": "Tecnologías",
+    "live": "Ver proyecto en vivo",
+    "gallery": "Galería del proyecto",
+    "video": "Video",
+    "noProjectsAvailable": "No hay proyectos disponibles.",
+    "previous": "Anterior",
+    "next": "Siguiente",
+    "title": "Proyectos",
+    "subtitle": "Exploraciones en la intersección del arte y la tecnología.",
+    "viewProject": "Ver proyecto",
+    "viewAllProjects": "Ver todos los proyectos",
+    "projectDetails": {
+      "description": "Descripción del proyecto",
+      "details": "Detalles",
+      "gallery": "Galería del proyecto",
+      "video": "Video"
+    }
+  },
+  "common": {
+    "loading": "Cargando...",
+    "error": "Error",
+    "notFound": "No encontrado"
+  }
+}

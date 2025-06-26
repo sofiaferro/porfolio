@@ -1,5 +1,7 @@
+import { useTranslations } from 'next-intl'
 
 export default function Footer() {
+  const t = useTranslations('footer')
   
   return (
     <footer className="border-t py-12 mt-24">
@@ -7,7 +9,7 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-6 md:mb-0">
             <p className="text-sm font-mono text-muted-foreground">
-            © {new Date().getFullYear()} Sofia Ferro. Made with love using v0 🖤. All rights reserved.
+              {t('copyright', { year: new Date().getFullYear() })}
             </p>
           </div>
         </div>

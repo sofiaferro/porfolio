@@ -1,0 +1,80 @@
+{
+  "navigation": {
+    "home": "HOME",
+    "projects": "PROJECTS",
+    "blog": "BLOG"
+  },
+  "home": {
+    "aboutMe": "ABOUT ME",
+    "title": "Sofía Ferro",
+    "subtitle": "Software Engineer",
+    "description1": "I'm passionate about building things, from applications to digital experiences that connect technology with the sensitive. I enjoy the process of imagining an idea and working it until it finds its most precise form.",
+    "description2": "I develop projects that combine functionality, design and art, exploring the intersection between software development, artificial intelligence and electronics.",
+    "recentProjects": "Recent projects",
+    "viewProject": "View project",
+    "viewAllProjects": "View all projects",
+    "latestPosts": "Latest posts",
+    "readMore": "Read more",
+    "readFullArticle": "Read full article",
+    "viewAllPosts": "View all posts",
+    "noPostsAvailable": "No posts available."
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "Explorations at the intersection of art and technology.",
+    "viewProject": "View project",
+    "viewAllProjects": "View all projects",
+    "projectDetails": {
+      "description": "Project description",
+      "details": "Details",
+      "gallery": "Project gallery",
+      "video": "Video"
+    },
+    "backToProjects": "Back to projects",
+    "description": "Project description",
+    "details": "Details",
+    "year": "Year",
+    "category": "Category",
+    "technologies": "Technologies",
+    "live": "View live project",
+    "gallery": "Project gallery",
+    "video": "Video",
+    "noProjectsAvailable": "No projects available.",
+    "previous": "Previous",
+    "next": "Next"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "A message in a digital bottle.",
+    "description": "Reflections on technology, art and the creative process.",
+    "readMore": "Read more",
+    "viewAllPosts": "View all posts",
+    "categories": "Categories",
+    "tags": "Tags",
+    "backToBlog": "Back to blog",
+    "publishedOn": "Published on",
+    "noPostsAvailable": "No posts available.",
+    "comments": "Comments",
+    "noComments": "No comments yet. Be the first to comment!",
+    "leaveComment": "Leave a comment",
+    "submit": "Submit",
+    "name": "Name",
+    "comment": "Comment",
+    "post": "Post"
+  },
+  "footer": {
+    "copyright": "© {year} Sofia Ferro. Made with love using v0 🖤. All rights reserved."
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous"
+  }
+} 
