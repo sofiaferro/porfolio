@@ -8,6 +8,7 @@ import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { BlogPost } from "@/lib/types";
+import { formatDate } from "@/lib/utils";
 
 export default function BlogPage() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -49,11 +50,7 @@ export default function BlogPage() {
             <article className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
               <div className="md:col-span-5 md:order-1 flex flex-col justify-center">
                 <p className="text-xs font-mono text-muted-foreground mb-3">
-                  {new Date(posts[0].date).toLocaleDateString("es-ES", {
-                    day: "2-digit",
-                    month: "long",
-                    year: "numeric",
-                  })}
+                {formatDate(posts[0].date, locale)}
                 </p>
                 <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif mb-4">
                   {title}

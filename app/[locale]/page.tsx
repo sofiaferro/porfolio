@@ -9,6 +9,7 @@ import { getBlogPosts } from "@/lib/blog-actions";
 import { BlogPost } from "@/lib/types";
 import { projectsData } from "@/data/projects";
 import { useTranslations, useLocale } from 'next-intl';
+import { formatDate } from "@/lib/utils";
 
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -198,13 +199,7 @@ export default function Home() {
                   >
                     <Link href={`/${locale}/blog/${post.id}`}>
                       <p className="text-xs font-mono text-muted-foreground mb-2">
-                        {new Date(post.date)
-                          .toLocaleDateString("es-ES", {
-                            day: "2-digit",
-                            month: "long",
-                            year: "numeric",
-                          })
-                          .toLowerCase()}
+                        {formatDate(post.date, locale)}
                       </p>
                       <h3 className="text-lg font-medium mb-2 group-hover:text-primary transition-colors">
                         {title}

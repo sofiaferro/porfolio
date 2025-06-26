@@ -7,6 +7,7 @@ import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import { useTranslations } from "next-intl";
 import { use, useEffect, useState } from "react";
+import { formatDate } from "@/lib/utils";
 
 export default function BlogPostPage({ params }: { params: Promise<{ id: string; locale: string }> }) {
   const { id, locale } = use(params);
@@ -25,14 +26,9 @@ export default function BlogPostPage({ params }: { params: Promise<{ id: string;
   if (loading) return <div>{c('loading')}</div>;
   if (!post) return notFound();
 
+  const title = locale === "es" ? post.title_es : post.title_en;
   const content = locale === "es" ? post.content_es : post.content_en;
   const excerpt = locale === "es" ? post.excerpt_es : post.excerpt_en;
-
-  const formattedDate = new Date(post.date).toLocaleDateString(locale, {
-    day: "2-digit",
-    month: "long",
-    year: "numeric",
-  });
 
   return (
     <div className="pt-20 min-h-screen">
@@ -48,10 +44,10 @@ export default function BlogPostPage({ params }: { params: Promise<{ id: string;
 
           <header className="mb-12">
             <p className="text-xs font-mono text-muted-foreground mb-3">
-              {formattedDate.toUpperCase()}
+              {formatDate(post.date, locale)}
             </p>
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif mb-6">
-              {post.title}
+              {title}
             </h1>
             {excerpt && (
               <p className="prose prose-lg dark:prose-invert max-w-none">
