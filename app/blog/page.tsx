@@ -12,8 +12,7 @@ export default async function BlogPage() {
         <div className="max-w-3xl mb-16 md:mb-24">
           <h1 className="text-4xl md:text-6xl font-serif mb-6">Blog</h1>
           <p className="text-lg md:text-xl text-muted-foreground">
-            Reflexiones sobre desarrollo de software, inteligencia artificial y
-            la intersección entre lo técnico y lo creativo.
+            Mensajes en una botella digital.
           </p>
         </div>
 

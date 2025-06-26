@@ -91,7 +91,7 @@ export default function Home() {
                 href="https://github.com/sofiaferro"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center text-foreground hover:text-primary transition-colors"
+                className="flex items-center text-foreground hover:line-through transition-colors"
               >
                 <span className="font-mono text-sm">GitHub</span>
               </Link>
@@ -99,13 +99,13 @@ export default function Home() {
                 href="https://www.linkedin.com/in/sofiaferro"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center text-foreground hover:text-primary transition-colors"
+                className="flex items-center text-foreground hover:line-through transition-colors"
               >
                 <span className="font-mono text-sm">LinkedIn</span>
               </Link>
               <Link
                 href="mailto:svf.inbox@gmail.com"
-                className="flex items-center text-foreground hover:text-primary transition-colors"
+                className="flex items-center text-foreground hover:line-through transition-colors"
               >
                 <span className="font-mono text-sm">Email</span>
               </Link>

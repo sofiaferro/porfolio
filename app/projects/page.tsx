@@ -40,7 +40,7 @@ export default function ProjectsPage() {
         >
           <h1 className="text-4xl md:text-6xl font-serif mb-6">Proyectos</h1>
           <p className="text-lg md:text-xl text-muted-foreground">
-            Exploraciones acerca de la intersección entre la programación y el arte.
+            Exploraciones en la intersección de la programación y el arte.
           </p>
         </motion.div>
 
