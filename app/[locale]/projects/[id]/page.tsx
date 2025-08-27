@@ -327,7 +327,7 @@ export default function ProjectDetailPage() {
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className=" flex items-center justify-start bg-black/30 hover:bg-black/50 transition"
+                className=" flex items-center justify-start transition"
               >
                 <div className="bg-white px-6 py-3 rounded-full flex items-center gap-2 text-black font-medium shadow-md">
                 {t("live")} <ExternalLink className="w-4 h-4" />
