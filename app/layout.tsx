@@ -9,8 +9,8 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "Sofia Ferro | Portfolio",
-  description: "Software Engineer, AI Engineer, and Creative Technologist",
+  title: "Sofia Ferro | Interactive Portfolio",
+  description: "Software Engineer, AI Engineer, and Creative Technologist - Interactive Map Portfolio",
   generator: 'v0.dev',
   icons: {
     icon: '/icon.ico',
@@ -24,7 +24,7 @@ export default function RootLayout({
 }) {
   return (
     <html suppressHydrationWarning>
-      <body className={`${jetbrainsMono.variable} font-mono bg-background`}>
+      <body className={`${jetbrainsMono.variable} font-mono bg-black text-white antialiased`}>
         {children}
       </body>
     </html>
