@@ -6,10 +6,11 @@
   },
   "home": {
     "aboutMe": "SOBRE MÍ",
-    "title": "Sofía Ferro",
+    "title": "SVF",
     "subtitle": "Software Engineer",
     "description1": "Me apasiona construir cosas, desde aplicaciones hasta experiencias digitales que conecten la tecnología con lo sensible. Disfruto el proceso de imaginar una idea y trabajarla hasta que encuentre su forma más precisa.",
     "description2": "Desarrollo proyectos que combinan funcionalidad, diseño y arte, explorando la intersección entre el desarrollo de software, la inteligencia artificial y la electrónica.",
+    "contact": "Contacto",
     "recentProjects": "Proyectos recientes",
     "viewProject": "Ver proyecto",
     "viewAllProjects": "Ver todos los proyectos",
@@ -24,7 +25,7 @@
     "copyright": "© {year} Sofia Ferro. Made with love using v0 🖤. All rights reserved."
   },
   "blog": {
-    "title": "Blog",
+    "title": "IDEAS",
     "subtitle": "Un mensaje en una botella digital.",
     "description": "Reflexiones sobre tecnología, arte y el proceso creativo.",
     "readMore": "Leer más",
@@ -55,7 +56,7 @@
     "noProjectsAvailable": "No hay proyectos disponibles.",
     "previous": "Anterior",
     "next": "Siguiente",
-    "title": "Proyectos",
+    "title": "MATERIALES",
     "subtitle": "Exploraciones en la intersección del arte y la tecnología.",
     "viewProject": "Ver proyecto",
     "viewAllProjects": "Ver todos los proyectos",

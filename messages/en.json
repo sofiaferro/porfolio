@@ -5,8 +5,9 @@
     "blog": "BLOG"
   },
   "home": {
-    "aboutMe": "ABOUT ME",
-    "title": "Sofía Ferro",
+    "aboutMe": "ABOUT",
+    "title": "SVF",
+    "contact": "Contact",
     "subtitle": "Software Engineer",
     "description1": "I'm passionate about building things, from applications to digital experiences that connect technology with the sensitive. I enjoy the process of imagining an idea and working it until it finds its most precise form.",
     "description2": "I develop projects that combine functionality, design and art, exploring the intersection between software development, artificial intelligence and electronics.",
@@ -20,7 +21,7 @@
     "noPostsAvailable": "No posts available."
   },
   "projects": {
-    "title": "Projects",
+    "title": "MATERIALS",
     "subtitle": "Explorations at the intersection of art and technology.",
     "viewProject": "View project",
     "viewAllProjects": "View all projects",
@@ -44,7 +45,7 @@
     "next": "Next"
   },
   "blog": {
-    "title": "Blog",
+    "title": "THOUGHTS",
     "subtitle": "A message in a digital bottle.",
     "description": "Reflections on technology, art and the creative process.",
     "readMore": "Read more",

@@ -117,5 +117,89 @@
   .prose blockquote {
     @apply border-l-4 border-muted pl-4 italic my-6;
   }
+
+  /* Text outline effect for stylized titles */
+  .text-outline {
+    -webkit-text-stroke: 1px currentColor;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Custom scrollbar for columns - Hidden */
+.custom-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.custom-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+  /* Project description formatting */
+.project-description p {
+  @apply mb-3 last:mb-0 break-words;
+}
+
+.project-description strong {
+  @apply font-semibold;
+}
+
+.project-description em {
+  @apply italic;
+}
+
+.project-description code {
+  @apply bg-gray-100 px-1 py-0.5 rounded text-xs font-mono break-all;
+}
+
+.project-description a {
+  @apply text-blue-600 hover:text-blue-800 underline break-all;
+}
+
+.project-description li {
+  @apply break-words;
+}
+
+/* Blog content formatting */
+.blog-content p {
+  @apply mb-2 last:mb-0 break-words;
+}
+
+.blog-content strong {
+  @apply font-semibold;
+}
+
+.blog-content em {
+  @apply italic;
+}
+
+.blog-content code {
+  @apply bg-gray-100 px-1 py-0.5 rounded text-xs font-mono break-all;
+}
+
+.blog-content a {
+  @apply text-blue-600 hover:text-blue-800 underline break-all;
+}
+
+.blog-content li {
+  @apply break-words mb-1;
+}
+
+.blog-content blockquote {
+  @apply border-l-4 border-gray-300 pl-4 italic text-gray-600 my-2;
+}
+
+/* Ensure markdown content doesn't affect other elements */
+.markdown-content {
+  @apply text-xs md:text-sm text-gray-700 leading-relaxed;
+}
+
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3,
+.markdown-content h4,
+.markdown-content h5,
+.markdown-content h6 {
+  @apply text-sm md:text-base font-medium text-gray-900 mb-2 leading-tight;
+}
 }
 

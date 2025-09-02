@@ -79,7 +79,7 @@ export default function ProjectDetailPage() {
   };
 
   return (
-    <div className="pt-20 min-h-screen">
+    <div className="pt-4 min-h-screen">
       <article className="container mx-auto px-4 md:px-6 pt-12 md:pt-24 lg:pt-32 max-w-5xl">
         <Link
           href={`/${locale}/projects`}

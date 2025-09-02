@@ -31,7 +31,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ id: string;
   const excerpt = locale === "es" ? post.excerpt_es : post.excerpt_en;
 
   return (
-    <div className="pt-20 min-h-screen">
+    <div className="pt-4 min-h-screen">
       <article className="container mx-auto px-4 md:px-6 pt-12 md:pt-24 lg:pt-32">
         <div className="max-w-3xl mx-auto">
           <Link

@@ -33,7 +33,7 @@ export default function ProjectsPage() {
   }, [filter]);
 
   return (
-    <div className="pt-20 min-h-screen">
+    <div className="pt-4 min-h-screen">
       <section className="container mx-auto px-4 md:px-6 pt-12 md:pt-24 lg:pt-32">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
