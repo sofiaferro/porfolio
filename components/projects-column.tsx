@@ -11,11 +11,11 @@ export default function ProjectsColumn() {
   return (
     <div className="flex flex-col">
       {/* Header */}
-      <div className="p-4 md:p-6 border-b border-gray-300">
-        <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
+      <div className="p-4 md:p-6 border-b border-gray-300 dark:border-gray-700">
+        <h2 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">
           {t('title')}
         </h2>
-        <p className="text-xs md:text-sm text-gray-600 font-mono">
+        <p className="text-xs md:text-sm text-gray-600 dark:text-gray-300 font-mono">
           {t('subtitle')}
         </p>
       </div>

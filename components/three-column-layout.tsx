@@ -14,7 +14,7 @@ export default function ThreeColumnLayout({
   blogColumn,
 }: ThreeColumnLayoutProps) {
   return (
-    <div className="h-screen bg-[#f5f5f0] pt-4 overflow-x-hidden">
+    <div className="h-screen bg-[#f5f5f0] dark:bg-neutral-900 pt-4 overflow-x-hidden">
       {/* Desktop Layout - 3 Columns */}
       <div className="hidden lg:flex h-full">
         {/* Left Column - Profile (~25%) */}
