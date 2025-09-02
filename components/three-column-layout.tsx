@@ -51,20 +51,17 @@ export default function ThreeColumnLayout({
         </div>
       </div>
 
-      {/* Mobile Layout - Stacked */}
-      <div className="flex flex-col md:hidden h-full">
-        {/* Profile Section - Collapsed */}
-        <div className="border-b border-gray-300 h-1/3 overflow-y-auto custom-scrollbar">
+      {/* Mobile Layout - Stacked single scroll: Profile -> Projects -> Blog */}
+      <div className="flex flex-col md:hidden min-h-screen">
+        <div className="border-b border-gray-300">
           {profileColumn}
         </div>
-        
-        {/* Projects Section - Main */}
-        <div className="flex-1 overflow-y-auto custom-scrollbar">
+
+        <div className="border-b border-gray-300">
           {projectsColumn}
         </div>
-        
-        {/* Blog Section - Secondary */}
-        <div className="border-t border-gray-300 h-1/3 overflow-y-auto custom-scrollbar">
+
+        <div>
           {blogColumn}
         </div>
       </div>
