@@ -65,6 +65,15 @@
       "details": "Detalles",
       "gallery": "Galería del proyecto",
       "video": "Video"
+    },
+    "categories": {
+      "literatura": "Literatura expandida",
+      "bots": "Bots",
+      "iot": "IoT",
+      "hardware": "Hardware",
+      "creative-coding": "Creative coding",
+      "instalacion": "Instalación",
+      "installation": "Instalación"
     }
   },
   "common": {

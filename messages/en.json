@@ -42,7 +42,16 @@
     "video": "Video",
     "noProjectsAvailable": "No projects available.",
     "previous": "Previous",
-    "next": "Next"
+    "next": "Next",
+    "categories": {
+      "literatura": "Expanded Literature",
+      "bots": "Bots",
+      "iot": "IoT",
+      "hardware": "Hardware",
+      "creative-coding": "Creative Coding",
+      "instalacion": "Installation",
+      "installation": "Installation"
+    }
   },
   "blog": {
     "title": "THOUGHTS",
