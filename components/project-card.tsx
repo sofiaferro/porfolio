@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ExternalLink } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import ProjectCarousel from "./project-carousel";
+import { useTranslations } from "next-intl";
 
 interface ProjectImage {
   src: string;
@@ -14,10 +15,16 @@ interface ProjectImage {
 interface Project {
   id: string;
   title: string;
+  title_en?: string;
+  title_es?: string;
   categoryLabel: string;
+  categoryLabel_en?: string;
+  categoryLabel_es?: string;
   category: string;
   image: string;
   description?: string;
+  description_en?: string;
+  description_es?: string;
   year?: string;
   client?: string;
   technologies?: string[];
@@ -33,6 +40,23 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project, locale }: ProjectCardProps) {
+  const t = useTranslations('projects');
+  // Pick localized fields with safe fallbacks
+  const displayedTitle = locale === 'es'
+    ? (project.title_es ?? project.title)
+    : (project.title_en ?? project.title);
+
+  const baseCategory = locale === 'es'
+    ? (project.categoryLabel_es ?? project.categoryLabel)
+    : (project.categoryLabel_en ?? project.categoryLabel);
+
+  let localizedCategory = baseCategory;
+  try {
+    const maybe = t(`categories.${project.category}` as any);
+    if (maybe && typeof maybe === 'string') localizedCategory = maybe;
+  } catch (_) {
+    localizedCategory = baseCategory;
+  }
   // Simple text processing for basic markdown-like formatting
   const formatText = (text: string) => {
     return text
@@ -53,7 +77,11 @@ export default function ProjectCard({ project, locale }: ProjectCardProps) {
       .join('');
   };
 
-  const formattedDescription = project.description ? formatText(project.description) : '';
+  const descriptionByLocale = locale === 'es'
+    ? (project.description_es ?? project.description)
+    : (project.description_en ?? project.description);
+
+  const formattedDescription = descriptionByLocale ? formatText(descriptionByLocale) : '';
 
   return (
     <div className="group w-full">
@@ -71,10 +99,10 @@ export default function ProjectCard({ project, locale }: ProjectCardProps) {
         {/* Title and Category */}
         <div>
           <h3 className="text-lg md:text-xl font-medium text-gray-900 group-hover:text-gray-700 transition-colors">
-            {project.title}
+            {displayedTitle}
           </h3>
           <p className="text-xs md:text-sm font-mono text-gray-600 uppercase tracking-wider">
-            {project.categoryLabel}
+            {localizedCategory}
           </p>
         </div>
 
@@ -115,7 +143,7 @@ export default function ProjectCard({ project, locale }: ProjectCardProps) {
                 className="inline-flex items-center px-2 py-1 text-xs font-mono bg-gray-200 text-gray-800 hover:bg-gray-300 transition-colors rounded"
               >
                 <ExternalLink className="h-3 w-3 mr-1" />
-                Live
+                {t('live')}
               </Link>
             )}
             {project.video && (
@@ -128,7 +156,7 @@ export default function ProjectCard({ project, locale }: ProjectCardProps) {
                 <svg className="h-3 w-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z" />
                 </svg>
-                Video
+                {t('video')}
               </Link>
             )}
           </div>
