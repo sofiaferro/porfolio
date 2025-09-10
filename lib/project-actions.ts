@@ -11,7 +11,7 @@ export async function getProjects(): Promise<Project[]> {
       .from("projects")
       .select("id, title_en, title_es, description_en, description_es, technologies, image, images, video, category, category_label_en, category_label_es, year, github_url, live_url")
       .eq("status", "published")
-      .order("created_at", { ascending: false })
+      .order("created_at", { ascending: true })
 
     if (error) {
       // Check if it's a table not found error
