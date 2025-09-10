@@ -101,7 +101,7 @@ export default function ProjectCard({ project, locale }: ProjectCardProps) {
       <div className="space-y-3 md:space-y-4">
         {/* Title and Category */}
         <div>
-          <h3 className="text-lg md:text-xl font-medium text-gray-900 group-hover:text-gray-700 transition-colors">
+          <h3 className="text-lg md:text-xl font-medium text-gray-900 dark:text-gray-100 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors">
             {displayedTitle}
           </h3>
           <p className="text-xs md:text-sm font-mono text-gray-600 uppercase tracking-wider">

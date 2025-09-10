@@ -9,7 +9,6 @@ import { notFound } from "next/navigation";
 import { parseDescription } from "../utils";
 import { getTranslations } from "next-intl/server";
 import { getProject, getProjects } from "@/lib/project-actions";
-import type { Project } from "@/lib/types";
 import ProjectGallery from "./project-gallery";
 
 interface ProjectDetailPageProps {
@@ -72,7 +71,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
           <p className="text-xs font-mono text-muted-foreground mb-2">
             {locale === 'es' ? project.category_label_es : project.category_label_en}
           </p>
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-gray-100">
             {locale === 'es' ? project.title_es : project.title_en}
           </h1>
           <p className="text-sm font-mono text-muted-foreground">
@@ -84,7 +83,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
           <div className="relative aspect-[16/9] rounded-lg overflow-hidden">
             <Image
               src={project.image ?? "/placeholder.svg?height=900&width=1600"}
-              alt={project.title || 'Project image'}
+              alt={t('title') || 'Project image'}
               fill
               className="object-cover"
             />
@@ -93,7 +92,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
 
         <section className="grid grid-cols-1 md:grid-cols-12 gap-10 mb-16">
           <div className="md:col-span-8 space-y-4">
-            <h2 className="text-2xl font-serif mb-4">{t("description")}</h2>
+            <h2 className="text-2xl font-serif mb-4 text-gray-900 dark:text-gray-100">{t("description")}</h2>
             {(locale === 'es' ? project.description_es : project.description_en)?.split("\n").map((paragraph, i) => (
               <p key={i} className="text-foreground/90">
                 {parseDescription(paragraph)}
@@ -101,7 +100,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
             ))}
           </div>
           <aside className="md:col-span-4 space-y-4">
-            <h2 className="text-2xl font-serif mb-4">{t("details")}</h2>
+            <h2 className="text-2xl font-serif mb-4 text-gray-900 dark:text-gray-100">{t("details")}</h2>
             <ul className="space-y-2 text-sm font-mono">
               <li className="flex justify-between text-muted-foreground">
                 <span>{t("category")}</span>
@@ -135,20 +134,20 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
         {/* Image Gallery - Client Component for Interactivity */}
         {project.images && project.images.length > 0 && (
           <section className="mb-16">
-            <h2 className="text-2xl font-serif mb-8">{t("gallery")}</h2>
-            <ProjectGallery images={project.images} projectTitle={project.title || 'Project'} />
+            <h2 className="text-2xl font-serif mb-8 text-gray-900 dark:text-gray-100">{t("gallery")}</h2>
+            <ProjectGallery images={project.images} projectTitle={t('title') || 'Project'} />
           </section>
         )}
 
         {/* Video Section */}
         {project.video && (
           <section className="mb-16">
-            <h2 className="text-2xl font-serif mb-8">{t("video")}</h2>
+            <h2 className="text-2xl font-serif mb-8 text-gray-900 dark:text-gray-100">{t("video")}</h2>
             <div className="relative aspect-[16/9] overflow-hidden rounded-lg bg-black">
               <iframe
                 src={getVideoEmbedUrl(project.video)}
                 className="absolute inset-0 w-full h-full"
-                title={`Video de ${project.title}`}
+                title={`Video de ${t('title')}`}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               />

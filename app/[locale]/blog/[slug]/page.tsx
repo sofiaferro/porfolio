@@ -49,7 +49,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <p className="text-xs font-mono text-muted-foreground mb-3">
               {formatDate(post.date, locale)}
             </p>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif mb-6">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif mb-6 text-gray-900 dark:text-gray-100">
               {title}
             </h1>
             {excerpt && (

@@ -34,13 +34,13 @@ export default function BlogCard({ post, locale }: BlogCardProps) {
       </p>
 
       {/* Title */}
-      <h3 className="text-sm md:text-base font-medium text-gray-900 mb-2 leading-tight">
+      <h3 className="text-sm md:text-base font-medium text-gray-900 dark:text-gray-100 mb-2 leading-tight">
         {title}
       </h3>
 
       {/* Subtitle */}
       {post.subtitle && (
-        <p className="text-xs text-gray-600 mb-3 font-mono">{post.subtitle}</p>
+        <p className="text-xs text-gray-600 dark:text-gray-400 mb-3 font-mono">{post.subtitle}</p>
       )}
 
       {/* Image */}

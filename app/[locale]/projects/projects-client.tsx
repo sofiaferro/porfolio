@@ -56,7 +56,7 @@ export default function ProjectsClient({
         className="container mx-auto px-4 md:px-6 pt-12 md:pt-24 lg:pt-32"
       >
         <header className="mb-16">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 dark:text-gray-100">
             {t('title')}
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl">
@@ -102,14 +102,14 @@ export default function ProjectsClient({
                 <div className="relative aspect-[4/3] rounded-lg overflow-hidden mb-4 bg-muted">
                   <Image
                     src={project.image ?? "/placeholder.svg?height=400&width=500"}
-                    alt={project.title || 'Project image'}
+                    alt={t('title') || 'Project image'}
                     fill
                     className="object-cover transition-transform duration-300 group-hover:scale-105"
                   />
                 </div>
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
-                    <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">
+                    <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 group-hover:text-primary transition-colors">
                       {locale === 'es' ? project.title_es : project.title_en}
                     </h3>
                     <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
