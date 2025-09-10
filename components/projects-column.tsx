@@ -1,10 +1,14 @@
 "use client";
 
 import { useTranslations, useLocale } from 'next-intl';
-import { projectsData } from "@/data/projects";
 import ProjectCard from "./project-card";
+import type { Project } from "@/lib/types";
 
-export default function ProjectsColumn() {
+interface ProjectsColumnProps {
+  projects: Project[];
+}
+
+export default function ProjectsColumn({ projects }: ProjectsColumnProps) {
   const t = useTranslations('projects');
   const locale = useLocale();
 
@@ -22,13 +26,19 @@ export default function ProjectsColumn() {
 
       {/* Projects List */}
       <div className="p-4 md:p-6 space-y-8 md:space-y-12 w-full min-w-0">
-        {projectsData.map((project) => (
-          <ProjectCard
-            key={project.id}
-            project={project}
-            locale={locale}
-          />
-        ))}
+        {projects.length > 0 ? (
+          projects.map((project) => (
+            <ProjectCard
+              key={project.id}
+              project={project}
+              locale={locale}
+            />
+          ))
+        ) : (
+          <div className="text-center py-8 text-gray-500 dark:text-gray-400">
+            {t('noProjectsAvailable')}
+          </div>
+        )}
       </div>
     </div>
   );

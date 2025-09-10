@@ -1,55 +1,35 @@
 "use client"
 
 import type React from "react"
-
-import { useState, useEffect, useCallback } from "react"
-import { useRouter } from "next/navigation"
-import { supabase } from "@/lib/supabase"
+import { useState } from "react"
+import { useRouter, useParams } from "next/navigation"
+import { signInWithPassword } from "@/lib/server-actions"
 
 export default function Login() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [error, setError] = useState<string | null>(null)
+  const [loading, setLoading] = useState(false)
   const router = useRouter()
-
-  const checkSession = useCallback(async () => {
-    const {
-      data: { user },
-      error,
-    } = await supabase.auth.getUser()
-    console.log("Login page - User check:", { user, error })
-    if (user && user.id === process.env.ADMIN_USER_ID) {
-      console.log("Login page - User is authenticated and admin, redirecting to admin")
-      router.push("/admin")
-    } else {
-      console.log("Login page - User is not authenticated or not admin")
-    }
-  }, [router, supabase.auth])
-
-  useEffect(() => {
-    checkSession()
-  }, [checkSession])
+  const params = useParams()
+  const locale = params.locale || 'es'
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
     setError(null)
+    setLoading(true)
 
     try {
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      })
+      const { data, error } = await signInWithPassword(email, password)
 
       if (error) throw error
 
-      console.log("Login page - Login successful", data)
-
-      // Check session status after login
-      await checkSession()
+      router.push("/admin")
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : "An unknown error occurred";
-      console.error("Login page - Login error:", errorMessage);
       setError(errorMessage);
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -87,9 +67,10 @@ export default function Login() {
           </div>
           <button
             type="submit"
-            className="w-full bg-[#c0c0c0] border-t-2 border-l-2 border-[#ffffff] border-r-2 border-b-2 border-[#808080] px-4 py-2 font-bold active:border-t-2 active:border-l-2 active:border-[#808080] active:border-r-2 active:border-b-2 active:border-[#ffffff]"
+            disabled={loading}
+            className="w-full bg-[#c0c0c0] border-t-2 border-l-2 border-[#ffffff] border-r-2 border-b-2 border-[#808080] px-4 py-2 font-bold active:border-t-2 active:border-l-2 active:border-[#808080] active:border-r-2 active:border-b-2 active:border-[#ffffff] disabled:opacity-50"
           >
-            LOGIN
+            {loading ? "LOGGING IN..." : "LOGIN"}
           </button>
         </form>
       </div>

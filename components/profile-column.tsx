@@ -12,7 +12,7 @@ export default function ProfileColumn() {
       {/* Large Stylized Name/Title */}
       <div className="mb-4 md:mb-8">
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tight text-gray-900 dark:text-gray-100">
-          SVF
+          {t("title")}
         </h1>
       </div>
 
@@ -32,14 +32,14 @@ export default function ProfileColumn() {
         <h3 className="text-sm font-mono tracking-wider text-gray-600 dark:text-gray-300 mb-2 md:mb-4 uppercase">
           {t("contact")}
         </h3>
-        <div className="text-gray-800 dark:text-gray-200">Sofía Ferro</div>
+        <div className="text-gray-800 dark:text-gray-200">{t("name")}</div>
         <div className="space-y-1 md:space-y-2 text-xs md:text-sm">
           <div>
             <Link
-              href="mailto:svf.inbox@gmail.com"
+              href={`mailto:${t("email")}`}
               className="text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
             >
-              svf.inbox@gmail.com
+              {t("email")}
             </Link>
           </div>
           {/*           <div>
@@ -54,7 +54,7 @@ export default function ProfileColumn() {
           </div> */}
           <div>
             <Link
-              href="https://www.linkedin.com/in/sofiaferro"
+              href={t("linkedin")}
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"

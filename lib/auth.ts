@@ -1,9 +1,4 @@
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs"
-import { cookies } from "next/headers"
-import { cache } from "react"
 import { supabase } from "./supabase"
-
-export const createServerSupabaseClient = cache(() => createServerComponentClient({ cookies }))
 
 export async function getSession() {
   try {
@@ -24,6 +19,13 @@ export async function getUserId() {
 
 export async function isAdmin() {
   const userId = await getUserId()
-  return userId === process.env.ADMIN_USER_ID
+  const adminUserId = process.env.ADMIN_USER_ID
+  
+  // If no ADMIN_USER_ID is set, allow any authenticated user for development
+  if (!adminUserId) {
+    return !!userId
+  }
+  
+  return userId === adminUserId
 }
 

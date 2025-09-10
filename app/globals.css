@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes subtle-shift {
+  0% { transform: translateX(-10px) translateY(-5px); }
+  100% { transform: translateX(10px) translateY(5px); }
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

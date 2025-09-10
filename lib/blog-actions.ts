@@ -2,10 +2,65 @@
 
 import { revalidatePath } from "next/cache"
 import type { BlogComment, BlogPost } from "./types"
-import { supabase } from "./supabase"
+import { createClient } from '@supabase/supabase-js'
+
+// Create admin client for server actions
+function getSupabaseAdmin() {
+  const supabaseUrl = process.env.SUPABASE_URL
+  const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY
+
+  if (!supabaseUrl || !supabaseKey) {
+    throw new Error('Missing Supabase environment variables')
+  }
+
+  return createClient(supabaseUrl, supabaseKey, {
+    auth: {
+      autoRefreshToken: false,
+      persistSession: false
+    }
+  })
+}
+
+// For read operations, use regular client
+const supabaseUrl = process.env.SUPABASE_URL
+const supabaseKey = process.env.SUPABASE_ANON_KEY
+
+if (!supabaseUrl || !supabaseKey) {
+  throw new Error("Missing SUPABASE environment variables")
+}
+
+const supabase = createClient(supabaseUrl, supabaseKey)
+
+// Helper function to generate URL-friendly slugs from titles
+function generateSlug(title: string): string {
+  return title
+    .toLowerCase()
+    .trim()
+    // Replace accented characters
+    .replace(/[áàäâãå]/g, 'a')
+    .replace(/[éèëê]/g, 'e')
+    .replace(/[íìïî]/g, 'i')
+    .replace(/[óòöôõø]/g, 'o')
+    .replace(/[úùüû]/g, 'u')
+    .replace(/[ñ]/g, 'n')
+    .replace(/[ç]/g, 'c')
+    .replace(/[ý]/g, 'y')
+    // Remove punctuation and special characters (keep letters, numbers, spaces)
+    .replace(/[^\w\s]/g, '')
+    // Replace spaces with hyphens
+    .replace(/\s+/g, '-')
+    // Limit length to 50 characters
+    .substring(0, 50)
+    // Remove trailing hyphen if cut off mid-word
+    .replace(/-$/, '')
+}
 
 export async function getBlogPosts(): Promise<BlogPost[]> {
-  const { data, error } = await supabase.from("blog_posts").select("*").order("date", { ascending: false })
+  // Only fetch essential fields for homepage display
+  const { data, error } = await supabase
+    .from("blog_posts")
+    .select("id, slug, title_en, title_es, excerpt_en, excerpt_es, date, image")
+    .order("date", { ascending: false })
 
   if (error) {
     console.error("Error fetching blog posts:", error)
@@ -20,6 +75,17 @@ export async function getBlogPost(id: string): Promise<BlogPost | null> {
 
   if (error) {
     console.error("Error fetching blog post:", error)
+    return null
+  }
+
+  return data as BlogPost
+}
+
+export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> {
+  const { data, error } = await supabase.from("blog_posts").select("*").eq("slug", slug).single()
+
+  if (error) {
+    console.error("Error fetching blog post by slug:", error)
     return null
   }
 
@@ -63,7 +129,11 @@ export async function addComment(formData: FormData) {
     return { error: "Failed to add comment" }
   }
 
-  revalidatePath(`/blog/${postId}`)
+  // Get the post to find its slug for revalidation
+  const post = await getBlogPost(postId)
+  if (post?.slug) {
+    revalidatePath(`/blog/${post.slug}`)
+  }
 }
 
 export async function incrementVisitorCount(): Promise<number> {
@@ -90,35 +160,40 @@ export async function getVisitorCount(): Promise<number> {
 
 export async function createBlogPost(formData: FormData): Promise<{ error?: string; success?: boolean }> {
 
-  // Check if the user is authenticated
-  const {
-    data: { user },
-    error: userError,
-  } = await supabase.auth.getUser()
-  if (userError || !user || user.id !== process.env.ADMIN_USER_ID) {
-    return { error: "Unauthorized. Please log in as an admin." }
-  }
+  // Use admin client for create operations
+  const supabaseAdmin = getSupabaseAdmin()
 
-  const title = formData.get("title") as string
-  const content = formData.get("content") as string
-  const subtitle = formData.get("subtitle") as string
+  const titleEn = formData.get("title_en") as string
+  const titleEs = formData.get("title_es") as string
+  const contentEn = formData.get("content_en") as string
+  const contentEs = formData.get("content_es") as string
+  const subtitleEn = formData.get("subtitle_en") as string
+  const subtitleEs = formData.get("subtitle_es") as string
   const image = formData.get("image") as string
 
-  if (!title || !content) {
-    return { error: "Title and content are required" }
+  if (!titleEn || !titleEs || !contentEn || !contentEs) {
+    return { error: "Title and content for both languages are required" }
   }
 
-  const excerpt = content.substring(0, 100) + (content.length > 100 ? "..." : "")
+  const excerptEn = contentEn.substring(0, 100) + (contentEn.length > 100 ? "..." : "")
+  const excerptEs = contentEs.substring(0, 100) + (contentEs.length > 100 ? "..." : "")
+
+  // Generate slug from English title
+  const slug = generateSlug(titleEn)
 
   const newPost: Omit<BlogPost, "id" | "date"> = {
-    title,
-    content,
-    excerpt,
-    subtitle,
+    slug,
+    title_en: titleEn,
+    title_es: titleEs,
+    content_en: contentEn,
+    content_es: contentEs,
+    excerpt_en: excerptEn,
+    excerpt_es: excerptEs,
+    subtitle: subtitleEn || '',
     image
   }
 
-  const { error } = await supabase.from("blog_posts").insert(newPost).select()
+  const { error } = await supabaseAdmin.from("blog_posts").insert(newPost).select()
 
   if (error) {
     console.error("Error creating blog post:", error)
@@ -130,62 +205,80 @@ export async function createBlogPost(formData: FormData): Promise<{ error?: stri
   return { success: true }
 }
 
-export async function updateBlogPost(formData: FormData) {
+export async function updateBlogPost(formData: FormData): Promise<{ error?: string; success?: boolean }> {
+  try {
+    // Use admin client for update operations
+    const supabaseAdmin = getSupabaseAdmin()
 
-  // Check if the user is authenticated
-  const {
-    data: { user },
-    error: userError,
-  } = await supabase.auth.getUser()
-  if (userError || !user || user.id !== process.env.ADMIN_USER_ID) {
-    return { error: "Unauthorized. Please log in as an admin." }
-  }
+    const id = formData.get("id") as string
+    const titleEn = formData.get("title_en") as string
+    const titleEs = formData.get("title_es") as string
+    const contentEn = formData.get("content_en") as string
+    const contentEs = formData.get("content_es") as string
+    const subtitleEn = formData.get("subtitle_en") as string
+    const subtitleEs = formData.get("subtitle_es") as string
+    const image = formData.get("image") as string
 
-  const id = formData.get("id") as string
-  const title = formData.get("title") as string
-  const content = formData.get("content") as string
-  const subtitle = formData.get("subtitle") as string
-  const image = formData.get("image") as string
 
-  if (!id || !title || !content) {
-    return { error: "ID, title, and content are required" }
-  }
+    if (!id || !titleEn || !titleEs || !contentEn || !contentEs) {
+      return { error: "ID, title, and content for both languages are required" }
+    }
 
-  const excerpt = content.substring(0, 100) + (content.length > 100 ? "..." : "")
+    const excerptEn = contentEn.substring(0, 100) + (contentEn.length > 100 ? "..." : "")
+    const excerptEs = contentEs.substring(0, 100) + (contentEs.length > 100 ? "..." : "")
 
-  const updatedPost: Omit<BlogPost, "date"> = {
-    id,
-    title,
-    content,
-    excerpt,
-    subtitle,
-    image
-  }
+    // Generate slug from English title
+    const slug = generateSlug(titleEn)
 
-  const { error } = await supabase.from("blog_posts").update(updatedPost).eq("id", id)
+    // First, try updating without subtitle columns to see if that's the issue
+    const updatedPostBasic = {
+      slug,
+      title_en: titleEn,
+      title_es: titleEs,
+      content_en: contentEn,
+      content_es: contentEs,
+      excerpt_en: excerptEn,
+      excerpt_es: excerptEs,
+      image
+    }
 
-  if (error) {
-    console.error("Error updating blog post:", error)
+    const { data, error } = await supabaseAdmin
+      .from("blog_posts")
+      .update(updatedPostBasic)
+      .eq("id", id)
+      .select()
+
+    if (error) {
+      console.error("Error updating blog post:", error)
+      return { error: "Failed to update blog post: " + error.message }
+    }
+
+
+    // If basic update worked but data is empty, the ID might not exist
+    if (data && data.length === 0) {
+      return { error: "No blog post found with the provided ID" }
+    }
+
+    revalidatePath("/blog")
+    revalidatePath("/admin")
+    // Revalidate both old and new slug paths in case slug changed
+    if (data && data.length > 0) {
+      revalidatePath(`/blog/${data[0].slug}`)
+    }
+    
+    return { success: true }
+  } catch (error) {
+    console.error("Update blog post error:", error)
     return { error: "Failed to update blog post" }
   }
-
-  revalidatePath("/blog")
-  revalidatePath("/admin")
-  revalidatePath(`/blog/${id}`)
 }
 
 export async function deleteBlogPost(id: string) {
 
-  // Check if the user is authenticated
-  const {
-    data: { user },
-    error: userError,
-  } = await supabase.auth.getUser()
-  if (userError || !user || user.id !== process.env.ADMIN_USER_ID) {
-    return { error: "Unauthorized. Please log in as an admin." }
-  }
+  // Use admin client for delete operations
+  const supabaseAdmin = getSupabaseAdmin()
 
-  const { error } = await supabase.from("blog_posts").delete().eq("id", id)
+  const { error } = await supabaseAdmin.from("blog_posts").delete().eq("id", id)
 
   if (error) {
     console.error("Error deleting blog post:", error)

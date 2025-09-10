@@ -52,8 +52,11 @@ export default function ProjectCard({ project, locale }: ProjectCardProps) {
 
   let localizedCategory = baseCategory;
   try {
-    const maybe = t(`categories.${project.category}` as any);
-    if (maybe && typeof maybe === 'string') localizedCategory = maybe;
+    // Only try to translate if category exists
+    if (project.category) {
+      const maybe = t(`categories.${project.category}` as any);
+      if (maybe && typeof maybe === 'string') localizedCategory = maybe;
+    }
   } catch (_) {
     localizedCategory = baseCategory;
   }

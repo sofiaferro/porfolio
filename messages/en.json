@@ -7,6 +7,9 @@
   "home": {
     "aboutMe": "ABOUT",
     "title": "SVF",
+    "name": "Sofía Ferro",
+    "email": "svf.inbox@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/sofiaferro",
     "contact": "Contact",
     "subtitle": "Software Engineer",
     "description1": "I'm passionate about building things, from applications to digital experiences that connect technology with the sensitive. I enjoy the process of imagining an idea and working it until it finds its most precise form.",
@@ -58,10 +61,11 @@
     "subtitle": "A message in a digital bottle.",
     "description": "Reflections on technology, art and the creative process.",
     "readMore": "Read more",
+    "readFullPost": "Read full post",
     "viewAllPosts": "View all posts",
     "categories": "Categories",
     "tags": "Tags",
-    "backToBlog": "Back to blog",
+    "back": "Back",
     "publishedOn": "Published on",
     "noPostsAvailable": "No posts available.",
     "comments": "Comments",
@@ -87,4 +91,4 @@
     "next": "Next",
     "previous": "Previous"
   }
-} 
+}

@@ -7,9 +7,12 @@
   "home": {
     "aboutMe": "SOBRE MÍ",
     "title": "SVF",
+    "name": "Sofía Ferro",
+    "email": "svf.inbox@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/sofiaferro",
     "subtitle": "Software Engineer",
-    "description1": "Me apasiona construir cosas, desde aplicaciones hasta experiencias digitales que conecten la tecnología con lo sensible. Disfruto el proceso de imaginar una idea y trabajarla hasta que encuentre su forma más precisa.",
-    "description2": "Desarrollo proyectos que combinan funcionalidad, diseño y arte, explorando la intersección entre el desarrollo de software, la inteligencia artificial y la electrónica.",
+    "description1": "Construyo cosas, desde aplicaciones hasta experiencias digitales que conecten la tecnología con lo sensible. Disfruto el proceso de imaginar una idea y trabajarla hasta que encuentre su forma más precisa.",
+    "description2": "Desarrollo proyectos que combinan funcionalidad, diseño y arte, explorando la intersección entre desarrollo de software, inteligencia artificial y electrónica.",
     "contact": "Contacto",
     "recentProjects": "Proyectos recientes",
     "viewProject": "Ver proyecto",
@@ -20,7 +23,6 @@
     "viewAllPosts": "Ver todas las publicaciones",
     "noPostsAvailable": "No hay publicaciones disponibles."
   },
-
   "footer": {
     "copyright": "© {year} Sofia Ferro. Made with love using v0 🖤. All rights reserved."
   },
@@ -29,10 +31,11 @@
     "subtitle": "Un mensaje en una botella digital.",
     "description": "Reflexiones sobre tecnología, arte y el proceso creativo.",
     "readMore": "Leer más",
+    "readFullPost": "Ver más",
     "viewAllPosts": "Ver todas las publicaciones",
     "categories": "Categorías",
     "tags": "Etiquetas",
-    "backToBlog": "Volver al blog",
+    "back": "Volver",
     "publishedOn": "Publicado el",
     "noPostsAvailable": "No hay publicaciones disponibles.",
     "comments": "Comentarios",

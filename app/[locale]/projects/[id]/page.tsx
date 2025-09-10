@@ -1,43 +1,42 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import {
   ArrowLeft,
   ArrowRight,
-  ChevronLeft,
-  ChevronRight,
   ExternalLink,
 } from "lucide-react";
-import { useParams, notFound } from "next/navigation";
-import { projectsData } from "@/data/projects";
+import { notFound } from "next/navigation";
 import { parseDescription } from "../utils";
-import { useLocale, useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
+import { getProject, getProjects } from "@/lib/project-actions";
+import type { Project } from "@/lib/types";
+import ProjectGallery from "./project-gallery";
 
-export default function ProjectDetailPage() {
-  const { id } = useParams() as { id: string };
-  const [project, setProject] = useState<Project | null>(null);
-  const [prevProject, setPrevProject] = useState<Project | null>(null);
-  const [nextProject, setNextProject] = useState<Project | null>(null);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const locale = useLocale();
-  const t = useTranslations("projects");
+interface ProjectDetailPageProps {
+  params: Promise<{ id: string; locale: string }>;
+}
 
-  useEffect(() => {
-    const index = projectsData.findIndex((p) => p.id === id);
-    if (index === -1) return notFound();
+// Server Component - Data is fetched on the server!
+export default async function ProjectDetailPage({ params }: ProjectDetailPageProps) {
+  const { id, locale } = await params;
+  
+  // Fetch data on the server
+  const [project, allProjects] = await Promise.all([
+    getProject(id),
+    getProjects()
+  ]);
 
-    setProject(projectsData[index]);
-    setPrevProject(index > 0 ? projectsData[index - 1] : null);
-    setNextProject(
-      index < projectsData.length - 1 ? projectsData[index + 1] : null
-    );
-    setCurrentImageIndex(0); // Reset carousel cuando cambia el proyecto
-  }, [id]);
+  if (!project) {
+    notFound();
+  }
 
-  if (!project) return null;
+  // Get translations on the server
+  const t = await getTranslations("projects");
+
+  // Find prev/next projects
+  const currentIndex = allProjects.findIndex((p) => p.id === id);
+  const prevProject = currentIndex > 0 ? allProjects[currentIndex - 1] : null;
+  const nextProject = currentIndex < allProjects.length - 1 ? allProjects[currentIndex + 1] : null;
 
   const getVideoEmbedUrl = (url: string) => {
     const isYouTube = url.includes("youtu");
@@ -58,26 +57,6 @@ export default function ProjectDetailPage() {
     return url;
   };
 
-  const nextImage = () => {
-    if (project?.images && project.images.length > 0) {
-      setCurrentImageIndex((prev) =>
-        prev === project.images!.length - 1 ? 0 : prev + 1
-      );
-    }
-  };
-
-  const prevImage = () => {
-    if (project?.images && project.images.length > 0) {
-      setCurrentImageIndex((prev) =>
-        prev === 0 ? project.images!.length - 1 : prev - 1
-      );
-    }
-  };
-
-  const goToImage = (index: number) => {
-    setCurrentImageIndex(index);
-  };
-
   return (
     <div className="pt-4 min-h-screen">
       <article className="container mx-auto px-4 md:px-6 pt-12 md:pt-24 lg:pt-32 max-w-5xl">
@@ -89,48 +68,33 @@ export default function ProjectDetailPage() {
           {t("backToProjects")}
         </Link>
 
-        <motion.header
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mb-12"
-        >
+        <header className="mb-12">
           <p className="text-xs font-mono text-muted-foreground mb-2">
-            {project.categoryLabel}
+            {locale === 'es' ? project.category_label_es : project.category_label_en}
           </p>
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            {project.title}
+            {locale === 'es' ? project.title_es : project.title_en}
           </h1>
           <p className="text-sm font-mono text-muted-foreground">
             {t("year")}: {project.year ?? "2025"}
           </p>
-        </motion.header>
+        </header>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="mb-16"
-        >
+        <div className="mb-16">
           <div className="relative aspect-[16/9] rounded-lg overflow-hidden">
             <Image
               src={project.image ?? "/placeholder.svg?height=900&width=1600"}
-              alt={project.title}
+              alt={project.title || 'Project image'}
               fill
               className="object-cover"
             />
           </div>
-        </motion.div>
+        </div>
 
-        <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="grid grid-cols-1 md:grid-cols-12 gap-10 mb-16"
-        >
+        <section className="grid grid-cols-1 md:grid-cols-12 gap-10 mb-16">
           <div className="md:col-span-8 space-y-4">
             <h2 className="text-2xl font-serif mb-4">{t("description")}</h2>
-            {project.description?.split("\n").map((paragraph, i) => (
+            {(locale === 'es' ? project.description_es : project.description_en)?.split("\n").map((paragraph, i) => (
               <p key={i} className="text-foreground/90">
                 {parseDescription(paragraph)}
               </p>
@@ -141,7 +105,7 @@ export default function ProjectDetailPage() {
             <ul className="space-y-2 text-sm font-mono">
               <li className="flex justify-between text-muted-foreground">
                 <span>{t("category")}</span>
-                <span className="text-foreground">{project.categoryLabel}</span>
+                <span className="text-foreground">{locale === 'es' ? project.category_label_es : project.category_label_en}</span>
               </li>
               <li className="flex justify-between text-muted-foreground">
                 <span>{t("year")}</span>
@@ -164,135 +128,21 @@ export default function ProjectDetailPage() {
                   </div>
                 </li>
               )}
-              {/* {project.link && (
-                <li className="pt-2">
-                  <Link
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center text-primary hover:underline"
-                  >
-                    Ver proyecto en vivo
-                    <ExternalLink className="ml-1 w-3 h-3" />
-                  </Link>
-                </li>
-              )} */}
             </ul>
           </aside>
-        </motion.section>
+        </section>
 
-        {/* NUEVA SECCIÓN: Carousel de Imágenes */}
+        {/* Image Gallery - Client Component for Interactivity */}
         {project.images && project.images.length > 0 && (
-          <motion.section
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="mb-16"
-          >
+          <section className="mb-16">
             <h2 className="text-2xl font-serif mb-8">{t("gallery")}</h2>
-
-            <div className="relative">
-              {/* Imagen principal del carousel */}
-              <div className="relative aspect-[16/9] rounded-lg overflow-hidden bg-muted">
-                <Image
-                  src={project.images[currentImageIndex].src}
-                  alt={
-                    project.images[currentImageIndex].alt ||
-                    `Imagen ${currentImageIndex + 1} de ${project.title}`
-                  }
-                  style={{ objectFit: "contain" }}
-                  fill
-                  className="object-cover transition-opacity duration-300"
-                />
-
-                {/* Controles de navegación */}
-                {project.images.length > 1 && (
-                  <>
-                    <button
-                      onClick={prevImage}
-                      className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all duration-200"
-                      aria-label="Imagen anterior"
-                    >
-                      <ChevronLeft className="w-6 h-6" />
-                    </button>
-
-                    <button
-                      onClick={nextImage}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all duration-200"
-                      aria-label="Imagen siguiente"
-                    >
-                      <ChevronRight className="w-6 h-6" />
-                    </button>
-                  </>
-                )}
-
-                {/* Contador de imágenes */}
-                {project.images.length > 1 && (
-                  <div className="absolute bottom-4 right-4 bg-black/50 text-white px-3 py-1 rounded-full text-sm font-mono">
-                    {currentImageIndex + 1} / {project.images.length}
-                  </div>
-                )}
-              </div>
-
-              {/* Caption de la imagen actual */}
-              {project.images[currentImageIndex].caption && (
-                <p className="text-sm text-muted-foreground mt-3 text-center font-mono">
-                  {project.images[currentImageIndex].caption}
-                </p>
-              )}
-
-              {/* Thumbnails / Indicadores */}
-              {project.images.length > 1 && (
-                <div className="flex justify-center gap-2 mt-6">
-                  {project.images.map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => goToImage(index)}
-                      className={`w-3 h-3 rounded-full transition-all duration-200 ${
-                        index === currentImageIndex
-                          ? "bg-primary"
-                          : "bg-muted hover:bg-muted-foreground/50"
-                      }`}
-                      aria-label={`Ir a imagen ${index + 1}`}
-                    />
-                  ))}
-                </div>
-              )}
-
-              {/* Versión alternativa con thumbnails de las imágenes */}
-              {project.images.length > 1 && project.images.length <= 6 && (
-                <div className="grid grid-cols-3 md:grid-cols-6 gap-2 mt-6">
-                  {project.images.map((img, index) => (
-                    <button
-                      key={index}
-                      onClick={() => goToImage(index)}
-                      className={`relative aspect-square rounded-lg overflow-hidden transition-all duration-200 ${
-                        index === currentImageIndex
-                          ? "ring-2 ring-primary ring-offset-2"
-                          : "opacity-70 hover:opacity-100"
-                      }`}
-                    >
-                      <Image
-                        src={img.src}
-                        alt={img.alt || `Thumbnail ${index + 1}`}
-                        fill
-                        className="object-cover"
-                      />
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-          </motion.section>
+            <ProjectGallery images={project.images} projectTitle={project.title || 'Project'} />
+          </section>
         )}
 
+        {/* Video Section */}
         {project.video && (
-          <motion.section
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="mb-16"
-          >
+          <section className="mb-16">
             <h2 className="text-2xl font-serif mb-8">{t("video")}</h2>
             <div className="relative aspect-[16/9] overflow-hidden rounded-lg bg-black">
               <iframe
@@ -303,41 +153,28 @@ export default function ProjectDetailPage() {
                 allowFullScreen
               />
             </div>
-          </motion.section>
+          </section>
         )}
 
+        {/* Live Demo Link */}
         {project.link && !project.video && (
-          <motion.section
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="mb-16"
-          >
-            {/*              <h2 className="text-2xl font-serif mb-8">Enlace al proyecto</h2>
-             */}{" "}
-            <div /* className="relative aspect-[16/9] overflow-hidden rounded-lg group" */
-            >
-              {/*                <Image
-                src={project.link}
-                alt={`Vista previa de ${project.title}`}
-                fill
-                className="object-cover"
-              />  */}
+          <section className="mb-16">
+            <div>
               <Link
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className=" flex items-center justify-start transition"
+                className="flex items-center justify-start transition"
               >
                 <div className="bg-white px-6 py-3 rounded-full flex items-center gap-2 text-black font-medium shadow-md">
-                {t("live")} <ExternalLink className="w-4 h-4" />
+                  {t("live")} <ExternalLink className="w-4 h-4" />
                 </div>
               </Link>
             </div>
-          </motion.section>
+          </section>
         )}
 
-        {/* Navegación entre proyectos */}
+        {/* Project Navigation */}
         {(prevProject || nextProject) && (
           <div className="flex justify-between mt-24 border-t pt-8">
             {prevProject ? (
@@ -346,7 +183,7 @@ export default function ProjectDetailPage() {
                 className="group text-sm font-mono inline-flex items-center"
               >
                 <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
-                {prevProject.title}
+                {locale === 'es' ? prevProject.title_es : prevProject.title_en}
               </Link>
             ) : (
               <span />
@@ -356,7 +193,7 @@ export default function ProjectDetailPage() {
                 href={`/${locale}/projects/${nextProject.id}`}
                 className="group text-sm font-mono inline-flex items-center"
               >
-                {nextProject.title}
+                {locale === 'es' ? nextProject.title_es : nextProject.title_en}
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </Link>
             ) : (
@@ -369,30 +206,43 @@ export default function ProjectDetailPage() {
   );
 }
 
-interface GalleryImage {
-  id: number;
-  label: string;
-  src: string;
+// Enable ISR for projects
+export const revalidate = 600; // Revalidate every 10 minutes
+
+// Generate static params for better performance
+export async function generateStaticParams() {
+  try {
+    const projects = await getProjects();
+    return projects.map((project) => ({
+      id: project.id.toString(),
+    }));
+  } catch (error) {
+    return [];
+  }
 }
 
-interface ProjectImage {
-  src: string;
-  alt?: string;
-  caption?: string;
-}
+// Generate metadata for SEO
+export async function generateMetadata({ params }: ProjectDetailPageProps) {
+  const { id, locale } = await params;
+  const project = await getProject(id);
+  
+  if (!project) {
+    return {
+      title: 'Project Not Found',
+    };
+  }
 
-interface Project {
-  id: string;
-  title: string;
-  categoryLabel: string;
-  category: string;
-  image: string;
-  description?: string;
-  year?: string;
-  client?: string;
-  technologies?: string[];
-  link?: string;
-  video?: string; // Nueva prop para videos de YouTube/Vimeo
-  images?: ProjectImage[]; // Nueva prop para array de imágenes
-  gallery?: GalleryImage[]; // Mantenemos la galería legacy
+  const title = locale === "es" ? project.title_es : project.title_en;
+  const description = locale === "es" ? project.description_es : project.description_en;
+
+  return {
+    title,
+    description: description?.substring(0, 160),
+    openGraph: {
+      title,
+      description: description?.substring(0, 160),
+      type: 'article',
+      images: project.image ? [{ url: project.image }] : [],
+    },
+  };
 }
