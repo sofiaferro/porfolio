@@ -7,9 +7,14 @@ import type { Project } from "@/lib/types";
 interface ProjectCardProps {
   project: Project;
   locale: string;
+  priority?: boolean;
 }
 
-export default async function ProjectCard({ project, locale }: ProjectCardProps) {
+export default async function ProjectCard({
+  project,
+  locale,
+  priority = false,
+}: ProjectCardProps) {
   const t = await getTranslations({ locale, namespace: "projects" });
   const displayedTitle = (locale === "es"
     ? project.title_es
@@ -63,6 +68,7 @@ export default async function ProjectCard({ project, locale }: ProjectCardProps)
           images={project.images || []}
           fallbackImage={project.image}
           fallbackAlt={displayedTitle}
+          priority={priority}
         />
       </div>
 

@@ -4,8 +4,12 @@ import ProfileColumn from "@/components/profile-column";
 import ProjectsColumn from "@/components/projects-column";
 import BlogColumn from "@/components/blog-column";
 
-export default function HomePage({ params }: { params: { locale: string } }) {
-  const locale = params.locale;
+export default async function HomePage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
 
   return (
     <ThreeColumnLayout

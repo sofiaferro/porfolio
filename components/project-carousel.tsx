@@ -14,12 +14,14 @@ interface ProjectCarouselProps {
   images: ProjectImage[];
   fallbackImage?: string;
   fallbackAlt?: string;
+  priority?: boolean;
 }
 
 export default function ProjectCarousel({
   images,
   fallbackImage,
   fallbackAlt = "Project image",
+  priority = false,
 }: ProjectCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
@@ -104,6 +106,7 @@ export default function ProjectCarousel({
               alt={fallbackAlt || images[0]?.alt || "Project image"}
               fill
               className="object-cover"
+              priority={priority}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           ) : (
@@ -112,7 +115,9 @@ export default function ProjectCarousel({
               alt={fallbackAlt || images[0]?.alt || "Project image"}
               width={400}
               height={300}
+              style={{ width: "auto", height: "auto" }}
               className="object-contain max-h-full max-w-full relative z-10"
+              priority={priority}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           )}
@@ -157,6 +162,7 @@ export default function ProjectCarousel({
                   alt={image.alt || `Project image ${index + 1}`}
                   fill
                   className="object-cover"
+                  priority={priority && index === 0}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
               ) : (
@@ -165,7 +171,9 @@ export default function ProjectCarousel({
                   alt={image.alt || `Project image ${index + 1}`}
                   width={400}
                   height={300}
+                  style={{ width: "auto", height: "auto" }}
                   className="object-contain max-h-full max-w-full relative z-10"
+                  priority={priority && index === 0}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
               )}

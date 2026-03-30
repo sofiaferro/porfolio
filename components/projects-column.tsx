@@ -25,11 +25,12 @@ export default async function ProjectsColumn({ locale }: ProjectsColumnProps) {
       {/* Projects List */}
       <div className="p-4 md:p-6 space-y-8 md:space-y-12 w-full min-w-0">
         {projects.length > 0 ? (
-          projects.map((project) => (
+          projects.map((project, index) => (
             <ProjectCard
               key={project.id}
               project={project}
               locale={locale}
+              priority={index === 0}
             />
           ))
         ) : (
