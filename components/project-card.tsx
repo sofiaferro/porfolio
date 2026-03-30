@@ -1,54 +1,23 @@
-"use client";
-
 import Link from "next/link";
 import { ExternalLink } from "lucide-react";
-import ReactMarkdown from "react-markdown";
 import ProjectCarousel from "./project-carousel";
-import { useTranslations } from "next-intl";
-
-interface ProjectImage {
-  src: string;
-  alt?: string;
-  caption?: string;
-}
-
-interface Project {
-  id: string;
-  title: string;
-  title_en?: string;
-  title_es?: string;
-  categoryLabel: string;
-  categoryLabel_en?: string;
-  categoryLabel_es?: string;
-  category: string;
-  image: string;
-  description?: string;
-  description_en?: string;
-  description_es?: string;
-  year?: string;
-  client?: string;
-  technologies?: string[];
-  link?: string;
-  video?: string;
-  images?: ProjectImage[];
-  gallery?: any[];
-}
+import { getTranslations } from "next-intl/server";
+import type { Project } from "@/lib/types";
 
 interface ProjectCardProps {
   project: Project;
   locale: string;
 }
 
-export default function ProjectCard({ project, locale }: ProjectCardProps) {
-  const t = useTranslations('projects');
-  // Pick localized fields with safe fallbacks
-  const displayedTitle = locale === 'es'
-    ? (project.title_es ?? project.title)
-    : (project.title_en ?? project.title);
+export default async function ProjectCard({ project, locale }: ProjectCardProps) {
+  const t = await getTranslations({ locale, namespace: "projects" });
+  const displayedTitle = (locale === "es"
+    ? project.title_es
+    : project.title_en) || "";
 
-  const baseCategory = locale === 'es'
-    ? (project.categoryLabel_es ?? project.categoryLabel)
-    : (project.categoryLabel_en ?? project.categoryLabel);
+  const baseCategory = locale === "es"
+    ? (project.category_label_es ?? project.category_label ?? project.category_es ?? "")
+    : (project.category_label_en ?? project.category_label ?? project.category_en ?? "");
 
   let localizedCategory = baseCategory;
   try {
@@ -80,9 +49,9 @@ export default function ProjectCard({ project, locale }: ProjectCardProps) {
       .join('');
   };
 
-  const descriptionByLocale = locale === 'es'
-    ? (project.description_es ?? project.description)
-    : (project.description_en ?? project.description);
+  const descriptionByLocale = locale === "es"
+    ? project.description_es
+    : project.description_en;
 
   const formattedDescription = descriptionByLocale ? formatText(descriptionByLocale) : '';
 
@@ -93,7 +62,7 @@ export default function ProjectCard({ project, locale }: ProjectCardProps) {
         <ProjectCarousel
           images={project.images || []}
           fallbackImage={project.image}
-          fallbackAlt={project.title}
+          fallbackAlt={displayedTitle}
         />
       </div>
 

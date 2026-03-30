@@ -1,11 +1,12 @@
-"use client";
-
-import { useTranslations, useLocale } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 
-export default function ProfileColumn() {
-  const t = useTranslations("home");
-  const locale = useLocale();
+interface ProfileColumnProps {
+  locale: string;
+}
+
+export default async function ProfileColumn({ locale }: ProfileColumnProps) {
+  const t = await getTranslations({ locale, namespace: "home" });
 
   return (
     <div className="p-4 md:p-8 flex flex-col justify-start">

@@ -1,4 +1,5 @@
 "use server"
+import "server-only"
 
 import { revalidatePath } from "next/cache"
 import type { BlogComment, BlogPost } from "./types"
@@ -288,4 +289,3 @@ export async function deleteBlogPost(id: string) {
   revalidatePath("/blog")
   revalidatePath("/admin")
 }
-

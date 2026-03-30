@@ -1,4 +1,5 @@
 "use server"
+import "server-only"
 
 import { getBlogPosts } from "./blog-actions"
 import { getProjects } from "./project-actions"

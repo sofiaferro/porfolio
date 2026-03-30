@@ -1,16 +1,14 @@
-"use client";
-
-import { useTranslations, useLocale } from 'next-intl';
+import { getTranslations } from "next-intl/server";
 import ProjectCard from "./project-card";
-import type { Project } from "@/lib/types";
+import { getProjects } from "@/lib/project-actions";
 
 interface ProjectsColumnProps {
-  projects: Project[];
+  locale: string;
 }
 
-export default function ProjectsColumn({ projects }: ProjectsColumnProps) {
-  const t = useTranslations('projects');
-  const locale = useLocale();
+export default async function ProjectsColumn({ locale }: ProjectsColumnProps) {
+  const t = await getTranslations({ locale, namespace: "projects" });
+  const projects = await getProjects();
 
   return (
     <div className="flex flex-col">

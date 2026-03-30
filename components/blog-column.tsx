@@ -1,16 +1,14 @@
-"use client";
-
-import { useTranslations, useLocale } from 'next-intl';
-import { BlogPost } from "@/lib/types";
+import { getTranslations } from "next-intl/server";
 import BlogCard from "./blog-card";
+import { getBlogPosts } from "@/lib/blog-actions";
 
 interface BlogColumnProps {
-  posts: BlogPost[];
+  locale: string;
 }
 
-export default function BlogColumn({ posts }: BlogColumnProps) {
-  const t = useTranslations('blog');
-  const locale = useLocale();
+export default async function BlogColumn({ locale }: BlogColumnProps) {
+  const t = await getTranslations({ locale, namespace: "blog" });
+  const posts = await getBlogPosts();
 
   return (
     <div className="flex flex-col">

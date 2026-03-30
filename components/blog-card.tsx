@@ -1,18 +1,17 @@
-"use client";
-
 import Link from "next/link";
 import { formatDate } from "@/lib/utils";
 import { BlogPost } from "@/lib/types";
 import ReactMarkdown from "react-markdown";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
+import BlogImage from "@/components/blog-image";
 
 interface BlogCardProps {
   post: BlogPost;
   locale: string;
 }
 
-export default function BlogCard({ post, locale }: BlogCardProps) {
-  const t = useTranslations("blog");
+export default async function BlogCard({ post, locale }: BlogCardProps) {
+  const t = await getTranslations({ locale, namespace: "blog" });
   const title = locale === "es" ? post.title_es : post.title_en;
   const content = locale === "es" ? post.content_es : post.content_en;
 
@@ -45,16 +44,7 @@ export default function BlogCard({ post, locale }: BlogCardProps) {
 
       {/* Image */}
       {imageUrl && (
-        <div className="w-full h-24 md:h-32 rounded overflow-hidden mb-3 bg-gray-100">
-          <img
-            src={imageUrl}
-            alt={title || "Blog post image"}
-            className="w-full h-full object-cover"
-            onError={(e) => {
-              e.currentTarget.style.display = "none";
-            }}
-          />
-        </div>
+        <BlogImage src={imageUrl} alt={title || "Blog post image"} />
       )}
 
       {/* Full Content */}

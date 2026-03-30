@@ -1,3 +1,4 @@
+import "server-only"
 import { createClient } from "@supabase/supabase-js"
 
 // Server-side Supabase configuration
@@ -13,4 +14,3 @@ if (!supabaseKey) {
 }
 
 export const supabase = createClient(supabaseUrl, supabaseKey)
-
