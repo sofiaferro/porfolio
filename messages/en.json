@@ -28,6 +28,11 @@
     "subtitle": "Creative experiments and digital explorations.",
     "viewProject": "View project",
     "viewAllProjects": "View all projects",
+    "backToHome": "Back to home",
+    "notFoundTitle": "Project not found",
+    "imageAlt": "Project image",
+    "videoTitle": "Video for {title}",
+    "yearFallback": "Unknown",
     "projectDetails": {
       "description": "Project description",
       "details": "Details",

@@ -22,6 +22,7 @@ export interface BlogComment {
 
 export interface Project {
   id: string
+  slug?: string
   created_at: string
   updated_at: string
   original_id?: string
@@ -49,4 +50,3 @@ export interface Project {
   }>
   status: 'draft' | 'published' | 'archived'
 }
-

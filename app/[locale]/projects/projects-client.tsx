@@ -98,7 +98,7 @@ export default function ProjectsClient({
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="group"
             >
-              <Link href={`/${locale}/projects/${project.id}`}>
+              <Link href={`/${locale}/projects/${project.slug ?? project.id}`}>
                 <div className="relative aspect-[4/3] rounded-lg overflow-hidden mb-4 bg-muted">
                   <Image
                     src={project.image ?? "/placeholder.svg?height=400&width=500"}

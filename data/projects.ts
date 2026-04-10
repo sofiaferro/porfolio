@@ -328,7 +328,7 @@ El proyecto recupera el poema de [@lafatbordieu](https://www.instagram.com/lafat
     `,
     description_en: `
  
- loops is built on an Arduino Mega 2560 board with the following components connected via a breadboard:
+ loops is built on an Arduino Mega 2560 board with the following components connected via a breadboard.
  
  - A 16x2 LCD, soldered to the I2C module
  - A 100k-ohm potentiometer 

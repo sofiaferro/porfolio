@@ -10,7 +10,7 @@ export async function getProjects(): Promise<Project[]> {
     // Only fetch essential fields for homepage display
     const { data, error } = await supabase
       .from("projects")
-      .select("id, title_en, title_es, description_en, description_es, technologies, image, images, video, category, category_label_en, category_label_es, year, github_url, live_url")
+      .select("id, slug, title_en, title_es, description_en, description_es, technologies, image, images, video, category, category_label_en, category_label_es, year, github_url, live_url")
       .eq("status", "published")
       .order("created_at", { ascending: true })
 
@@ -62,6 +62,36 @@ export async function getProject(id: string): Promise<Project | null> {
     }
     
     return project as Project
+  } catch (error) {
+    console.error("Error fetching project:", error)
+    return null
+  }
+}
+
+export async function getProjectBySlug(slug: string): Promise<Project | null> {
+  try {
+    const { data, error } = await supabase
+      .from("projects")
+      .select("*")
+      .eq("slug", slug)
+      .limit(1)
+
+    if (error) {
+      if (error.code === "PGRST116" || error.message.includes('relation "projects" does not exist')) {
+        console.warn("Projects table does not exist yet. Please run the database setup.")
+        return null
+      }
+      console.error("Error fetching project:", error)
+      return null
+    }
+
+    const project = data?.[0]
+    if (!project) return null
+
+    return {
+      ...project,
+      link: project.live_url
+    } as Project
   } catch (error) {
     console.error("Error fetching project:", error)
     return null
