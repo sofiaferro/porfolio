@@ -45,8 +45,10 @@ export interface Project {
   video?: string
   images?: Array<{
     src: string
-    alt: string
-    caption: string
+    alt_es?: string
+    alt_en?: string
+    caption_es?: string
+    caption_en?: string
   }>
   status: 'draft' | 'published' | 'archived'
 }

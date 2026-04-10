@@ -6,8 +6,10 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface ProjectImage {
   src: string;
-  alt?: string;
-  caption?: string;
+  alt_es?: string;
+  alt_en?: string;
+  caption_es?: string;
+  caption_en?: string;
 }
 
 interface ProjectCarouselProps {
@@ -15,6 +17,7 @@ interface ProjectCarouselProps {
   fallbackImage?: string;
   fallbackAlt?: string;
   priority?: boolean;
+  locale?: string;
 }
 
 export default function ProjectCarousel({
@@ -22,6 +25,7 @@ export default function ProjectCarousel({
   fallbackImage,
   fallbackAlt = "Project image",
   priority = false,
+  locale = "es",
 }: ProjectCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
@@ -103,7 +107,7 @@ export default function ProjectCarousel({
           {isHorizontal ? (
             <Image
               src={fallbackImage || images[0]?.src || "/placeholder.jpg"}
-              alt={fallbackAlt || images[0]?.alt || "Project image"}
+              alt={fallbackAlt || (locale === "es" ? images[0]?.alt_es : images[0]?.alt_en) || "Project image"}
               fill
               className="object-cover"
               priority={priority}
@@ -112,7 +116,7 @@ export default function ProjectCarousel({
           ) : (
             <Image
               src={fallbackImage || images[0]?.src || "/placeholder.jpg"}
-              alt={fallbackAlt || images[0]?.alt || "Project image"}
+              alt={fallbackAlt || (locale === "es" ? images[0]?.alt_es : images[0]?.alt_en) || "Project image"}
               width={400}
               height={300}
               style={{ width: "auto", height: "auto" }}
@@ -159,7 +163,7 @@ export default function ProjectCarousel({
               {isHorizontal ? (
                 <Image
                   src={image.src}
-                  alt={image.alt || `Project image ${index + 1}`}
+                  alt={(locale === "es" ? image.alt_es : image.alt_en) || `Project image ${index + 1}`}
                   fill
                   className="object-cover"
                   priority={priority && index === 0}
@@ -168,7 +172,7 @@ export default function ProjectCarousel({
               ) : (
                 <Image
                   src={image.src}
-                  alt={image.alt || `Project image ${index + 1}`}
+                  alt={(locale === "es" ? image.alt_es : image.alt_en) || `Project image ${index + 1}`}
                   width={400}
                   height={300}
                   style={{ width: "auto", height: "auto" }}

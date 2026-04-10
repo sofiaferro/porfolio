@@ -6,16 +6,19 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface ProjectImage {
   src: string;
-  alt?: string;
-  caption?: string;
+  alt_es?: string;
+  alt_en?: string;
+  caption_es?: string;
+  caption_en?: string;
 }
 
 interface ProjectGalleryProps {
   images: ProjectImage[];
   projectTitle: string;
+  locale: string;
 }
 
-export default function ProjectGallery({ images, projectTitle }: ProjectGalleryProps) {
+export default function ProjectGallery({ images, projectTitle, locale }: ProjectGalleryProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const nextImage = () => {
@@ -43,7 +46,7 @@ export default function ProjectGallery({ images, projectTitle }: ProjectGalleryP
         <Image
           src={images[currentImageIndex].src}
           alt={
-            images[currentImageIndex].alt ||
+            (locale === "es" ? images[currentImageIndex].alt_es : images[currentImageIndex].alt_en) ||
             `Imagen ${currentImageIndex + 1} de ${projectTitle}`
           }
           style={{ objectFit: "contain" }}
@@ -81,15 +84,15 @@ export default function ProjectGallery({ images, projectTitle }: ProjectGalleryP
       </div>
 
       {/* Image Caption */}
-      {images[currentImageIndex].caption && (
+      {(locale === "es" ? images[currentImageIndex].caption_es : images[currentImageIndex].caption_en) && (
         <p className="text-sm text-muted-foreground mt-3 text-center font-mono">
-          {images[currentImageIndex].caption}
+          {locale === "es" ? images[currentImageIndex].caption_es : images[currentImageIndex].caption_en}
         </p>
       )}
 
       {/* Dot Indicators */}
       {images.length > 1 && (
-        <div className="flex justify-center gap-2 mt-6">
+        <div className="flex justify-center gap-2 mt-6 mb-4">
           {images.map((_, index) => (
             <button
               key={index}
@@ -120,7 +123,7 @@ export default function ProjectGallery({ images, projectTitle }: ProjectGalleryP
             >
               <Image
                 src={img.src}
-                alt={img.alt || `Thumbnail ${index + 1}`}
+                alt={(locale === "es" ? img.alt_es : img.alt_en) || `Thumbnail ${index + 1}`}
                 fill
                 className="object-cover"
               />

@@ -143,7 +143,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
         <section className="py-10 border-b border-gray-300 dark:border-gray-700">
           {project.images && project.images.length > 0 ? (
             <div className="rounded-lg overflow-hidden border border-gray-300 dark:border-gray-700 bg-white/70 dark:bg-neutral-900/40">
-              <ProjectGallery images={project.images} projectTitle={title || t("title")} />
+              <ProjectGallery images={project.images} projectTitle={title || t("title")} locale={locale} />
             </div>
           ) : (
             <div className="relative aspect-[16/9] rounded-lg overflow-hidden border border-gray-300 dark:border-gray-700">

@@ -30,8 +30,10 @@ const ProjectFormSchema = z.object({
   published: z.boolean().default(true),
   images: z.array(z.object({
     src: z.string().url('Invalid image URL'),
-    alt: z.string().min(1, 'Alt text is required'),
-    caption: z.string().optional(),
+    alt_es: z.string().optional(),
+    alt_en: z.string().optional(),
+    caption_es: z.string().optional(),
+    caption_en: z.string().optional(),
   })).optional(),
   links: z.object({
     live: z.string().url().optional().or(z.literal('')),
@@ -200,7 +202,7 @@ export const ContentForm: React.FC<ContentFormProps> = ({
 
   const addImage = () => {
     const currentImages = form.getValues('images') || [];
-    form.setValue('images', [...currentImages, { src: '', alt: '', caption: '' }]);
+    form.setValue('images', [...currentImages, { src: '', alt_es: '', alt_en: '', caption_es: '', caption_en: '' }]);
   };
 
   const removeImage = (index: number) => {
@@ -385,24 +387,42 @@ export const ContentForm: React.FC<ContentFormProps> = ({
                         }}
                       />
                     </div>
-                    <div className="flex-1">
+                    <div className="flex-1 space-y-2">
                       <Input
-                        placeholder="Alt text"
-                        value={image.alt}
+                        placeholder="Alt text (ES)"
+                        value={image.alt_es || ''}
                         onChange={(e) => {
                           const images = form.getValues('images') || [];
-                          images[index] = { ...image, alt: e.target.value };
+                          images[index] = { ...image, alt_es: e.target.value };
+                          form.setValue('images', images);
+                        }}
+                      />
+                      <Input
+                        placeholder="Alt text (EN)"
+                        value={image.alt_en || ''}
+                        onChange={(e) => {
+                          const images = form.getValues('images') || [];
+                          images[index] = { ...image, alt_en: e.target.value };
                           form.setValue('images', images);
                         }}
                       />
                     </div>
-                    <div className="flex-1">
+                    <div className="flex-1 space-y-2">
                       <Input
-                        placeholder="Caption (optional)"
-                        value={image.caption || ''}
+                        placeholder="Caption ES"
+                        value={image.caption_es || ''}
                         onChange={(e) => {
                           const images = form.getValues('images') || [];
-                          images[index] = { ...image, caption: e.target.value };
+                          images[index] = { ...image, caption_es: e.target.value };
+                          form.setValue('images', images);
+                        }}
+                      />
+                      <Input
+                        placeholder="Caption EN"
+                        value={image.caption_en || ''}
+                        onChange={(e) => {
+                          const images = form.getValues('images') || [];
+                          images[index] = { ...image, caption_en: e.target.value };
                           form.setValue('images', images);
                         }}
                       />

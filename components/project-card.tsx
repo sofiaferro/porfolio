@@ -69,6 +69,7 @@ export default async function ProjectCard({
           fallbackImage={project.image}
           fallbackAlt={displayedTitle}
           priority={priority}
+          locale={locale}
         />
       </div>
 
