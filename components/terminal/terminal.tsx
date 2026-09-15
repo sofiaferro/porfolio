@@ -103,7 +103,7 @@ export function Terminal({ data }: { data: TerminalData }) {
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
         aria-controls="terminal-panel"
-        className="fixed bottom-4 right-4 cursor-pointer border border-[var(--hairline)] bg-[var(--background)] px-3 py-1.5 text-sm shadow-sm hover:border-[var(--accent)] hover:text-[var(--accent)]"
+        className="fixed bottom-4 right-4 cursor-pointer border border-[var(--hairline)] bg-[var(--background)] px-3 py-1.5 text-sm shadow-sm transition-transform duration-150 hover:border-[var(--accent)] hover:text-[var(--accent)] active:scale-[0.97]"
       >
         <span aria-hidden="true">&gt;_</span>
         <span className="sr-only">terminal</span>
@@ -113,7 +113,7 @@ export function Terminal({ data }: { data: TerminalData }) {
         <section
           id="terminal-panel"
           aria-label="terminal"
-          className="fixed inset-x-0 bottom-0 z-50 border-t border-[var(--hairline)] bg-[var(--background)]"
+          className="fixed inset-x-0 bottom-0 z-50 border-t border-[var(--hairline)] bg-[var(--background)] transition-[transform,opacity] duration-200 [transition-timing-function:var(--ease-out-strong)] starting:translate-y-3 starting:opacity-0"
         >
           <div className="mx-auto max-w-3xl px-6 py-3">
             <div

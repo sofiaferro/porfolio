@@ -48,7 +48,7 @@ export default async function ProjectsPage({ params }: Props) {
                   {p.doc.title}
                 </Link>
               </h2>
-              <p className="mt-1 text-xs uppercase tracking-wider opacity-60">
+              <p className="mt-1 text-xs uppercase tracking-wider text-[var(--muted)]">
                 {tc(p.meta.category)} · {p.meta.date.slice(0, 4)}
                 {p.meta.tech.length > 0 && ` · ${p.meta.tech.join(", ")}`}
               </p>

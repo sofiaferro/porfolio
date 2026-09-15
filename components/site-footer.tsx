@@ -13,34 +13,32 @@ export function SiteFooter() {
   const site = getSite();
 
   return (
-    <footer className="mt-16 border-t border-[var(--hairline)]">
-      <div className="mx-auto max-w-3xl space-y-2 px-6 py-8 text-sm opacity-80">
-        <p>
+    <footer className="mt-20 border-t border-[var(--hairline)]">
+      <div className="mx-auto max-w-3xl space-y-3 px-6 py-10 text-sm">
+        <p className="flex flex-wrap gap-x-5 gap-y-1">
           <a
             href={`mailto:${site.email}`}
-            className="underline underline-offset-2 hover:text-[var(--accent)]"
+            className="text-[var(--muted)] hover:text-[var(--accent)]"
           >
             {site.email}
           </a>
           {site.sameAs.map((url) => (
-            <span key={url}>
-              {" · "}
-              <a
-                href={url}
-                className="underline underline-offset-2 hover:text-[var(--accent)]"
-              >
-                {profileLabel(url)}
-              </a>
-            </span>
+            <a
+              key={url}
+              href={url}
+              className="text-[var(--muted)] hover:text-[var(--accent)]"
+            >
+              {profileLabel(url)}
+            </a>
           ))}
         </p>
-        <p className="opacity-60">
+        <p className="text-[13px] text-[var(--muted)]">
           {t("agents")}{" "}
-          <a href="/llms.txt" className="underline underline-offset-2">
+          <a href="/llms.txt" className="hover:text-[var(--accent)]">
             /llms.txt
           </a>
           {" · "}
-          <a href="/sitemap.md" className="underline underline-offset-2">
+          <a href="/sitemap.md" className="hover:text-[var(--accent)]">
             /sitemap.md
           </a>
           {" · "}

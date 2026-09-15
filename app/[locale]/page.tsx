@@ -45,12 +45,12 @@ export default async function HomePage({ params }: Props) {
     <main className="mx-auto max-w-3xl px-6 py-12">
       <p className="text-sm">
         <span className="text-[var(--accent)]">svf@porfolio:~$</span>{" "}
-        <span className="opacity-70">whoami</span>
+        <span className="text-[var(--muted)]">whoami</span>
       </p>
       <h1 className="mt-3 text-5xl font-bold tracking-tighter sm:text-6xl">
         {site.name}
       </h1>
-      <p className="mt-4 max-w-[52ch] text-[13px] uppercase leading-relaxed tracking-[0.18em] opacity-60">
+      <p className="mt-4 max-w-[52ch] text-[13px] uppercase leading-relaxed tracking-[0.18em] text-[var(--muted)]">
         {site.tagline[locale as Locale]}
       </p>
 
@@ -73,12 +73,12 @@ export default async function HomePage({ params }: Props) {
             <li key={p.meta.slug}>
               <Link
                 href={`/projects/${p.meta.slug}`}
-                className="group flex items-baseline justify-between gap-4 py-3.5"
+                className="row-link group flex items-baseline justify-between gap-4 py-3.5"
               >
                 <span className="font-semibold group-hover:text-[var(--accent)]">
                   {p.doc.title}
                 </span>
-                <span className="shrink-0 text-[11px] uppercase tracking-[0.14em] opacity-55 tabular-nums">
+                <span className="shrink-0 text-[11px] uppercase tracking-[0.14em] text-[var(--muted)] tabular-nums">
                   {tc(p.meta.category)} · {p.meta.date.slice(0, 4)}
                 </span>
               </Link>

@@ -12,7 +12,7 @@ export function LocaleSwitcher() {
     <Link
       href={pathname}
       locale={other}
-      className="uppercase tracking-widest text-sm hover:text-[var(--accent)]"
+      className="text-sm uppercase tracking-widest text-[var(--muted)] hover:text-[var(--accent)]"
       aria-label={other === "en" ? "Switch to English" : "Cambiar a español"}
     >
       [{other}]

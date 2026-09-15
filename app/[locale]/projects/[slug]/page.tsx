@@ -45,7 +45,7 @@ export default async function ProjectPage({ params }: Props) {
   return (
     <main className="mx-auto max-w-3xl px-6 py-12">
       <nav aria-label="breadcrumb" className="text-sm">
-        <Link href="/projects" className="opacity-70 hover:text-[var(--accent)]">
+        <Link href="/projects" className="text-[var(--muted)] hover:text-[var(--accent)]">
           ← {t("backToList")}
         </Link>
       </nav>
@@ -55,12 +55,12 @@ export default async function ProjectPage({ params }: Props) {
           <h1 className="text-3xl font-extrabold tracking-tight">
             {doc.title}
           </h1>
-          <p className="mt-2 text-xs uppercase tracking-wider opacity-60">
+          <p className="mt-2 text-xs uppercase tracking-wider text-[var(--muted)]">
             {tc(meta.category)} · {meta.date.slice(0, 4)}
           </p>
           {meta.tech.length > 0 && (
             <p className="mt-2 text-sm">
-              <span className="opacity-60">{t("tech")}:</span>{" "}
+              <span className="text-[var(--muted)]">{t("tech")}:</span>{" "}
               {meta.tech.join(", ")}
             </p>
           )}
@@ -114,7 +114,7 @@ export default async function ProjectPage({ params }: Props) {
                   className="h-auto w-full border border-[var(--hairline)]"
                 />
                 {img.caption?.[locale as Locale] && (
-                  <figcaption className="mt-2 text-sm opacity-70">
+                  <figcaption className="mt-2 text-sm text-[var(--muted)]">
                     {img.caption[locale as Locale]}
                   </figcaption>
                 )}
