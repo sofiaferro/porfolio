@@ -1,0 +1,18 @@
+date: "2026"
+category: hardware
+tech:
+  - Raspberry Pi Zero 2 W
+  - ESP32
+  - Python
+  - FastAPI
+  - OpenAI
+  - openWakeWord
+  - espeak-ng
+  - YOLOv8
+images:
+  - src: /images/gaucho/gaucho-omnibot.jpg
+    alt:
+      es: Gaucho, un Omnibot de TOMY de 1984 con una cámara de Raspberry Pi entre los ojos
+      en: Gaucho, a 1984 TOMY Omnibot with a Raspberry Pi camera between its eyes
+featured: true
+status: published

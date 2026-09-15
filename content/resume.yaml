@@ -33,6 +33,10 @@ skills:
 
 projects:
   # Kept in sync with content/projects/ (en.mdx summaries) — regenerate if projects change.
+  - name: gaucho
+    description: A 1984 TOMY Omnibot that talks again — it listens, sees, converses and moves, with a language model inside. Built at Paisanos.
+    url: https://www.sofiaferro.com.ar/en/projects/gaucho
+    keywords: [hardware, robotics, LLM]
   - name: pit0nisa
     description: An anthology that explores the mediumistic nature of computational language, generated with Markov chains.
     url: https://www.sofiaferro.com.ar/en/projects/pit0nisa

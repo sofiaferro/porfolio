@@ -1,0 +1,12 @@
+---
+title: gaucho
+summary: >-
+  A 1984 TOMY Omnibot that talks again: it listens, sees, converses and moves,
+  with a language model inside.
+---
+
+Gaucho is a 1984 TOMY Omnibot —a 40-year-old robot toy— that talks again. It wakes up when it hears its name, converses through a language model, recognizes familiar faces and greets you on its own when it sees you walk by.
+
+Inside live three pieces: a Raspberry Pi Zero 2 W with everything that needs to react fast —wake word, microphone, camera and an offline espeak-ng voice—; a FastAPI server in the cloud with transcription, the LLM (with memory and web search) and face recognition; and an ESP32 running the motion firmware. The partition rule: what reacts fast and touches the microphone stays local, what's heavy goes to the cloud.
+
+Gaucho is a [Paisanos](https://paisanos.io) project: it was born between projects at the office and became a coworker. It survived a 12-hour event on battery, judged a hackathon and gives talks at meetups.
