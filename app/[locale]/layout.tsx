@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { JetBrains_Mono } from "next/font/google";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
@@ -10,10 +9,8 @@ import { personJsonLd, JsonLdScript } from "@/lib/jsonld";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { Terminal } from "@/components/terminal/terminal";
+import { ThemeProvider } from "@/components/theme-provider";
 import "../globals.css";
-
-// Restore the theme chosen via the `theme` terminal command before paint.
-const THEME_SCRIPT = `try{var t=localStorage.getItem("theme");if(t==="dark"||t==="light")document.documentElement.classList.add(t)}catch(e){}`;
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -78,16 +75,15 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className={jetbrainsMono.variable} suppressHydrationWarning>
       <body className="min-h-screen font-mono antialiased">
-        <Script id="theme-restore" strategy="beforeInteractive">
-          {THEME_SCRIPT}
-        </Script>
         <JsonLdScript data={personJsonLd()} />
-        <NextIntlClientProvider>
-          <SiteHeader />
-          {children}
-          <SiteFooter />
-          <Terminal data={terminalData} />
-        </NextIntlClientProvider>
+        <ThemeProvider>
+          <NextIntlClientProvider>
+            <SiteHeader />
+            {children}
+            <SiteFooter />
+            <Terminal data={terminalData} />
+          </NextIntlClientProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

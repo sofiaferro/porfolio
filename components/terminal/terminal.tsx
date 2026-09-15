@@ -1,30 +1,11 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useTheme } from "next-themes";
 import { useRouter, usePathname } from "@/i18n/navigation";
 import { runCommand, type TerminalData } from "./commands";
 
 type Line = { prompt?: string; text: string };
-
-function applyTheme(value: "dark" | "light" | "system" | "toggle") {
-  const root = document.documentElement;
-  let next: "dark" | "light" | "system";
-  if (value === "toggle") {
-    const isDark =
-      root.classList.contains("dark") ||
-      (!root.classList.contains("light") &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches);
-    next = isDark ? "light" : "dark";
-  } else {
-    next = value;
-  }
-  root.classList.remove("dark", "light");
-  if (next !== "system") root.classList.add(next);
-  try {
-    if (next === "system") localStorage.removeItem("theme");
-    else localStorage.setItem("theme", next);
-  } catch {}
-}
 
 export function Terminal({ data }: { data: TerminalData }) {
   const [open, setOpen] = useState(false);
@@ -36,6 +17,7 @@ export function Terminal({ data }: { data: TerminalData }) {
   const logRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
   const pathname = usePathname();
+  const { resolvedTheme, setTheme } = useTheme();
 
   const promptLabel = `svf@porfolio:${pathname === "/" ? "~" : "~" + pathname}$`;
 
@@ -88,7 +70,13 @@ export function Terminal({ data }: { data: TerminalData }) {
         router.push(action.href);
       }
     } else if (action.type === "theme") {
-      applyTheme(action.value);
+      setTheme(
+        action.value === "toggle"
+          ? resolvedTheme === "dark"
+            ? "light"
+            : "dark"
+          : action.value,
+      );
     }
   }
 
