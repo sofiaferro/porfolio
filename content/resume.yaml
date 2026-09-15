@@ -1,11 +1,11 @@
 # JSON Resume v1.0.0 shape (https://jsonresume.org/schema)
 basics:
   name: Sofia Ferro
-  label: Software Engineer & Electronic Artist
+  label: Software Engineer & Creative Technologist
   email: svf.inbox@gmail.com
   url: https://www.sofiaferro.com.ar
   summary: >-
-    Software engineer and electronic artist working at the intersection of
+    Software engineer and creative technologist working at the intersection of
     software development, artificial intelligence and electronics. I build
     things — applications, digital experiences, devices — and work each idea
     until it finds its most precise form.

@@ -5,7 +5,7 @@ description: How to read Sofia Ferro's portfolio (sofiaferro.com.ar) as an agent
 
 # Sofia Ferro's portfolio, for agents
 
-Sofia Ferro is a software engineer and electronic artist (Buenos Aires, AR) working on
+Sofia Ferro is a software engineer and creative technologist (Buenos Aires, AR) working on
 expanded literature, bots, IoT, hardware and creative coding. Her portfolio at
 https://www.sofiaferro.com.ar is agent-first: every surface below returns plain text or JSON —
 no HTML scraping needed. Content is bilingual: `/es/...` (default) and `/en/...`.

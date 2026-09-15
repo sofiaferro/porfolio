@@ -223,7 +223,7 @@ const handler = createMcpHandler(
   {
     serverInfo: { name: "sofia-ferro-portfolio", version: "1.0.0" },
     instructions:
-      "This server exposes the portfolio of Sofia Ferro, a software engineer and electronic artist " +
+      "This server exposes the portfolio of Sofia Ferro, a software engineer and creative technologist " +
       "based in Buenos Aires, Argentina, working at the intersection of code, language and hardware: " +
       "expanded literature, bots, IoT, creative coding and installations. Content is bilingual " +
       '(Spanish "es" — the default — and English "en"). Use list_projects/get_project for her art and ' +
