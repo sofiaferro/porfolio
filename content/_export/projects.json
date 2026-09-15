@@ -1,0 +1,322 @@
+[
+  {
+    "id": "9d6a22e2-57de-445e-a7a6-e7cd545fca81",
+    "created_at": "2025-09-10T19:41:12.639257+00:00",
+    "updated_at": "2026-04-10T16:29:32.097749+00:00",
+    "title_en": "botkowski",
+    "title_es": "botkowski",
+    "description_en": "\n    @_botkowski is an X bot inspired by [\"My Computer\"](https://allpoetry.com/My-Computer) by Charles Bukowski. In that poem, he describes the reactions after buying his first computer: colleagues—and even his editor—feared the machine would end up writing his work. \n    \n\n    In \"My computer\", Bukowski replies: \n    `me? I want to go the next step beyond the computer`\n    \n\n    \n  This bot fulfills that ambition: it extracts vocabulary from *Essential Bukowski: Poetry* and recombines the words to create original content on X, preserving his grammar and style.\n  \n\n  The bot was born in the *Bot Garden* workshop, coordinated by [Canek Zapata](https://canekzapata.net/index.html).\n      ",
+    "description_es": "\n    @_botkowski es un bot de X inspirado en [\"My Computer\"](https://allpoetry.com/My-Computer), de Charles Bukowski. En este poema, el autor cuenta las reacciones de su entorno luego de la compra de su primera computadora: sus colegas y hasta su editor temían que la máquina terminara escribiendo su obra. \n    \n\n    En \"My computer\", Bukowski responde: \n    `me? I want to go the next step beyond the computer`\n    \n\n    \n  Este bot cumple esa ambición: extrae vocabulario de *Essential Bukowski: Poetry* y recombina sus palabras para crear contenido original en X, manteniendo su gramática y estilo.\n  \n\n  El bot nació en el taller *Jardín de Bots*, coordinado por [Canek Zapata](https://canekzapata.net/index.html). \n      ",
+    "technologies": [
+      "Gimmick bots",
+      "No-code"
+    ],
+    "github_url": "https://x.com/_botkowski",
+    "live_url": "https://x.com/_botkowski",
+    "image": "/images/botkowski.png",
+    "status": "published",
+    "original_id": "03",
+    "category": "bots",
+    "category_en": null,
+    "category_es": null,
+    "category_label": "BOT",
+    "category_label_en": "BOT",
+    "category_label_es": "BOT",
+    "year": "2022",
+    "video": null,
+    "images": [],
+    "slug": "botkowski"
+  },
+  {
+    "id": "01eed034-cdb6-4967-9403-e96a8e7b9c1f",
+    "created_at": "2025-09-10T19:41:13.260656+00:00",
+    "updated_at": "2026-04-10T16:49:12.345206+00:00",
+    "title_en": "mdq-cyborg",
+    "title_es": "mdq-cyborg",
+    "description_en": "\n    mdq-cyborg is a reimagined Mar del Plata souvenir: a DIY weather station that queries an API to obtain temperature and humidity data—akin to the classic sea lion weather figurines.\n    \n    The device is built around an ESP-WROOM board connected to three LEDs that translate the API data into humidity levels: blue (normal), violet (medium), and pink (high). Its v1 also featured a DHT22 temperature/humidity sensor, later replaced by the Open-Meteo API.\n    ",
+    "description_es": "\n    mdq-cyborg es un souvenir marplatense reimaginado: una estación climática casera que consulta una API para obtener datos de la temperatura y humedad como los clásicos lobos marinos del clima. \n    \n    El dispositivo consta de una placa ESP-WROOM, conectada a tres LEDs que son los que traducen la data de la API e indican el nivel de humedad: azul (normal), violeta (media) y rosa (alta). Su v1 tenía, además, un sensor de temperatura y humedad DHT22, que luego fue reemplazado por la API Open-Meteo.\n    ",
+    "technologies": [
+      "ESP-WROOM",
+      "Weather API",
+      "LEDs",
+      "Electronics"
+    ],
+    "github_url": null,
+    "live_url": null,
+    "image": "/images/mdq-cyborg-16.jpeg",
+    "status": "published",
+    "original_id": "05",
+    "category": "hardware",
+    "category_en": null,
+    "category_es": null,
+    "category_label": "ELECTRÓNICA",
+    "category_label_en": "ELECTRONICS",
+    "category_label_es": "ELECTRÓNICA",
+    "year": "2024",
+    "video": null,
+    "images": [
+      {
+        "alt": "Esquemático en Fritzing (v1)",
+        "src": "/mdq-cyborg/mdq-cyborg-1.jpeg",
+        "caption": "Esquemático en Fritzing (v1)"
+      },
+      {
+        "alt": "Transferencia térmica del diseño",
+        "src": "/mdq-cyborg/mdq-cyborg-4.jpeg",
+        "caption": "Transferencia térmica del diseño"
+      },
+      {
+        "alt": "Grabado en ácido férrico",
+        "src": "/mdq-cyborg/mdq-cyborg-8.jpeg",
+        "caption": "Grabado en ácido férrico"
+      },
+      {
+        "alt": "Limpieza de la placa en agua",
+        "src": "/mdq-cyborg/mdq-cyborg-5.jpeg",
+        "caption": "Limpieza de la placa en agua"
+      },
+      {
+        "alt": "Resultado del grabado",
+        "src": "/mdq-cyborg/mdq-cyborg-7.jpeg",
+        "caption": "Resultado del grabado"
+      },
+      {
+        "alt": "Placa transferida",
+        "src": "/mdq-cyborg/mdq-cyborg-11.jpeg",
+        "caption": "Placa transferida"
+      },
+      {
+        "alt": "Posicionamiento de los LEDs para soldado",
+        "src": "/mdq-cyborg/mdq-cyborg-12.jpeg",
+        "caption": "Posicionamiento de los LEDs para soldado"
+      },
+      {
+        "alt": "Soldado de componentes",
+        "src": "/mdq-cyborg/mdq-cyborg-13.jpeg",
+        "caption": "Soldado de componentes"
+      },
+      {
+        "alt": "Resultado del soldado",
+        "src": "/mdq-cyborg/mdq-cyborg-17.jpeg",
+        "caption": "Resultado del soldado"
+      },
+      {
+        "alt": "Sensor de temperatura y humedad quemado (v1)",
+        "src": "/mdq-cyborg/mdq-cyborg-19.jpeg",
+        "caption": "Sensor de temperatura y humedad quemado (v1)"
+      },
+      {
+        "alt": "mdq-cyborg en un día de buen clima (1)",
+        "src": "/mdq-cyborg/mdq-cyborg-20.jpeg",
+        "caption": "mdq-cyborg en un día de buen clima (1)"
+      },
+      {
+        "alt": "mdq-cyborg en un día de buen clima (2)",
+        "src": "/mdq-cyborg/mdq-cyborg-21.jpeg",
+        "caption": "mdq-cyborg en un día de buen clima (2)"
+      },
+      {
+        "alt": "mdq-cyborg en un día de mucha humedad",
+        "src": "/mdq-cyborg/mdq-cyborg-22.jpeg",
+        "caption": "mdq-cyborg en un día de mucha humedad"
+      }
+    ],
+    "slug": "mdq-cyborg"
+  },
+  {
+    "id": "864f1721-2b8b-4e5b-8069-edeff0d3f241",
+    "created_at": "2025-09-10T19:41:12.399282+00:00",
+    "updated_at": "2026-04-10T16:29:20.401189+00:00",
+    "title_en": "mc-txt",
+    "title_es": "mc-txt",
+    "description_en": "\n      mc-txt is a gamified text generator. Based on searches in the Wikipedia API, mc-txt receives extracts related to the provided inputs and uses Markov chains to generate new text.\n      \n\n      The project was developed in the workshop *Writing Like Machines* by Matías Buonfrate and Gerardo Montoya, and included in the [Lit(e)Lat V2.0](https://antologia.litelat.net/volumen2/index.html) anthology.\n      ",
+    "description_es": "\n      mc-txt es un generador de texto gamificado. A partir de búsquedas en la API de Wikipedia, mc-txt recibe extractos relacionados a los inputs ingresados y utiliza cadenas de Markov para generar texto nuevo.\n      \n\n      Este proyecto fue desarrollado en el marco del taller *Escribir como máquinas*, de Matías Buonfrate y Gerardo Montoya, e incluido en la antología de [Lit(e)Lat V2.0](https://antologia.litelat.net/volumen2/index.html). \n      ",
+    "technologies": [
+      "React",
+      "Nes.CSS"
+    ],
+    "github_url": "https://mc-txt.netlify.app/",
+    "live_url": "https://mc-txt.netlify.app/",
+    "image": "/images/mc-txt.png",
+    "status": "published",
+    "original_id": "02",
+    "category": "literatura",
+    "category_en": null,
+    "category_es": null,
+    "category_label": "LITERATURA EXPANDIDA",
+    "category_label_en": "EXPANDED LITERATURE",
+    "category_label_es": "LITERATURA EXPANDIDA",
+    "year": "2021",
+    "video": null,
+    "images": [],
+    "slug": "mc-txt"
+  },
+  {
+    "id": "76f0a408-ff54-4fcb-869d-210caf369722",
+    "created_at": "2025-09-10T19:41:13.959739+00:00",
+    "updated_at": "2026-04-10T16:36:14.969704+00:00",
+    "title_en": "page turner DIY",
+    "title_es": "page turner DIY",
+    "description_en": "\nIn April, I ordered a remote-controlled Kindle page turner on Amazon, along with a few other devices to make reading from the couch more comfortable. The shipment was delayed… then delayed again… and eventually canceled with a refund. So I decided to build my own DIY version.\n \n I used an Arduino Pro Mini, an IR sensor, a micro servo, and a generic remote control. The first hurdle was small but classic: the remote had no battery. I solved it with a recycled battery from another device.\n \n The Kindle screen is capacitive, so the servo's tap needed conductivity. I wrapped the arm in aluminum foil and connected it to 3.3V to simulate a finger.\n \n The result: a DIY page turner—functional, precise, and comfortable for reading without moving from the couch.\n \n    ",
+    "description_es": "\n En abril me pedí por Amazon un page turner con control remoto para el Kindle, junto con otros dispositivos para leer cómoda desde el sillón.MEl envío se retrasó… después se volvió a retrasar… y al final lo cancelaron y me ofrecieron el reembolso. Así que pensé en armar uno DIY.\n \n Usé un Arduino Pro Mini, un sensor IR, un micro servo y un control remoto genérico. El primer obstáculo fue mínimo pero clásico: el control no traía pila. Se resolvió con una batería reciclada de otro dispositivo.\n \n La pantalla del Kindle es capacitiva, así que el toque del servo necesitaba conductividad. Le envolví el brazo en papel aluminio y lo conecté a 3.3V para simular un dedo.\n \n El resultado: un page turner DIY, funcional, preciso y cómodo para leer sin moverse del sillón.\n \n    ",
+    "technologies": [
+      "Arduino Pro Mini",
+      "IR sensor",
+      "Micro Servo Motor"
+    ],
+    "github_url": null,
+    "live_url": null,
+    "image": "/images/page-turner-diy-1.jpeg",
+    "status": "published",
+    "original_id": "08",
+    "category": "hardware",
+    "category_en": null,
+    "category_es": null,
+    "category_label": "ELECTRÓNICA",
+    "category_label_en": "ELECTRONICS",
+    "category_label_es": "ELECTRÓNICA",
+    "year": "2025",
+    "video": "https://vimeo.com/1092307749?share=copy",
+    "images": [],
+    "slug": "page-turner-diy"
+  },
+  {
+    "id": "6e642544-77c1-4570-bdaa-75b05b68d768",
+    "created_at": "2025-09-10T19:41:13.728387+00:00",
+    "updated_at": "2026-04-10T16:49:24.830693+00:00",
+    "title_en": "loops",
+    "title_es": "bucles",
+    "description_en": "Loops is an installation built on an Arduino Mega 2560 board. Through a breadboard, it connects a 16x2 LCD with an I2C module, a 100k-ohm potentiometer, and a series of six LEDs arranged in a circular layout.\n\nThe potentiometer controls the processes' frequency. The LCD receives the command and dispatches the poem at the requested tempo. The LEDs react accordingly, completing a full loop. Communication between components happens cyclically.\n \n The project references a poem by [@lafatbordieu](https://www.instagram.com/lafatbordieu/) that encapsulates the rhythm of things and their recursiveness. In the concept of strange loops, as Douglas Hofstadter (author of *Gödel, Escher, Bach: An Eternal Golden Braid*) says, infinity is implicit—since what else is a loop but a way to finitely represent an endless process?\n \n \n    ",
+    "description_es": "\n \n bucles está construido sobre una placa Arduino Mega 2560 a la que están conectados, a través de una protoboard, los siguientes componentes:\n \n - Una pantalla lcd de 16x2, soldada al módulo I2C\n - Un potenciómetro de 100k ohms \n - Una serie de seis leds, organizados en forma de círculo\n \n El potenciómetro controla la frecuencia de los procesos. El lcd recibe la orden y despacha el poema al ritmo solicitado. Los leds reaccionan en el mismo sentido, cubriendo un loop completo. La comunicación entre los componentes sucede de forma cíclica.\n \n El proyecto recupera el poema de [@lafatbordieu](https://www.instagram.com/lafatbordieu/) que encapsula el ritmo de las cosas y su recursividad. En el concepto de bucles extraños, según dice Douglas Hofstadter, autor de *Gödel Escher Bach: un eterno y grácil bucle*, va implícito el de infinito, porque qué otra cosa es un bucle sino una forma de representar de manera finita un proceso interminable. \n \n \n    ",
+    "technologies": [
+      "Arduino Mega 2560",
+      "LCD",
+      "LEDs"
+    ],
+    "github_url": "https://vimeo.com/1091489697?share=copy#t=0",
+    "live_url": "",
+    "image": "/images/bucles1.png",
+    "status": "published",
+    "original_id": "07",
+    "category": "hardware",
+    "category_en": null,
+    "category_es": null,
+    "category_label": "ELECTRÓNICA",
+    "category_label_en": "ELECTRONICS",
+    "category_label_es": "ELECTRÓNICA",
+    "year": "2024",
+    "video": "https://vimeo.com/1091489697?share=copy#t=0",
+    "images": [],
+    "slug": "bucles"
+  },
+  {
+    "id": "1cae67c5-46eb-4af8-b158-d6510ad5573f",
+    "created_at": "2025-09-10T19:41:12.169096+00:00",
+    "updated_at": "2026-04-10T16:28:53.22012+00:00",
+    "title_en": "pit0nisa",
+    "title_es": "pit0nisa",
+    "description_en": "pit0nisa is an anthology that explores the mediumistic nature of computational language. Generated with a Markov-chain algorithm, its poems are an excuse to make the machine speak about itself. The cinematic dimension of the payload sets its own rhythm: the message can be neither accelerated nor slowed down; we face a random, arbitrary oracle.\n      \n\n      This project was developed in the workshop *Writing Like Machines* by Matías Buonfrate and Gerardo Montoya, and included in the [Lit(e)Lat V2.0](https://antologia.litelat.net/volumen2/index.html) anthology.\n      ",
+    "description_es": "pit0nisa es una antología que explora la naturaleza mediúmnica del lenguaje computacional. Generados a partir de un algoritmo de cadenas de Markov, los poemas de pit0nisa son excusas para hacer hablar a la máquina sobre sí misma. La dimensión cinemática de la carga marca su propio ritmo: el mensaje no puede ser acelerado, tampoco retardado; estamos ante un oráculo aleatorio y arbitrario.\n      \n\n      Este proyecto fue desarrollado en el taller *Escribir como máquinas*, de Matías Buonfrate y Gerardo Montoya, e incluido en la antología de [Lit(e)Lat V2.0](https://antologia.litelat.net/volumen2/index.html). \n      ",
+    "technologies": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "github_url": "https://pit0nisa.netlify.app/",
+    "live_url": "https://pit0nisa.netlify.app/",
+    "image": "/images/pit0nisa.png",
+    "status": "published",
+    "original_id": "01",
+    "category": "literatura",
+    "category_en": null,
+    "category_es": null,
+    "category_label": "LITERATURA EXPANDIDA",
+    "category_label_en": "EXPANDED LITERATURE",
+    "category_label_es": "LITERATURA EXPANDIDA",
+    "year": "2020",
+    "video": null,
+    "images": [],
+    "slug": "pit0nisa"
+  },
+  {
+    "id": "9b2cad82-717a-4c13-a7ad-b01e15b4e83a",
+    "created_at": "2025-09-10T19:41:12.947441+00:00",
+    "updated_at": "2026-04-10T16:29:26.749141+00:00",
+    "title_en": "budín-cam",
+    "title_es": "budín-cam",
+    "description_en": "\n    BudínCam is a home monitoring system built with an ESP32-CAM connected to WiFi and linked to a Telegram bot.\n    \n    Through commands like `/photo` or `/flash`, it allows remote image capture and control of the built-in flash.\n    \n    The project was designed to check on my cat when I'm away—especially to ensure her automatic feeder keeps working.\n    ",
+    "description_es": "\n    BudínCam es un sistema de monitoreo hogareño construido con una ESP32-CAM conectada a WiFi y enlazada a un bot de Telegram. \n    \n    A través de comandos como `/photo` o `/flash`, permite la captura remota de imágenes y control del flash integrado.\n    \n    El proyecto fue pensado para chequear a mi gata cuando no estoy en casa, especialmente, que su alimentador automático siga funcionando.\n    ",
+    "technologies": [
+      "ESP32-CAM",
+      "Telegram Bot",
+      "IoT"
+    ],
+    "github_url": null,
+    "live_url": null,
+    "image": "/images/esp32.jpeg",
+    "status": "published",
+    "original_id": "04",
+    "category": "iot",
+    "category_en": null,
+    "category_es": null,
+    "category_label": "IOT",
+    "category_label_en": "IOT",
+    "category_label_es": "IOT",
+    "year": "2024",
+    "video": null,
+    "images": [
+      {
+        "alt": "Budín con la ESP32-CAM",
+        "src": "/budin-cam/budin-cam-1.jpeg",
+        "caption": "Budín con la ESP32-CAM"
+      },
+      {
+        "alt": "Prueba de flash de la ESP32-CAM",
+        "src": "/budin-cam/budin-cam-2.jpeg",
+        "caption": "Prueba de flash de la ESP32-CAM"
+      },
+      {
+        "alt": "Montaje en pared",
+        "src": "/budin-cam/budin-cam-3.jpeg",
+        "caption": "Montaje en pared"
+      },
+      {
+        "alt": "Capturas del bot de Telegram",
+        "src": "/budin-cam/budin-cam-4.jpeg",
+        "caption": "Capturas del bot de Telegram"
+      }
+    ],
+    "slug": "budin-cam"
+  },
+  {
+    "id": "de0280bd-9e4f-451a-a8b5-b36056050ce5",
+    "created_at": "2025-09-10T19:41:13.498159+00:00",
+    "updated_at": "2026-04-10T16:34:57.430621+00:00",
+    "title_en": "script-fusión",
+    "title_es": "script-fusión",
+    "description_en": "\n    Final project for the Master's in Electronic Arts (UNTREF). The project's website was built in Next.js—frontend and backend—and connected via Bluetooth to a thermal printer.\n    \n    The backend acts as a parent process and controls a submodule that replicates, through reverse engineering, the printer's original app. We added features such as printing without preserving aspect ratio (to print, for example, long tickets like the recipes we used) and disabling sleep mode (to keep the printer running during the exhibition).\n    \n\n    The project was exhibited at [Casa Belgrado](https://www.instagram.com/casabelgrado/) during the show [La pulsión de lo errático](https://www.instagram.com/p/DDBDIrpvue7/).\n    ",
+    "description_es": "\n    Proyecto final para la Maestría en Artes Electrónicas (UNTREF). La web del proyecto fue desarrollada en Next.js, frontend y backend, y conectada por Bluetooth a una impresora térmica.\n    \n    El backend actúa como proceso padre y controla un submódulo que replica, mediante ingeniería inversa, la app original de la impresora. Al repositorio original se le sumaron funciones como la impresión sin mantener ratio de la imagen (para imprimir, por ejemplo, tickets largos, como las recetas que utilizamos para el proyecto) y desactivar el modo suspensión (para matener funcionando la impresora durante la exposición).  \n    \n\n    El proyecto fue expuesto en [Casa Belgrado](https://www.instagram.com/casabelgrado/) durante la muestra [La pulsión de lo errático](https://www.instagram.com/p/DDBDIrpvue7/).\n    ",
+    "technologies": [
+      "Next.js",
+      "Bluetooth",
+      "Thermal Printer",
+      "Node.js",
+      "Reverse Engineering"
+    ],
+    "github_url": "https://script-fusion.vercel.app/",
+    "live_url": "https://script-fusion.vercel.app/",
+    "image": "/images/scriptfusion.png",
+    "status": "published",
+    "original_id": "06",
+    "category": "creative-coding",
+    "category_en": null,
+    "category_es": null,
+    "category_label": "INSTALACIÓN",
+    "category_label_en": "INSTALLATION",
+    "category_label_es": "INSTALACIÓN",
+    "year": "2024",
+    "video": null,
+    "images": [],
+    "slug": "script-fusion"
+  }
+]
