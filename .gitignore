@@ -40,3 +40,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .env*
+mcp-registry-key.pem
+mcp-registry-priv.hex
