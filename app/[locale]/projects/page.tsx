@@ -18,8 +18,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: t("title"),
     description:
       locale === "es"
-        ? "Proyectos: literatura expandida, bots, IoT, hardware, creative coding."
-        : "Projects: expanded literature, bots, IoT, hardware, creative coding.",
+        ? "Bots que escriben, poesía generativa, instalaciones y hardware DIY — máquinas con algo para decir."
+        : "Bots that write, generative poetry, installations and DIY hardware — machines with something to say.",
   });
 }
 

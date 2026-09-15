@@ -18,8 +18,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: t("title"),
     description:
       locale === "es"
-        ? "Ideas y notas sobre código, lenguaje y máquinas."
-        : "Ideas and notes on code, language and machines.",
+        ? "Notas sobre código, lenguaje y máquinas — lo que pienso mientras debuggeo."
+        : "Notes on code, language and machines — what I think about while debugging.",
   });
 }
 
