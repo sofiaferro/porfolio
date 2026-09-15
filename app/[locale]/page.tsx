@@ -34,8 +34,14 @@ export default async function HomePage({ params }: Props) {
 
   return (
     <main className="mx-auto max-w-3xl px-6 py-12">
-      <h1 className="text-4xl font-extrabold tracking-tight">{site.name}</h1>
-      <p className="mt-2 text-sm uppercase tracking-widest opacity-70">
+      <p className="text-sm">
+        <span className="text-[var(--accent)]">svf@porfolio:~$</span>{" "}
+        <span className="opacity-70">whoami</span>
+      </p>
+      <h1 className="mt-3 text-5xl font-bold tracking-tighter sm:text-6xl">
+        {site.name}
+      </h1>
+      <p className="mt-4 max-w-[52ch] text-[13px] uppercase leading-relaxed tracking-[0.18em] opacity-60">
         {site.tagline[locale as Locale]}
       </p>
 
@@ -49,7 +55,7 @@ export default async function HomePage({ params }: Props) {
       <section aria-labelledby="projects-heading" className="mt-12">
         <h2
           id="projects-heading"
-          className="text-sm font-bold uppercase tracking-widest"
+          className="text-[11px] font-semibold uppercase tracking-[0.25em] opacity-90"
         >
           <span className="text-[var(--accent)]">##</span> {t("projectsTitle")}
         </h2>
@@ -58,12 +64,12 @@ export default async function HomePage({ params }: Props) {
             <li key={p.meta.slug}>
               <Link
                 href={`/projects/${p.meta.slug}`}
-                className="group flex items-baseline justify-between gap-4 py-3"
+                className="group flex items-baseline justify-between gap-4 py-3.5"
               >
                 <span className="font-semibold group-hover:text-[var(--accent)]">
                   {p.doc.title}
                 </span>
-                <span className="shrink-0 text-xs uppercase tracking-wider opacity-60">
+                <span className="shrink-0 text-[11px] uppercase tracking-[0.14em] opacity-55 tabular-nums">
                   {tc(p.meta.category)} · {p.meta.date.slice(0, 4)}
                 </span>
               </Link>
@@ -75,7 +81,7 @@ export default async function HomePage({ params }: Props) {
       <section aria-labelledby="ideas-heading" className="mt-12">
         <h2
           id="ideas-heading"
-          className="text-sm font-bold uppercase tracking-widest"
+          className="text-[11px] font-semibold uppercase tracking-[0.25em] opacity-90"
         >
           <span className="text-[var(--accent)]">##</span> {t("blogTitle")}
         </h2>
@@ -84,7 +90,7 @@ export default async function HomePage({ params }: Props) {
             <li key={p.meta.slug}>
               <Link
                 href={`/blog/${p.meta.slug}`}
-                className="group flex items-baseline justify-between gap-4 py-3"
+                className="group flex items-baseline justify-between gap-4 py-3.5"
               >
                 <span className="font-semibold group-hover:text-[var(--accent)]">
                   {p.doc.title}

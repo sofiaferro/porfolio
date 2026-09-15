@@ -8,13 +8,31 @@ import legacyRedirects from "./content/_export/redirects.json";
 
 const nextConfig: NextConfig = {
   async redirects() {
-    return legacyRedirects.flatMap(({ uuid, slug }) =>
-      ["es", "en"].map((locale) => ({
-        source: `/${locale}/blog/${uuid}`,
-        destination: `/${locale}/blog/${slug}`,
+    return [
+      // Canonical host: apex → www, done in-app so /.well-known/* (MCP
+      // Registry domain verification) and CLI clients (curl → resume.txt)
+      // keep working on the bare domain.
+      {
+        source: "/:path((?!\\.well-known).*)",
+        has: [{ type: "host", value: "sofiaferro.com.ar" }],
+        missing: [
+          {
+            type: "header",
+            key: "user-agent",
+            value: "(curl|wget|HTTPie|http)/.*",
+          },
+        ],
+        destination: "https://www.sofiaferro.com.ar/:path",
         permanent: true,
-      })),
-    );
+      },
+      ...legacyRedirects.flatMap(({ uuid, slug }) =>
+        ["es", "en"].map((locale) => ({
+          source: `/${locale}/blog/${uuid}`,
+          destination: `/${locale}/blog/${slug}`,
+          permanent: true,
+        })),
+      ),
+    ];
   },
   async rewrites() {
     return {

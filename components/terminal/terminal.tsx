@@ -37,7 +37,7 @@ export function Terminal({ data }: { data: TerminalData }) {
   const router = useRouter();
   const pathname = usePathname();
 
-  const promptLabel = `sofia@web:${pathname === "/" ? "~" : "~" + pathname}$`;
+  const promptLabel = `svf@porfolio:${pathname === "/" ? "~" : "~" + pathname}$`;
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {

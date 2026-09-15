@@ -7,13 +7,13 @@
     monospace;
   --font-sans: var(--font-jetbrains-mono), ui-monospace, monospace;
 
-  /* terminal palette */
+  /* terminal palette — lime accent */
   --color-paper: #f5f5f0;
   --color-ink: #1a1a17;
   --color-screen: #0d0d0c;
   --color-phosphor: #e8e8e0;
-  --color-accent: #2f6f4f;
-  --color-accent-dark: #7fdca4;
+  --color-accent: #55780a;
+  --color-accent-dark: #c6f43f;
   --color-hairline: #d4d4cc;
   --color-hairline-dark: #2a2a26;
 }
@@ -46,6 +46,15 @@ body {
   color: var(--foreground);
   font-family: var(--font-mono);
   font-feature-settings: "liga" 1, "calt" 1;
+  font-size: 0.9375rem; /* 15px — mono lee mejor un punto abajo */
+  line-height: 1.7;
+  letter-spacing: -0.011em;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--background);
 }
 
 /* markdown typography for MDX bodies */

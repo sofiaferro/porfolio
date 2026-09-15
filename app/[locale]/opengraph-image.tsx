@@ -34,8 +34,8 @@ export default async function OpengraphImage({
           fontFamily: "monospace",
         }}
       >
-        <div style={{ fontSize: 28, color: "#7fdca4", display: "flex" }}>
-          sofia@web:~$ whoami
+        <div style={{ fontSize: 28, color: "#c6f43f", display: "flex" }}>
+          svf@porfolio:~$ whoami
         </div>
         <div
           style={{

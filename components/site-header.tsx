@@ -9,7 +9,7 @@ export function SiteHeader() {
     <header className="border-b border-[var(--hairline)]">
       <div className="mx-auto flex max-w-3xl items-baseline justify-between gap-4 px-6 py-4">
         <Link href="/" className="font-bold tracking-tight">
-          <span className="text-[var(--accent)]">sofia@web</span>
+          <span className="text-[var(--accent)]">svf@porfolio</span>
           <span className="opacity-60">:~$</span>
         </Link>
         <nav aria-label="main" className="flex items-baseline gap-4 text-sm">
