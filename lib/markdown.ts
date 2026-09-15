@@ -25,7 +25,7 @@ const LABELS = {
     about: "Sobre mí",
     canonical: "Canónica",
     alternate: "English version",
-    live: "Sitio",
+    live: "URL",
     github: "GitHub",
     video: "Video",
     markdown: "markdown",
