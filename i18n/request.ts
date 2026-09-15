@@ -1,21 +1,15 @@
-import { getRequestConfig } from 'next-intl/server';
+import { getRequestConfig } from "next-intl/server";
+import { hasLocale } from "next-intl";
+import { routing } from "./routing";
 
-export const locales = ['en', 'es'] as const;
-export const defaultLocale = 'es' as const;
+export default getRequestConfig(async ({ requestLocale }) => {
+  const requested = await requestLocale;
+  const locale = hasLocale(routing.locales, requested)
+    ? requested
+    : routing.defaultLocale;
 
-export default getRequestConfig(async ({ locale }) => {
-  // Validate that the incoming `locale` parameter is valid
-  const validLocale = locales.includes(locale as any) ? locale : defaultLocale;
-  
-  try {
-    const messages = (await import(`../messages/${validLocale}.json`)).default;
-    
-    return {
-      locale: validLocale as string,
-      messages,
-    };
-  } catch (error) {
-    console.error('i18n config - error loading messages for locale:', validLocale, error);
-    throw error;
-  }
-}); 
+  return {
+    locale,
+    messages: (await import(`../messages/${locale}.json`)).default,
+  };
+});
