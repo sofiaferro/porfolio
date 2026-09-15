@@ -24,8 +24,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!hasLocale(routing.locales, locale)) return {};
   const project = getProject(slug, locale);
   if (!project) return {};
+  const tc = await getTranslations({ locale, namespace: "categories" });
   return pageMetadata(locale, `/projects/${slug}`, {
-    title: project.doc.title,
+    title: `${project.doc.title} — ${tc(project.meta.category)}`,
     description: project.doc.summary,
     image: project.meta.images[0]?.src,
   });

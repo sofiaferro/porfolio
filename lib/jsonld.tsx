@@ -17,6 +17,16 @@ export function personJsonLd(): JsonLd {
     url: site.domain,
     email: `mailto:${site.email}`,
     jobTitle: resume.basics?.label,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Buenos Aires",
+      addressCountry: "AR",
+    },
+    worksFor: {
+      "@type": "Organization",
+      name: "Paisanos",
+      url: "https://paisanos.io",
+    },
     sameAs: site.sameAs,
     knowsAbout: (resume.skills ?? []).flatMap((s) => [
       s.name,

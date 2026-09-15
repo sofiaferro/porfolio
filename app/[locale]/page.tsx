@@ -15,9 +15,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) return {};
   const site = getSite();
-  return pageMetadata(locale, "", {
-    description: site.tagline[locale] ?? site.tagline.es ?? "",
+  const role =
+    locale === "en"
+      ? "Software Engineer & Creative Technologist"
+      : "Ingeniera de Software y Creative Technologist";
+  const geo =
+    locale === "en"
+      ? "Based in Buenos Aires, Argentina."
+      : "Desde Buenos Aires, Argentina.";
+  const base = pageMetadata(locale, "", {
+    description: `${site.tagline[locale] ?? site.tagline.es ?? ""} ${geo}`,
   });
+  return { ...base, title: { absolute: `${site.name} — ${role}` } };
 }
 
 export default async function HomePage({ params }: Props) {

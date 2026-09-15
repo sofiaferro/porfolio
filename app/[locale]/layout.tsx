@@ -21,15 +21,30 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
 });
 
-export function generateMetadata(): Metadata {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
   const site = getSite();
+  const role =
+    locale === "en"
+      ? "Software Engineer & Creative Technologist"
+      : "Ingeniera de Software y Creative Technologist";
+  const tagline =
+    site.tagline[hasLocale(routing.locales, locale) ? locale : "es"] ?? "";
+  const geo =
+    locale === "en"
+      ? "Based in Buenos Aires, Argentina."
+      : "Desde Buenos Aires, Argentina.";
   return {
     metadataBase: new URL(site.domain),
     title: {
-      default: site.name,
+      default: `${site.name} — ${role}`,
       template: `%s — ${site.name}`,
     },
-    description: site.tagline.es,
+    description: `${tagline} ${geo}`,
   };
 }
 
