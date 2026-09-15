@@ -53,12 +53,12 @@ projects:
     description: A gamified text generator.
     url: https://www.sofiaferro.com.ar/en/projects/mc-txt
     keywords: [expanded literature]
-  - name: page turner DIY
+  - name: dedo-bot
     description: A DIY remote-controlled Kindle page turner.
     url: https://www.sofiaferro.com.ar/en/projects/page-turner-diy
     keywords: [hardware]
   - name: bucles
-    description: An installation built on an Arduino Mega 2560 board.
+    description: An experiment that dispatches a poem at a variable tempo, built on an Arduino Mega 2560.
     url: https://www.sofiaferro.com.ar/en/projects/bucles
     keywords: [hardware, installation]
   - name: budín-cam

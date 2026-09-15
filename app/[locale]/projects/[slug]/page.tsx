@@ -24,10 +24,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!hasLocale(routing.locales, locale)) return {};
   const project = getProject(slug, locale);
   if (!project) return {};
-  const tc = await getTranslations({ locale, namespace: "categories" });
+  const { title, descriptor, summary } = project.doc;
   return pageMetadata(locale, `/projects/${slug}`, {
-    title: `${project.doc.title} — ${tc(project.meta.category)}`,
-    description: project.doc.summary,
+    title: descriptor ? `${title} — ${descriptor}` : title,
+    description: summary,
     image: project.meta.images[0]?.src,
   });
 }

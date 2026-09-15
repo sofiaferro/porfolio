@@ -58,6 +58,8 @@ export type PostMeta = z.infer<typeof PostMetaSchema>;
 export const LocalizedDocSchema = z.object({
   title: z.string(),
   summary: z.string(),
+  // Short search-intent phrase appended to the <title> ("robot conversacional con IA").
+  descriptor: z.string().optional(),
 });
 export type LocalizedDoc = z.infer<typeof LocalizedDocSchema>;
 
