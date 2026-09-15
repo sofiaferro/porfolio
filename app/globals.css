@@ -25,7 +25,16 @@
   --hairline: var(--color-hairline);
 }
 
-.dark {
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    --background: var(--color-screen);
+    --foreground: var(--color-phosphor);
+    --accent: var(--color-accent-dark);
+    --hairline: var(--color-hairline-dark);
+  }
+}
+
+:root.dark {
   --background: var(--color-screen);
   --foreground: var(--color-phosphor);
   --accent: var(--color-accent-dark);
@@ -37,6 +46,61 @@ body {
   color: var(--foreground);
   font-family: var(--font-mono);
   font-feature-settings: "liga" 1, "calt" 1;
+}
+
+/* markdown typography for MDX bodies */
+.prose-terminal {
+  line-height: 1.7;
+}
+.prose-terminal h2,
+.prose-terminal h3 {
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+}
+.prose-terminal h2::before {
+  content: "## ";
+  color: var(--accent);
+}
+.prose-terminal h3::before {
+  content: "### ";
+  color: var(--accent);
+}
+.prose-terminal p {
+  margin: 1rem 0;
+}
+.prose-terminal a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.prose-terminal ul,
+.prose-terminal ol {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+  list-style: square;
+}
+.prose-terminal blockquote {
+  margin: 1.5rem 0;
+  padding-left: 1rem;
+  border-left: 2px solid var(--accent);
+  opacity: 0.85;
+}
+.prose-terminal code {
+  background: color-mix(in srgb, var(--foreground) 8%, transparent);
+  padding: 0.1em 0.35em;
+}
+.prose-terminal pre {
+  overflow-x: auto;
+  border: 1px solid var(--hairline);
+  padding: 1rem;
+  margin: 1.5rem 0;
+}
+.prose-terminal img {
+  border: 1px solid var(--hairline);
 }
 
 @media (prefers-reduced-motion: reduce) {

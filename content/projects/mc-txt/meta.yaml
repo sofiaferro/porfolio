@@ -5,7 +5,6 @@ tech:
   - Nes.CSS
 links:
   live: https://mc-txt.netlify.app/
-  github: https://mc-txt.netlify.app/
 images:
   - src: /images/mc-txt.png
 status: published

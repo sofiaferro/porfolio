@@ -3,7 +3,19 @@ import createNextIntlPlugin from "next-intl/plugin";
 
 const withNextIntl = createNextIntlPlugin("./i18n/request.ts");
 
+// uuid → slug map for blog URLs indexed under the old Supabase-era site
+import legacyRedirects from "./content/_export/redirects.json";
+
 const nextConfig: NextConfig = {
+  async redirects() {
+    return legacyRedirects.flatMap(({ uuid, slug }) =>
+      ["es", "en"].map((locale) => ({
+        source: `/${locale}/blog/${uuid}`,
+        destination: `/${locale}/blog/${slug}`,
+        permanent: true,
+      })),
+    );
+  },
   async rewrites() {
     return {
       beforeFiles: [

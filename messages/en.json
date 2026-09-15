@@ -1,99 +1,44 @@
 {
-  "navigation": {
-    "home": "HOME",
-    "projects": "PROJECTS",
-    "blog": "BLOG"
+  "nav": {
+    "projects": "projects",
+    "blog": "ideas",
+    "about": "about"
   },
   "home": {
-    "aboutMe": "ABOUT",
-    "title": "SVF",
-    "name": "Sofía Ferro",
-    "email": "svf.inbox@gmail.com",
-    "linkedin": "https://www.linkedin.com/in/sofiaferro",
-    "contact": "Contact",
-    "subtitle": "Software Engineer",
-    "description1": "I'm passionate about building things, from applications to digital experiences that connect technology with the sensitive. I enjoy the process of imagining an idea and working it until it finds its most precise form.",
-    "description2": "I develop projects that combine functionality, design and art, exploring the intersection between software development, artificial intelligence and electronics.",
-    "recentProjects": "Recent projects",
-    "viewProject": "View project",
-    "viewAllProjects": "View all projects",
-    "latestPosts": "Latest posts",
-    "readMore": "Read more",
-    "readFullArticle": "Read full article",
-    "viewAllPosts": "View all posts",
-    "noPostsAvailable": "No posts available."
+    "projectsTitle": "projects",
+    "blogTitle": "ideas",
+    "viewAll": "view all"
   },
   "projects": {
-    "title": "PROJECTS",
-    "subtitle": "Creative experiments and digital explorations.",
-    "viewProject": "View project",
-    "viewAllProjects": "View all projects",
-    "backToHome": "Back to home",
-    "notFoundTitle": "Project not found",
-    "imageAlt": "Project image",
-    "videoTitle": "Video for {title}",
-    "yearFallback": "Unknown",
-    "projectDetails": {
-      "description": "Project description",
-      "details": "Details",
-      "gallery": "Project gallery",
-      "video": "Video"
-    },
-    "backToProjects": "Back to projects",
-    "description": "Project description",
-    "details": "Details",
-    "year": "Year",
-    "category": "Category",
-    "technologies": "Technologies",
-    "live": "View live project",
-    "gallery": "Project gallery",
-    "video": "Video",
-    "noProjectsAvailable": "No projects available.",
-    "previous": "Previous",
-    "next": "Next",
-    "categories": {
-      "literatura": "Expanded Literature",
-      "bots": "Bots",
-      "iot": "IoT",
-      "hardware": "Hardware",
-      "creative-coding": "Creative Coding",
-      "instalacion": "Installation",
-      "installation": "Installation"
-    }
+    "title": "projects",
+    "backToList": "back to projects",
+    "tech": "technologies",
+    "links": "links",
+    "live": "live",
+    "github": "code",
+    "video": "video"
   },
   "blog": {
-    "title": "THOUGHTS",
-    "subtitle": "A message in a digital bottle.",
-    "description": "Reflections on technology, art and the creative process.",
-    "readMore": "Read more",
-    "readFullPost": "Read full post",
-    "viewAllPosts": "View all posts",
-    "categories": "Categories",
-    "tags": "Tags",
-    "back": "Back",
-    "publishedOn": "Published on",
-    "noPostsAvailable": "No posts available.",
-    "comments": "Comments",
-    "noComments": "No comments yet. Be the first to comment!",
-    "leaveComment": "Leave a comment",
-    "submit": "Submit",
-    "name": "Name",
-    "comment": "Comment",
-    "post": "Post"
+    "title": "ideas",
+    "backToList": "back to ideas"
+  },
+  "about": {
+    "title": "about"
+  },
+  "categories": {
+    "literatura-expandida": "expanded literature",
+    "bots": "bots",
+    "iot": "IoT",
+    "hardware": "hardware",
+    "creative-coding": "creative coding",
+    "instalacion": "installation"
   },
   "footer": {
-    "copyright": "© {year} Sofia Ferro. Made with love using v0 🖤. All rights reserved."
+    "agents": "are you an agent? this site speaks markdown:"
   },
-  "common": {
-    "loading": "Loading...",
-    "error": "Error",
-    "success": "Success",
-    "cancel": "Cancel",
-    "save": "Save",
-    "edit": "Edit",
-    "delete": "Delete",
-    "back": "Back",
-    "next": "Next",
-    "previous": "Previous"
+  "notFound": {
+    "title": "404 — not found",
+    "body": "command not found. valid routes:",
+    "home": "back home"
   }
 }

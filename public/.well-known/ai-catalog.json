@@ -1,0 +1,33 @@
+{
+  "version": "0.1",
+  "name": "Sofia Ferro — portfolio",
+  "description": "Software engineer and electronic artist. Machine-readable surfaces for AI agents.",
+  "resources": [
+    {
+      "type": "mcp-server",
+      "name": "sofiaferro-mcp",
+      "description": "MCP server exposing the portfolio content (projects, writing, resume). Streamable HTTP transport, no authentication required.",
+      "url": "https://sofiaferro.com.ar/api/mcp",
+      "transport": "streamable-http",
+      "auth": "none"
+    },
+    {
+      "type": "llms-txt",
+      "name": "llms.txt",
+      "description": "llmstxt.org index of the site's content and machine-readable endpoints.",
+      "url": "https://sofiaferro.com.ar/llms.txt"
+    },
+    {
+      "type": "resume",
+      "name": "resume.json",
+      "description": "Resume in JSON Resume v1.0.0 format.",
+      "url": "https://sofiaferro.com.ar/api/resume.json"
+    },
+    {
+      "type": "sitemap",
+      "name": "markdown sitemap",
+      "description": "Markdown sitemap listing every page's canonical HTML URL and .md URL in both locales (es/en). Any page is also served as markdown via Accept: text/markdown or a .md suffix.",
+      "url": "https://sofiaferro.com.ar/sitemap.md"
+    }
+  ]
+}

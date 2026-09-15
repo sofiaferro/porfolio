@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { cache } from "react";
 import matter from "gray-matter";
-import yaml from "js-yaml";
+import { load as loadYaml } from "js-yaml";
 import {
   type Locale,
   type ProjectMeta,
@@ -28,7 +28,7 @@ export type Project = Entry<ProjectMeta>;
 export type Post = Entry<PostMeta>;
 
 function readYaml<T>(file: string, parse: (data: unknown) => T): T {
-  const data = yaml.load(fs.readFileSync(file, "utf8"));
+  const data = loadYaml(fs.readFileSync(file, "utf8"));
   return parse(data);
 }
 
@@ -53,7 +53,7 @@ function loadCollection<M extends { slug: string; status: string; date: string }
       const dir = path.join(base, d.name);
       const meta = parseMeta({
         slug: d.name,
-        ...(yaml.load(fs.readFileSync(path.join(dir, "meta.yaml"), "utf8")) as object),
+        ...(loadYaml(fs.readFileSync(path.join(dir, "meta.yaml"), "utf8")) as object),
       });
       return { meta, ...readLocalizedMdx(dir, locale) };
     })
@@ -92,7 +92,7 @@ export const getSite = cache(
 /** JSON Resume v1.0.0 — validated shape lives in content/resume.yaml. */
 export const getResume = cache(
   (): Record<string, unknown> =>
-    yaml.load(
+    loadYaml(
       fs.readFileSync(path.join(CONTENT_DIR, "resume.yaml"), "utf8"),
     ) as Record<string, unknown>,
 );

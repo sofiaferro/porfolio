@@ -1,0 +1,13 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "ar.com.sofiaferro/portfolio",
+  "description": "Sofia Ferro's portfolio: projects (electronic art, expanded literature, bots, IoT, creative coding), blog posts, JSON Resume, and a contact tool. Bilingual (es/en).",
+  "version": "1.0.0",
+  "websiteUrl": "https://sofiaferro.com.ar",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://sofiaferro.com.ar/api/mcp"
+    }
+  ]
+}

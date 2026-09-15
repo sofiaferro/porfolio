@@ -8,7 +8,6 @@ tech:
   - Reverse Engineering
 links:
   live: https://script-fusion.vercel.app/
-  github: https://script-fusion.vercel.app/
 images:
   - src: /images/scriptfusion.png
 status: published

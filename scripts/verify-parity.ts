@@ -6,7 +6,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
-import yaml from "js-yaml";
+import { load as loadYaml } from "js-yaml";
 import {
   LOCALES,
   LocalizedDocSchema,
@@ -41,7 +41,7 @@ function checkCollection(
     }
     const parsed = metaSchema.safeParse({
       slug: d.name,
-      ...(yaml.load(fs.readFileSync(metaFile, "utf8")) as object),
+      ...(loadYaml(fs.readFileSync(metaFile, "utf8")) as object),
     });
     if (!parsed.success) {
       errors.push(`${rel}/meta.yaml: ${parsed.error.issues.map((i) => `${i.path.join(".")}: ${i.message}`).join("; ")}`);

@@ -1,92 +1,44 @@
 {
-  "navigation": {
-    "home": "INICIO",
-    "projects": "PROYECTOS",
-    "blog": "BLOG"
+  "nav": {
+    "projects": "proyectos",
+    "blog": "ideas",
+    "about": "sobre-mi"
   },
   "home": {
-    "aboutMe": "SOBRE MÍ",
-    "title": "SVF",
-    "name": "Sofía Ferro",
-    "email": "svf.inbox@gmail.com",
-    "linkedin": "https://www.linkedin.com/in/sofiaferro",
-    "subtitle": "Software Engineer",
-    "description1": "Construyo cosas, desde aplicaciones hasta experiencias digitales que conecten la tecnología con lo sensible. Disfruto el proceso de imaginar una idea y trabajarla hasta que encuentre su forma más precisa.",
-    "description2": "Desarrollo proyectos que combinan funcionalidad, diseño y arte, explorando la intersección entre desarrollo de software, inteligencia artificial y electrónica.",
-    "contact": "Contacto",
-    "recentProjects": "Proyectos recientes",
-    "viewProject": "Ver proyecto",
-    "viewAllProjects": "Ver todos los proyectos",
-    "latestPosts": "Últimas publicaciones",
-    "readMore": "Leer más",
-    "readFullArticle": "Leer artículo completo",
-    "viewAllPosts": "Ver todas las publicaciones",
-    "noPostsAvailable": "No hay publicaciones disponibles."
-  },
-  "footer": {
-    "copyright": "© {year} Sofia Ferro. Made with love using v0 🖤. All rights reserved."
-  },
-  "blog": {
-    "title": "IDEAS",
-    "subtitle": "Un mensaje en una botella digital.",
-    "description": "Reflexiones sobre tecnología, arte y el proceso creativo.",
-    "readMore": "Leer más",
-    "readFullPost": "Ver más",
-    "viewAllPosts": "Ver todas las publicaciones",
-    "categories": "Categorías",
-    "tags": "Etiquetas",
-    "back": "Volver",
-    "publishedOn": "Publicado el",
-    "noPostsAvailable": "No hay publicaciones disponibles.",
-    "comments": "Comentarios",
-    "noComments": "No hay comentarios todavía. ¡Sé el primero en comentar!",
-    "leaveComment": "Deja un comentario",
-    "submit": "Enviar",
-    "name": "Nombre",
-    "comment": "Comentario",
-    "post": "Publicar"
+    "projectsTitle": "proyectos",
+    "blogTitle": "ideas",
+    "viewAll": "ver todo"
   },
   "projects": {
-    "backToProjects": "Volver a proyectos",
-    "description": "Descripción del proyecto",
-    "details": "Detalles",
-    "year": "Año",
-    "category": "Categoría",
-    "technologies": "Tecnologías",
-    "live": "Ver proyecto en vivo",
-    "gallery": "Galería del proyecto",
-    "video": "Video",
-    "noProjectsAvailable": "No hay proyectos disponibles.",
-    "previous": "Anterior",
-    "next": "Siguiente",
-    "backToHome": "Volver al inicio",
-    "notFoundTitle": "Proyecto no encontrado",
-    "imageAlt": "Imagen del proyecto",
-    "videoTitle": "Video de {title}",
-    "yearFallback": "Sin año",
-    "title": "PROYECTOS",
-    "subtitle": "Experimentos creativos y exploraciones digitales.",
-    "viewProject": "Ver proyecto",
-    "viewAllProjects": "Ver todos los proyectos",
-    "projectDetails": {
-      "description": "Descripción del proyecto",
-      "details": "Detalles",
-      "gallery": "Galería del proyecto",
-      "video": "Video"
-    },
-    "categories": {
-      "literatura": "Literatura expandida",
-      "bots": "Bots",
-      "iot": "IoT",
-      "hardware": "Hardware",
-      "creative-coding": "Creative coding",
-      "instalacion": "Instalación",
-      "installation": "Instalación"
-    }
+    "title": "proyectos",
+    "backToList": "volver a proyectos",
+    "tech": "tecnologías",
+    "links": "enlaces",
+    "live": "sitio",
+    "github": "código",
+    "video": "video"
   },
-  "common": {
-    "loading": "Cargando...",
-    "error": "Error",
-    "notFound": "No encontrado"
+  "blog": {
+    "title": "ideas",
+    "backToList": "volver a ideas"
+  },
+  "about": {
+    "title": "sobre mí"
+  },
+  "categories": {
+    "literatura-expandida": "literatura expandida",
+    "bots": "bots",
+    "iot": "IoT",
+    "hardware": "hardware",
+    "creative-coding": "creative coding",
+    "instalacion": "instalación"
+  },
+  "footer": {
+    "agents": "¿sos un agente? este sitio habla markdown:"
+  },
+  "notFound": {
+    "title": "404 — no existe",
+    "body": "comando no encontrado. rutas válidas:",
+    "home": "volver al inicio"
   }
 }
