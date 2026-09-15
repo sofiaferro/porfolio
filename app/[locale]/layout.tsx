@@ -3,12 +3,11 @@ import { JetBrains_Mono } from "next/font/google";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
-import { routing, type Locale } from "@/i18n/routing";
-import { getProjects, getSite } from "@/lib/content";
+import { routing } from "@/i18n/routing";
+import { getSite } from "@/lib/content";
 import { personJsonLd, JsonLdScript } from "@/lib/jsonld";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { Terminal } from "@/components/terminal/terminal";
 import { ThemeProvider } from "@/components/theme-provider";
 import "../globals.css";
 
@@ -62,16 +61,6 @@ export default async function LocaleLayout({
   }
   setRequestLocale(locale);
 
-  const site = getSite();
-  const terminalData = {
-    locale: locale as Locale,
-    projects: getProjects(locale as Locale).map((p) => ({
-      slug: p.meta.slug,
-      title: p.doc.title,
-    })),
-    email: site.email,
-  };
-
   return (
     <html lang={locale} className={jetbrainsMono.variable} suppressHydrationWarning>
       <body className="min-h-screen font-mono antialiased">
@@ -81,7 +70,6 @@ export default async function LocaleLayout({
             <SiteHeader />
             {children}
             <SiteFooter />
-            <Terminal data={terminalData} />
           </NextIntlClientProvider>
         </ThemeProvider>
       </body>

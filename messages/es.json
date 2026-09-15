@@ -2,7 +2,9 @@
   "nav": {
     "projects": "proyectos",
     "manifiesto": "manifiesto",
-    "about": "sobre-mi"
+    "about": "sobre-mi",
+    "themeDark": "cambiar a tema oscuro",
+    "themeLight": "cambiar a tema claro"
   },
   "home": {
     "projectsTitle": "proyectos",

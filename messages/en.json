@@ -2,7 +2,9 @@
   "nav": {
     "projects": "projects",
     "manifiesto": "manifesto",
-    "about": "about"
+    "about": "about",
+    "themeDark": "switch to dark theme",
+    "themeLight": "switch to light theme"
   },
   "home": {
     "projectsTitle": "projects",

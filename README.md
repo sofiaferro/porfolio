@@ -39,6 +39,5 @@ pnpm check:content    # paridad es/en + validación de frontmatter
 bash scripts/verify-ax.sh <url>   # verificación de superficies AX
 ```
 
-En la web, el terminal (`` ` `` o el botón `>_`) navega con `ls`, `cat <slug>`,
 `cd`, `lang`, `theme` — puro azúcar sobre las rutas reales: sin JS el sitio es
 HTML semántico plano.

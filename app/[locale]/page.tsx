@@ -115,12 +115,6 @@ export default async function HomePage({ params }: Props) {
           </Link>
         </p>
       </section>
-
-      <p aria-hidden="true" className="session-block text-sm">
-        <span className="text-[var(--accent)]">svf@porfolio</span>
-        <span className="text-[var(--muted)]">:~$</span>{" "}
-        <span className="cursor-block inline-block h-[1.1em] w-[0.6em] translate-y-[0.18em] bg-[var(--accent)]" />
-      </p>
     </main>
   );
 }
