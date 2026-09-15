@@ -1,10 +1,14 @@
 ---
-title: loops
-summary: Loops is an installation built on an Arduino Mega 2560 board.
+title: bucles
+summary: An installation that dispatches a poem at a variable tempo.
 ---
 
-Loops is an installation built on an Arduino Mega 2560 board. Through a breadboard, it connects a 16x2 LCD with an I2C module, a 100k-ohm potentiometer, and a series of six LEDs arranged in a circular layout.
+Loops is an installation that dispatches a poem at a variable tempo. It draws on a poem by [@lafatbordieu](https://www.instagram.com/lafatbordieu/) that encapsulates the rhythm of things and their recursiveness. In the concept of strange loops, as Douglas Hofstadter (author of *Gödel, Escher, Bach: An Eternal Golden Braid*) says, infinity is implicit—since what else is a loop but a way to finitely represent an endless process?
 
-The potentiometer controls the processes' frequency. The LCD receives the command and dispatches the poem at the requested tempo. The LEDs react accordingly, completing a full loop. Communication between components happens cyclically.
+The potentiometer controls the processes' frequency: the LCD receives the command and dispatches the poem at the requested tempo, and the LEDs react accordingly, completing a full loop. Communication between components happens cyclically.
 
-The project references a poem by [@lafatbordieu](https://www.instagram.com/lafatbordieu/) that encapsulates the rhythm of things and their recursiveness. In the concept of strange loops, as Douglas Hofstadter (author of *Gödel, Escher, Bach: An Eternal Golden Braid*) says, infinity is implicit—since what else is a loop but a way to finitely represent an endless process?
+It is built on an Arduino Mega 2560 board, connected through a breadboard to:
+
+- A 16x2 LCD, soldered to an I2C module
+- A 100k-ohm potentiometer
+- A series of six LEDs arranged in a circle
