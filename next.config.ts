@@ -3,9 +3,6 @@ import createNextIntlPlugin from "next-intl/plugin";
 
 const withNextIntl = createNextIntlPlugin("./i18n/request.ts");
 
-// uuid → slug map for blog URLs indexed under the old Supabase-era site
-import legacyRedirects from "./content/_export/redirects.json";
-
 const nextConfig: NextConfig = {
   async redirects() {
     return [
@@ -25,13 +22,12 @@ const nextConfig: NextConfig = {
         destination: "https://www.sofiaferro.com.ar/:path",
         permanent: true,
       },
-      ...legacyRedirects.flatMap(({ uuid, slug }) =>
-        ["es", "en"].map((locale) => ({
-          source: `/${locale}/blog/${uuid}`,
-          destination: `/${locale}/blog/${slug}`,
-          permanent: true,
-        })),
-      ),
+      // The blog became a single manifesto page; old post/UUID URLs land there.
+      {
+        source: "/:locale(es|en)/blog/:path*",
+        destination: "/:locale/manifiesto",
+        permanent: true,
+      },
     ];
   },
   async rewrites() {

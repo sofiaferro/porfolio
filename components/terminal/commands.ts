@@ -3,7 +3,6 @@ export type TerminalEntry = { slug: string; title: string };
 export type TerminalData = {
   locale: "es" | "en";
   projects: TerminalEntry[];
-  posts: TerminalEntry[];
   email: string;
 };
 
@@ -17,9 +16,9 @@ const HELP: Record<TerminalData["locale"], string[]> = {
   es: [
     "comandos disponibles:",
     "  help                 esta ayuda",
-    "  ls [projects|ideas]  listar contenido",
-    "  cat <slug>           abrir proyecto o post",
-    "  cd <ruta>            navegar (/, projects, ideas, about)",
+    "  ls [projects]        listar contenido",
+    "  cat <slug>           abrir proyecto o manifiesto",
+    "  cd <ruta>            navegar (/, projects, manifiesto, about)",
     "  whoami               sobre sofia",
     "  lang [es|en]         cambiar idioma",
     "  theme [dark|light]   cambiar tema",
@@ -30,9 +29,9 @@ const HELP: Record<TerminalData["locale"], string[]> = {
   en: [
     "available commands:",
     "  help                 this help",
-    "  ls [projects|ideas]  list content",
-    "  cat <slug>           open a project or post",
-    "  cd <path>            navigate (/, projects, ideas, about)",
+    "  ls [projects]        list content",
+    "  cat <slug>           open a project or the manifesto",
+    "  cd <path>            navigate (/, projects, manifiesto, about)",
     "  whoami               about sofia",
     "  lang [es|en]         switch language",
     "  theme [dark|light]   switch theme",
@@ -70,11 +69,9 @@ export function runCommand(input: string, data: TerminalData): CommandAction {
     case "ls": {
       if (arg === "projects" || arg === "proyectos")
         return { type: "print", lines: list(data.projects) };
-      if (arg === "ideas" || arg === "blog")
-        return { type: "print", lines: list(data.posts) };
       return {
         type: "print",
-        lines: ["projects/", "ideas/", "about", "llms.txt", "resume.json"],
+        lines: ["projects/", "manifiesto", "about", "llms.txt", "resume.json"],
       };
     }
     case "cat":
@@ -90,15 +87,15 @@ export function runCommand(input: string, data: TerminalData): CommandAction {
           href: `/projects/${arg}`,
           lines: [`→ /projects/${arg}`],
         };
-      if (data.posts.some((p) => p.slug === arg))
-        return { type: "navigate", href: `/blog/${arg}`, lines: [`→ /blog/${arg}`] };
+      if (arg === "manifiesto" || arg === "manifesto")
+        return { type: "navigate", href: "/manifiesto", lines: ["→ /manifiesto"] };
       if (arg === "about" || arg === "sobre-mi")
         return { type: "navigate", href: "/about", lines: ["→ /about"] };
       return {
         type: "print",
         lines: [
           locale === "es" ? `cat: ${arg}: no existe` : `cat: ${arg}: no such entry`,
-          ...list([...data.projects, ...data.posts]),
+          ...list(data.projects),
         ],
       };
     }
@@ -109,8 +106,8 @@ export function runCommand(input: string, data: TerminalData): CommandAction {
         "..": "/",
         projects: "/projects",
         proyectos: "/projects",
-        ideas: "/blog",
-        blog: "/blog",
+        manifiesto: "/manifiesto",
+        manifesto: "/manifiesto",
         about: "/about",
         "sobre-mi": "/about",
       };

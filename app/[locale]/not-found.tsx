@@ -15,8 +15,8 @@ export default function NotFound() {
           </Link>
         </li>
         <li>
-          <Link href="/blog" className="text-[var(--accent)] underline underline-offset-2">
-            /blog
+          <Link href="/manifiesto" className="text-[var(--accent)] underline underline-offset-2">
+            /manifiesto
           </Link>
         </li>
         <li>

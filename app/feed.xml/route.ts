@@ -1,15 +1,14 @@
 import { Feed } from "feed";
-import { getPosts, getProjects, getSite } from "@/lib/content";
+import { getProjects, getSite } from "@/lib/content";
 import { absoluteUrl } from "@/lib/markdown";
 
 export const dynamic = "force-static";
 
 export function GET(): Response {
   const site = getSite();
-  const posts = getPosts("es");
   const projects = getProjects("es");
 
-  const newest = [...posts, ...projects]
+  const newest = projects
     .map((e) => new Date(e.meta.date))
     .sort((a, b) => b.getTime() - a.getTime())[0];
 
@@ -24,17 +23,6 @@ export function GET(): Response {
     feedLinks: { rss: absoluteUrl("/feed.xml") },
     author: { name: site.name, email: site.email, link: absoluteUrl("/") },
   });
-
-  for (const post of posts) {
-    const link = absoluteUrl(`/es/blog/${post.meta.slug}`);
-    feed.addItem({
-      title: post.doc.title,
-      id: link,
-      link,
-      description: `${post.doc.summary}\n\nEnglish version: ${absoluteUrl(`/en/blog/${post.meta.slug}`)}`,
-      date: new Date(post.meta.date),
-    });
-  }
 
   for (const project of projects) {
     const link = absoluteUrl(`/es/projects/${project.meta.slug}`);

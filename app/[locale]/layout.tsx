@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { routing, type Locale } from "@/i18n/routing";
-import { getPosts, getProjects, getSite } from "@/lib/content";
+import { getProjects, getSite } from "@/lib/content";
 import { personJsonLd, JsonLdScript } from "@/lib/jsonld";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -53,10 +53,6 @@ export default async function LocaleLayout({
   const terminalData = {
     locale: locale as Locale,
     projects: getProjects(locale as Locale).map((p) => ({
-      slug: p.meta.slug,
-      title: p.doc.title,
-    })),
-    posts: getPosts(locale as Locale).map((p) => ({
       slug: p.meta.slug,
       title: p.doc.title,
     })),

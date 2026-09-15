@@ -2,8 +2,7 @@ import { createMcpHandler } from "mcp-handler";
 import { Resend } from "resend";
 import { z } from "zod";
 import {
-  getPost,
-  getPosts,
+  getPage,
   getProject,
   getProjects,
   getResume,
@@ -54,7 +53,7 @@ const handler = createMcpHandler(
         description:
           "Sofia Ferro's full resume as a JSON Resume v1.0.0 document (basics, skills, projects). " +
           "The resume is maintained in English only, so the locale parameter is currently ignored. " +
-          "Canonical URL: https://sofiaferro.com.ar/api/resume.json",
+          "Canonical URL: https://www.sofiaferro.com.ar/api/resume.json",
         inputSchema: z.object({ locale: LocaleInput }),
       },
       async () => jsonResult(getResume()),
@@ -125,51 +124,21 @@ const handler = createMcpHandler(
     );
 
     server.registerTool(
-      "list_posts",
+      "get_manifesto",
       {
-        title: "List blog posts",
+        title: "Get manifesto",
         description:
-          "List Sofia Ferro's published blog posts (writing on code, electronic art and hardware). " +
-          "Returns slug, title, date and summary for each post, newest first. Use get_post with a " +
-          "slug for the full text. RSS feed: https://sofiaferro.com.ar/feed.xml",
+          "Sofia Ferro's manifesto on programming as embodied practice — error as path, faith in " +
+          "the infinite loop of trying once more. Returns title, summary and the full markdown text. " +
+          "For her ongoing thinking, see X: https://x.com/svfonx",
         inputSchema: z.object({ locale: LocaleInput }),
       },
       async ({ locale }) => {
-        const posts = getPosts(locale).map((p) => ({
-          slug: p.meta.slug,
-          title: p.doc.title,
-          date: p.meta.date,
-          summary: p.doc.summary,
-        }));
-        return jsonResult(posts);
-      },
-    );
-
-    server.registerTool(
-      "get_post",
-      {
-        title: "Get blog post",
-        description:
-          "Get one of Sofia Ferro's blog posts in full: metadata (date, image) plus title, summary " +
-          "and the complete markdown body. Use list_posts first to discover valid slugs.",
-        inputSchema: z.object({
-          slug: z.string().describe("Post slug (see list_posts)."),
-          locale: LocaleInput,
-        }),
-      },
-      async ({ slug, locale }) => {
-        const post = getPost(slug, locale);
-        if (!post) {
-          const valid = getPosts(locale).map((p) => p.meta.slug);
-          return errorResult(
-            `Unknown post slug "${slug}". Valid slugs: ${valid.join(", ")}.`,
-          );
-        }
+        const page = getPage("manifiesto", locale);
         return jsonResult({
-          ...post.meta,
-          title: post.doc.title,
-          summary: post.doc.summary,
-          markdown: post.rawMarkdown,
+          title: page.doc.title,
+          summary: page.doc.summary,
+          markdown: page.rawMarkdown,
         });
       },
     );
@@ -258,10 +227,10 @@ const handler = createMcpHandler(
       "based in Buenos Aires, Argentina, working at the intersection of code, language and hardware: " +
       "expanded literature, bots, IoT, creative coding and installations. Content is bilingual " +
       '(Spanish "es" — the default — and English "en"). Use list_projects/get_project for her art and ' +
-      "engineering projects, list_posts/get_post for her blog, get_resume for a JSON Resume v1.0.0 " +
-      "document, and contact to send her a message. The same content is also available as plain " +
-      "markdown at https://sofiaferro.com.ar (append .md to any page URL, or send Accept: text/markdown; " +
-      "see /llms.txt).",
+      "engineering projects, get_manifesto for her manifesto on programming as practice, get_resume " +
+      "for a JSON Resume v1.0.0 document, and contact to send her a message. She posts on X as " +
+      "@svfonx. The same content is also available as plain markdown at https://www.sofiaferro.com.ar " +
+      "(append .md to any page URL, or send Accept: text/markdown; see /llms.txt).",
   },
 );
 

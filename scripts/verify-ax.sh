@@ -29,7 +29,7 @@ check_header() { # name, expected-header-substring, url, extra curl args...
 
 echo "== markdown negotiation @ $BASE"
 check "Accept: text/markdown → md" "# pit0nisa" -H "Accept: text/markdown" "$BASE/es/projects/pit0nisa"
-check ".md suffix URL" "# Zen" "$BASE/es/blog/zen-art-programming.md"
+check ".md suffix URL" "# Manifiesto" "$BASE/es/manifiesto.md"
 check "HTML sin header sigue siendo HTML" "<!DOCTYPE html>" -H "Accept: text/html" -A "Mozilla/5.0" "$BASE/es"
 check_header "Content-Type markdown" "text/markdown" "$BASE/es.md"
 check_header "Vary: Accept en HTML" "vary" "$BASE/es" -A "Mozilla/5.0" -H "Accept: text/html"

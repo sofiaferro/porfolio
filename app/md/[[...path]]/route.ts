@@ -1,12 +1,11 @@
-import { getPost, getProject, getPosts, getProjects } from "@/lib/content";
+import { getProject, getProjects } from "@/lib/content";
 import { LOCALES, LocaleSchema } from "@/lib/content/schema";
 import {
   renderAbout,
-  renderBlogIndex,
   renderHome,
+  renderManifiesto,
   renderMarkdownSitemap,
   renderNotFound,
-  renderPost,
   renderProject,
   renderProjectsIndex,
 } from "@/lib/markdown";
@@ -30,15 +29,11 @@ function resolve(path: string[]): string | undefined {
 
   if (!section) return renderHome(locale.data);
   if (section === "about" && !slug) return renderAbout(locale.data);
+  if (section === "manifiesto" && !slug) return renderManifiesto(locale.data);
   if (section === "projects") {
     if (!slug) return renderProjectsIndex(locale.data);
     const project = getProject(slug, locale.data);
     return project && renderProject(project, locale.data);
-  }
-  if (section === "blog") {
-    if (!slug) return renderBlogIndex(locale.data);
-    const post = getPost(slug, locale.data);
-    return post && renderPost(post, locale.data);
   }
   return undefined;
 }
@@ -59,13 +54,10 @@ export function generateStaticParams(): { path: string[] }[] {
     params.push(
       { path: [locale] },
       { path: [locale, "about"] },
+      { path: [locale, "manifiesto"] },
       { path: [locale, "projects"] },
-      { path: [locale, "blog"] },
       ...getProjects(locale).map((p) => ({
         path: [locale, "projects", p.meta.slug],
-      })),
-      ...getPosts(locale).map((p) => ({
-        path: [locale, "blog", p.meta.slug],
       })),
     );
   }

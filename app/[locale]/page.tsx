@@ -4,7 +4,7 @@ import { Link } from "@/i18n/navigation";
 import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
-import { getPage, getPosts, getProjects, getSite } from "@/lib/content";
+import { getPage, getProjects, getSite } from "@/lib/content";
 import type { Locale } from "@/lib/content/schema";
 import { Mdx } from "@/components/mdx";
 import { pageMetadata } from "@/lib/metadata";
@@ -29,8 +29,8 @@ export default async function HomePage({ params }: Props) {
 
   const site = getSite();
   const about = getPage("about", locale as Locale);
+  const manifiesto = getPage("manifiesto", locale as Locale);
   const projects = getProjects(locale as Locale);
-  const posts = getPosts(locale as Locale);
 
   return (
     <main className="mx-auto max-w-3xl px-6 py-12">
@@ -78,33 +78,22 @@ export default async function HomePage({ params }: Props) {
         </ul>
       </section>
 
-      <section aria-labelledby="ideas-heading" className="mt-12">
+      <section aria-labelledby="manifiesto-heading" className="mt-12">
         <h2
-          id="ideas-heading"
+          id="manifiesto-heading"
           className="text-[11px] font-semibold uppercase tracking-[0.25em] opacity-90"
         >
-          <span className="text-[var(--accent)]">##</span> {t("blogTitle")}
+          <span className="text-[var(--accent)]">##</span> {t("manifestoTitle")}
         </h2>
-        <ul className="mt-4 divide-y divide-[var(--hairline)] border-y border-[var(--hairline)]">
-          {posts.map((p) => (
-            <li key={p.meta.slug}>
-              <Link
-                href={`/blog/${p.meta.slug}`}
-                className="group flex items-baseline justify-between gap-4 py-3.5"
-              >
-                <span className="font-semibold group-hover:text-[var(--accent)]">
-                  {p.doc.title}
-                </span>
-                <time
-                  dateTime={p.meta.date}
-                  className="shrink-0 text-xs opacity-60"
-                >
-                  {p.meta.date}
-                </time>
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <p className="mt-4 max-w-[60ch] leading-relaxed">
+          {manifiesto.doc.summary}{" "}
+          <Link
+            href="/manifiesto"
+            className="text-[var(--accent)] underline underline-offset-2"
+          >
+            {t("manifestoRead")}
+          </Link>
+        </p>
       </section>
     </main>
   );

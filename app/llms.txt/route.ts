@@ -1,4 +1,4 @@
-import { getPage, getPosts, getProjects, getSite } from "@/lib/content";
+import { getPage, getProjects, getSite } from "@/lib/content";
 import { absoluteUrl } from "@/lib/markdown";
 
 export const dynamic = "force-static";
@@ -12,15 +12,13 @@ export function GET(): Response {
     .join(" ");
   const github = site.sameAs.find((u) => u.includes("github.com"));
   const linkedin = site.sameAs.find((u) => u.includes("linkedin.com"));
+  const x = site.sameAs.find((u) => u.includes("x.com"));
 
   const projects = getProjects("es").map(
     (p) =>
       `- [${p.doc.title}](${absoluteUrl(`/es/projects/${p.meta.slug}.md`)}): ${p.doc.summary}`,
   );
-  const posts = getPosts("es").map(
-    (p) =>
-      `- [${p.doc.title}](${absoluteUrl(`/es/blog/${p.meta.slug}.md`)}): ${p.doc.summary}`,
-  );
+  const manifiesto = getPage("manifiesto", "en");
 
   const body = [
     `# ${site.name}`,
@@ -33,9 +31,9 @@ export function GET(): Response {
     "",
     ...projects,
     "",
-    "## Writing",
+    "## Manifesto",
     "",
-    ...posts,
+    `- [${manifiesto.doc.title}](${absoluteUrl("/en/manifiesto.md")}): ${manifiesto.doc.summary}`,
     "",
     "## Meta",
     "",
@@ -49,6 +47,7 @@ export function GET(): Response {
     `- [RSS feed](${absoluteUrl("/feed.xml")})`,
     ...(github ? [`- [GitHub](${github})`] : []),
     ...(linkedin ? [`- [LinkedIn](${linkedin})`] : []),
+    ...(x ? [`- [X](${x})`] : []),
     "",
   ].join("\n");
 

@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { getPosts, getProjects } from "@/lib/content";
+import { getProjects } from "@/lib/content";
 import { LOCALES, type Locale } from "@/lib/content/schema";
 import { absoluteUrl } from "@/lib/markdown";
 
@@ -34,9 +34,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...getProjects("es").flatMap((p) =>
       entriesFor(["projects", p.meta.slug], p.meta.date),
     ),
-    ...entriesFor(["blog"]),
-    ...getPosts("es").flatMap((p) =>
-      entriesFor(["blog", p.meta.slug], p.meta.date),
-    ),
+    ...entriesFor(["manifiesto"]),
   ];
 }

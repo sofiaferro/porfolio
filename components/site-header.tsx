@@ -16,8 +16,8 @@ export function SiteHeader() {
           <Link href="/projects" className="hover:text-[var(--accent)]">
             ./{t("projects")}
           </Link>
-          <Link href="/blog" className="hover:text-[var(--accent)]">
-            ./{t("blog")}
+          <Link href="/manifiesto" className="hover:text-[var(--accent)]">
+            ./{t("manifiesto")}
           </Link>
           <Link href="/about" className="hover:text-[var(--accent)]">
             ./{t("about")}

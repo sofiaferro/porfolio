@@ -19,6 +19,9 @@ basics:
     - network: LinkedIn
       username: sofiaferro
       url: https://www.linkedin.com/in/sofiaferro
+    - network: X
+      username: svfonx
+      url: https://x.com/svfonx
 
 skills:
   - name: Software engineering

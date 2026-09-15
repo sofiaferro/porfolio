@@ -1,6 +1,13 @@
 import { useTranslations } from "next-intl";
 import { getSite } from "@/lib/content";
 
+function profileLabel(url: string): string {
+  if (url.includes("github.com")) return "github";
+  if (url.includes("linkedin.com")) return "linkedin";
+  if (url.includes("x.com") || url.includes("twitter.com")) return "x";
+  return new URL(url).hostname.replace(/^www\./, "");
+}
+
 export function SiteFooter() {
   const t = useTranslations("footer");
   const site = getSite();
@@ -9,17 +16,23 @@ export function SiteFooter() {
     <footer className="mt-16 border-t border-[var(--hairline)]">
       <div className="mx-auto max-w-3xl space-y-2 px-6 py-8 text-sm opacity-80">
         <p>
-          <a href={`mailto:${site.email}`} className="underline underline-offset-2 hover:text-[var(--accent)]">
+          <a
+            href={`mailto:${site.email}`}
+            className="underline underline-offset-2 hover:text-[var(--accent)]"
+          >
             {site.email}
           </a>
-          {" · "}
-          <a href={site.sameAs[0]} className="underline underline-offset-2 hover:text-[var(--accent)]">
-            github
-          </a>
-          {" · "}
-          <a href={site.sameAs[1]} className="underline underline-offset-2 hover:text-[var(--accent)]">
-            linkedin
-          </a>
+          {site.sameAs.map((url) => (
+            <span key={url}>
+              {" · "}
+              <a
+                href={url}
+                className="underline underline-offset-2 hover:text-[var(--accent)]"
+              >
+                {profileLabel(url)}
+              </a>
+            </span>
+          ))}
         </p>
         <p className="opacity-60">
           {t("agents")}{" "}

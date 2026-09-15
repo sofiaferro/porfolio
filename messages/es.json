@@ -1,13 +1,13 @@
 {
   "nav": {
     "projects": "proyectos",
-    "blog": "ideas",
+    "manifiesto": "manifiesto",
     "about": "sobre-mi"
   },
   "home": {
     "projectsTitle": "proyectos",
-    "blogTitle": "ideas",
-    "viewAll": "ver todo"
+    "manifestoTitle": "manifiesto",
+    "manifestoRead": "leer completo →"
   },
   "projects": {
     "title": "proyectos",
@@ -17,10 +17,6 @@
     "live": "sitio",
     "github": "código",
     "video": "video"
-  },
-  "blog": {
-    "title": "ideas",
-    "backToList": "volver a ideas"
   },
   "about": {
     "title": "sobre mí"

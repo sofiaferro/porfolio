@@ -1,6 +1,6 @@
 ---
 name: sofia-ferro-portfolio
-description: How to read Sofia Ferro's portfolio (sofiaferro.com.ar) as an agent — markdown pages, llms.txt, JSON Resume, plain-text resume, MCP server and RSS. Use when researching Sofia Ferro, her projects, blog posts or resume, or when contacting her.
+description: How to read Sofia Ferro's portfolio (sofiaferro.com.ar) as an agent — markdown pages, llms.txt, JSON Resume, plain-text resume, MCP server and RSS. Use when researching Sofia Ferro, her projects, manifesto or resume, or when contacting her.
 ---
 
 # Sofia Ferro's portfolio, for agents
@@ -25,7 +25,7 @@ Append `.md` to any page URL:
 
 ```bash
 curl -s https://www.sofiaferro.com.ar/en/projects/pit0nisa.md
-curl -s https://www.sofiaferro.com.ar/es/blog.md
+curl -s https://www.sofiaferro.com.ar/es/manifiesto.md
 ```
 
 Or use content negotiation on the normal URL:
@@ -68,8 +68,7 @@ Tools:
 | `get_resume` | `locale?` | JSON Resume v1.0.0 (EN only for now) |
 | `list_projects` | `locale?`, `category?` | slug, title, summary, category, date, tech, links |
 | `get_project` | `slug`, `locale?` | full metadata + markdown body |
-| `list_posts` | `locale?` | slug, title, date, summary |
-| `get_post` | `slug`, `locale?` | full metadata + markdown body |
+| `get_manifesto` | `locale?` | title, summary + full markdown text |
 | `contact` | `name`, `contact_info`, `message`, `purpose?` | sends Sofia an email |
 
 `locale` is `"es"` (default) or `"en"`. Project categories: `literatura-expandida`,

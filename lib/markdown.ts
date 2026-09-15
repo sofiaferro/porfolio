@@ -1,9 +1,7 @@
 import {
   getPage,
-  getPosts,
   getProjects,
   getSite,
-  type Post,
   type Project,
 } from "@/lib/content";
 import { LOCALES, type Locale } from "@/lib/content/schema";
@@ -23,7 +21,7 @@ const LABELS = {
   es: {
     home: "Inicio",
     projects: "Proyectos",
-    blog: "Blog",
+    manifiesto: "Manifiesto",
     about: "Sobre mí",
     canonical: "Canónica",
     alternate: "English version",
@@ -35,7 +33,7 @@ const LABELS = {
   en: {
     home: "Home",
     projects: "Projects",
-    blog: "Blog",
+    manifiesto: "Manifesto",
     about: "About",
     canonical: "Canonical",
     alternate: "Versión en español",
@@ -56,8 +54,8 @@ function mdUrl(locale: Locale, ...segments: string[]): string {
 
 /** `- [title](html) ([markdown](md)) — summary` */
 function entryListItem(
-  entry: Project | Post,
-  section: "projects" | "blog",
+  entry: Project,
+  section: "projects",
   locale: Locale,
 ): string {
   const html = htmlUrl(locale, section, entry.meta.slug);
@@ -109,10 +107,8 @@ export function renderHome(locale: Locale): string {
     getProjects(locale)
       .map((p) => entryListItem(p, "projects", locale))
       .join("\n"),
-    `## ${t.blog}`,
-    getPosts(locale)
-      .map((p) => entryListItem(p, "blog", locale))
-      .join("\n"),
+    `## ${t.manifiesto}`,
+    `${getPage("manifiesto", locale).doc.summary} — [${t.manifiesto}](${mdUrl(locale, "manifiesto")})`,
   ]);
 }
 
@@ -151,34 +147,9 @@ export function renderProject(project: Project, locale: Locale): string {
   ]);
 }
 
-export function renderBlogIndex(locale: Locale): string {
-  const t = LABELS[locale];
-  const sections = getPosts(locale).map((p) => {
-    const links = [
-      `[HTML](${htmlUrl(locale, "blog", p.meta.slug)})`,
-      `[${t.markdown}](${mdUrl(locale, "blog", p.meta.slug)})`,
-    ].join(" · ");
-    return joinBlocks([
-      `## ${p.doc.title}`,
-      p.meta.date,
-      p.doc.summary,
-      links,
-    ]).trim();
-  });
-  return joinBlocks([`# ${t.blog}`, ...sections]);
-}
-
-export function renderPost(post: Post, locale: Locale): string {
-  const t = LABELS[locale];
-  const alt = otherLocale(locale);
-  return joinBlocks([
-    `# ${post.doc.title}`,
-    post.meta.date,
-    `${t.canonical}: ${htmlUrl(locale, "blog", post.meta.slug)} · [${t.alternate}](${mdUrl(alt, "blog", post.meta.slug)})`,
-    post.rawMarkdown,
-    post.meta.image &&
-      imageMarkdown([{ src: post.meta.image }], post.doc.title, locale),
-  ]);
+export function renderManifiesto(locale: Locale): string {
+  const page = getPage("manifiesto", locale);
+  return joinBlocks([`# ${page.doc.title}`, page.rawMarkdown]);
 }
 
 export function renderAbout(locale: Locale): string {
@@ -209,15 +180,7 @@ export function renderMarkdownSitemap(): string {
           mdUrl(locale, "projects", p.meta.slug),
         ),
       ),
-      sitemapItem(1, t.blog, htmlUrl(locale, "blog"), mdUrl(locale, "blog")),
-      ...getPosts(locale).map((p) =>
-        sitemapItem(
-          2,
-          p.doc.title,
-          htmlUrl(locale, "blog", p.meta.slug),
-          mdUrl(locale, "blog", p.meta.slug),
-        ),
-      ),
+      sitemapItem(1, t.manifiesto, htmlUrl(locale, "manifiesto"), mdUrl(locale, "manifiesto")),
     ];
     return joinBlocks([
       `## ${locale === "es" ? "Español" : "English"} (${locale})`,
@@ -233,8 +196,7 @@ export function renderNotFound(): string {
     "/{es|en}/about.md",
     "/{es|en}/projects.md",
     "/{es|en}/projects/{slug}.md",
-    "/{es|en}/blog.md",
-    "/{es|en}/blog/{slug}.md",
+    "/{es|en}/manifiesto.md",
     "/sitemap.md — full list of pages",
   ];
   return joinBlocks([
