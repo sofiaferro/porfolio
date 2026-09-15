@@ -19,8 +19,7 @@ export default function proxy(request: NextRequest) {
 }
 
 export const config = {
-  // Skip static assets, markdown negotiation targets, and API/AX endpoints.
-  matcher: [
-    "/((?!api|md|_next|_vercel|\\.well-known|images|mdq-cyborg|budin-cam|favicon\\.ico|robots\\.txt|sitemap.*|llms\\.txt|feed\\.xml|.*\\.md$).*)",
-  ],
+  // Skip API/AX endpoints, internals, and any path with a file extension
+  // (favicons, images, robots.txt, sitemap.xml, llms.txt, *.md, …).
+  matcher: ["/((?!api|md/|_next|_vercel|\\.well-known|apple-icon|.*\\..*).*)"],
 };

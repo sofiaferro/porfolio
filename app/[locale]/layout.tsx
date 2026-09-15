@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { JetBrains_Mono } from "next/font/google";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
@@ -61,10 +62,10 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} className={jetbrainsMono.variable} suppressHydrationWarning>
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
-      </head>
       <body className="min-h-screen font-mono antialiased">
+        <Script id="theme-restore" strategy="beforeInteractive">
+          {THEME_SCRIPT}
+        </Script>
         <JsonLdScript data={personJsonLd()} />
         <NextIntlClientProvider>
           <SiteHeader />
