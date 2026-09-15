@@ -1,5 +1,8 @@
 date: "2026"
 category: hardware
+links:
+  live: https://x.com/gauchopaisano
+  video: https://www.youtube.com/watch?v=ydxnJeLvh0E
 tech:
   - Raspberry Pi Zero 2 W
   - ESP32
