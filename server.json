@@ -3,11 +3,11 @@
   "name": "ar.com.sofiaferro/portfolio",
   "description": "Sofia Ferro's portfolio: projects (electronic art, expanded literature, bots, IoT, creative coding), blog posts, JSON Resume, and a contact tool. Bilingual (es/en).",
   "version": "1.0.0",
-  "websiteUrl": "https://sofiaferro.com.ar",
+  "websiteUrl": "https://www.sofiaferro.com.ar",
   "remotes": [
     {
       "type": "streamable-http",
-      "url": "https://sofiaferro.com.ar/api/mcp"
+      "url": "https://www.sofiaferro.com.ar/api/mcp"
     }
   ]
 }

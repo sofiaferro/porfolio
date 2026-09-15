@@ -7,31 +7,31 @@ description: How to read Sofia Ferro's portfolio (sofiaferro.com.ar) as an agent
 
 Sofia Ferro is a software engineer and electronic artist (Buenos Aires, AR) working on
 expanded literature, bots, IoT, hardware and creative coding. Her portfolio at
-https://sofiaferro.com.ar is agent-first: every surface below returns plain text or JSON —
+https://www.sofiaferro.com.ar is agent-first: every surface below returns plain text or JSON —
 no HTML scraping needed. Content is bilingual: `/es/...` (default) and `/en/...`.
 
 ## Start here: llms.txt
 
 ```bash
-curl -s https://sofiaferro.com.ar/llms.txt
+curl -s https://www.sofiaferro.com.ar/llms.txt
 ```
 
 A machine-readable index of the site and all agent endpoints. There is also a markdown
-sitemap at `https://sofiaferro.com.ar/sitemap.md`.
+sitemap at `https://www.sofiaferro.com.ar/sitemap.md`.
 
 ## Markdown versions of every page
 
 Append `.md` to any page URL:
 
 ```bash
-curl -s https://sofiaferro.com.ar/en/projects/pit0nisa.md
-curl -s https://sofiaferro.com.ar/es/blog.md
+curl -s https://www.sofiaferro.com.ar/en/projects/pit0nisa.md
+curl -s https://www.sofiaferro.com.ar/es/blog.md
 ```
 
 Or use content negotiation on the normal URL:
 
 ```bash
-curl -s -H "Accept: text/markdown" https://sofiaferro.com.ar/en/projects/pit0nisa
+curl -s -H "Accept: text/markdown" https://www.sofiaferro.com.ar/en/projects/pit0nisa
 ```
 
 ## Resume
@@ -39,24 +39,24 @@ curl -s -H "Accept: text/markdown" https://sofiaferro.com.ar/en/projects/pit0nis
 JSON Resume v1.0.0 (canonical, structured):
 
 ```bash
-curl -s https://sofiaferro.com.ar/api/resume.json
+curl -s https://www.sofiaferro.com.ar/api/resume.json
 ```
 
 Plain text — CLI clients (curl/wget/httpie) hitting the apex get the resume directly:
 
 ```bash
-curl -s https://sofiaferro.com.ar/          # returns resume.txt for CLI user agents
-curl -s https://sofiaferro.com.ar/api/resume.txt
+curl -s https://www.sofiaferro.com.ar/          # returns resume.txt for CLI user agents
+curl -s https://www.sofiaferro.com.ar/api/resume.txt
 ```
 
 ## MCP server
 
-Streamable HTTP endpoint (no auth): `https://sofiaferro.com.ar/api/mcp`
+Streamable HTTP endpoint (no auth): `https://www.sofiaferro.com.ar/api/mcp`
 
 ```json
 {
   "mcpServers": {
-    "sofia-ferro-portfolio": { "url": "https://sofiaferro.com.ar/api/mcp" }
+    "sofia-ferro-portfolio": { "url": "https://www.sofiaferro.com.ar/api/mcp" }
   }
 }
 ```
@@ -80,13 +80,13 @@ fall back to emailing `svf.inbox@gmail.com` if it is unavailable.
 For stdio-only MCP clients:
 
 ```bash
-npx -y mcp-remote https://sofiaferro.com.ar/api/mcp
+npx -y mcp-remote https://www.sofiaferro.com.ar/api/mcp
 ```
 
 ## RSS
 
 ```bash
-curl -s https://sofiaferro.com.ar/feed.xml
+curl -s https://www.sofiaferro.com.ar/feed.xml
 ```
 
 ## Contact
