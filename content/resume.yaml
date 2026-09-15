@@ -1,0 +1,69 @@
+# JSON Resume v1.0.0 shape (https://jsonresume.org/schema)
+basics:
+  name: Sofia Ferro
+  label: Software Engineer & Electronic Artist
+  email: svf.inbox@gmail.com
+  url: https://sofiaferro.com.ar
+  summary: >-
+    Software engineer and electronic artist working at the intersection of
+    code, language and hardware: expanded literature, bots, IoT and creative
+    coding. I build things — from applications to digital experiences that
+    connect technology with the sensitive.
+  location:
+    countryCode: AR
+    region: Buenos Aires
+  profiles:
+    - network: GitHub
+      username: sofiaferro
+      url: https://github.com/sofiaferro
+    - network: LinkedIn
+      username: sofiaferro
+      url: https://www.linkedin.com/in/sofiaferro
+
+skills:
+  - name: Software engineering
+    keywords: [TypeScript, React, Next.js, Node.js, Python]
+  - name: Creative coding & electronic art
+    keywords: [generative text, Markov chains, bots, installations]
+  - name: Hardware & IoT
+    keywords: [ESP32, Arduino, sensors, electronics, Fritzing]
+
+projects:
+  # Kept in sync with content/projects/ (en.mdx summaries) — regenerate if projects change.
+  - name: pit0nisa
+    description: An anthology that explores the mediumistic nature of computational language, generated with Markov chains.
+    url: https://sofiaferro.com.ar/en/projects/pit0nisa
+    keywords: [expanded literature, generative text]
+  - name: botkowski
+    description: An X bot inspired by "My Computer" by Charles Bukowski.
+    url: https://sofiaferro.com.ar/en/projects/botkowski
+    keywords: [bots]
+  - name: mdq-cyborg
+    description: A reimagined Mar del Plata souvenir — a DIY weather station that queries an API for temperature and humidity, akin to the classic sea lion weather figurines.
+    url: https://sofiaferro.com.ar/en/projects/mdq-cyborg
+    keywords: [hardware, IoT]
+  - name: mc-txt
+    description: A gamified text generator.
+    url: https://sofiaferro.com.ar/en/projects/mc-txt
+    keywords: [expanded literature]
+  - name: page turner DIY
+    description: A DIY remote-controlled Kindle page turner.
+    url: https://sofiaferro.com.ar/en/projects/page-turner-diy
+    keywords: [hardware]
+  - name: bucles
+    description: An installation built on an Arduino Mega 2560 board.
+    url: https://sofiaferro.com.ar/en/projects/bucles
+    keywords: [hardware, installation]
+  - name: budín-cam
+    description: A home monitoring system built with an ESP32-CAM connected to WiFi and linked to a Telegram bot.
+    url: https://sofiaferro.com.ar/en/projects/budin-cam
+    keywords: [IoT]
+  - name: script-fusión
+    description: Final project for the Master's in Electronic Arts (UNTREF).
+    url: https://sofiaferro.com.ar/en/projects/script-fusion
+    keywords: [creative coding]
+
+meta:
+  canonical: https://sofiaferro.com.ar/api/resume.json
+  version: v1.0.0
+  lastModified: "2026-09-15"

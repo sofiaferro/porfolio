@@ -1,0 +1,14 @@
+date: '2024'
+category: creative-coding
+tech:
+  - Next.js
+  - Bluetooth
+  - Thermal Printer
+  - Node.js
+  - Reverse Engineering
+links:
+  live: https://script-fusion.vercel.app/
+  github: https://script-fusion.vercel.app/
+images:
+  - src: /images/scriptfusion.png
+status: published

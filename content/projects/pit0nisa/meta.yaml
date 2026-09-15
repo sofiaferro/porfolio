@@ -1,0 +1,12 @@
+date: '2020'
+category: literatura-expandida
+tech:
+  - HTML
+  - CSS
+  - JavaScript
+links:
+  live: https://pit0nisa.netlify.app/
+  github: https://pit0nisa.netlify.app/
+images:
+  - src: /images/pit0nisa.png
+status: published

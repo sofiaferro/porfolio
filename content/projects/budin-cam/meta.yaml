@@ -1,0 +1,37 @@
+date: '2024'
+category: iot
+tech:
+  - ESP32-CAM
+  - Telegram Bot
+  - IoT
+images:
+  - src: /images/esp32.jpeg
+  - src: /budin-cam/budin-cam-1.jpeg
+    alt:
+      es: Budín con la ESP32-CAM
+      en: Budín with the ESP32-CAM
+    caption:
+      es: Budín con la ESP32-CAM
+      en: Budín with the ESP32-CAM
+  - src: /budin-cam/budin-cam-2.jpeg
+    alt:
+      es: Prueba de flash de la ESP32-CAM
+      en: ESP32-CAM flash test
+    caption:
+      es: Prueba de flash de la ESP32-CAM
+      en: ESP32-CAM flash test
+  - src: /budin-cam/budin-cam-3.jpeg
+    alt:
+      es: Montaje en pared
+      en: Wall mounting
+    caption:
+      es: Montaje en pared
+      en: Wall mounting
+  - src: /budin-cam/budin-cam-4.jpeg
+    alt:
+      es: Capturas del bot de Telegram
+      en: Telegram bot screenshots
+    caption:
+      es: Capturas del bot de Telegram
+      en: Telegram bot screenshots
+status: published

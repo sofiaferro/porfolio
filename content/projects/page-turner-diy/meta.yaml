@@ -1,0 +1,11 @@
+date: '2025'
+category: hardware
+tech:
+  - Arduino Pro Mini
+  - IR sensor
+  - Micro Servo Motor
+links:
+  video: https://vimeo.com/1092307749?share=copy
+images:
+  - src: /images/page-turner-diy-1.jpeg
+status: published

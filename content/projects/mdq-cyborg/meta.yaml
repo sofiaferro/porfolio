@@ -1,0 +1,101 @@
+date: '2024'
+category: hardware
+tech:
+  - ESP-WROOM
+  - Weather API
+  - LEDs
+  - Electronics
+images:
+  - src: /images/mdq-cyborg-16.jpeg
+  - src: /mdq-cyborg/mdq-cyborg-1.jpeg
+    alt:
+      es: Esquemático en Fritzing (v1)
+      en: Fritzing schematic (v1)
+    caption:
+      es: Esquemático en Fritzing (v1)
+      en: Fritzing schematic (v1)
+  - src: /mdq-cyborg/mdq-cyborg-4.jpeg
+    alt:
+      es: Transferencia térmica del diseño
+      en: Thermal transfer of the design
+    caption:
+      es: Transferencia térmica del diseño
+      en: Thermal transfer of the design
+  - src: /mdq-cyborg/mdq-cyborg-8.jpeg
+    alt:
+      es: Grabado en ácido férrico
+      en: Etching with ferric chloride
+    caption:
+      es: Grabado en ácido férrico
+      en: Etching with ferric chloride
+  - src: /mdq-cyborg/mdq-cyborg-5.jpeg
+    alt:
+      es: Limpieza de la placa en agua
+      en: Cleaning the board in water
+    caption:
+      es: Limpieza de la placa en agua
+      en: Cleaning the board in water
+  - src: /mdq-cyborg/mdq-cyborg-7.jpeg
+    alt:
+      es: Resultado del grabado
+      en: Etching result
+    caption:
+      es: Resultado del grabado
+      en: Etching result
+  - src: /mdq-cyborg/mdq-cyborg-11.jpeg
+    alt:
+      es: Placa transferida
+      en: Transferred board
+    caption:
+      es: Placa transferida
+      en: Transferred board
+  - src: /mdq-cyborg/mdq-cyborg-12.jpeg
+    alt:
+      es: Posicionamiento de los LEDs para soldado
+      en: Positioning LEDs for soldering
+    caption:
+      es: Posicionamiento de los LEDs para soldado
+      en: Positioning LEDs for soldering
+  - src: /mdq-cyborg/mdq-cyborg-13.jpeg
+    alt:
+      es: Soldado de componentes
+      en: Soldering components
+    caption:
+      es: Soldado de componentes
+      en: Soldering components
+  - src: /mdq-cyborg/mdq-cyborg-17.jpeg
+    alt:
+      es: Resultado del soldado
+      en: Soldering result
+    caption:
+      es: Resultado del soldado
+      en: Soldering result
+  - src: /mdq-cyborg/mdq-cyborg-19.jpeg
+    alt:
+      es: Sensor de temperatura y humedad quemado (v1)
+      en: Burned temperature and humidity sensor (v1)
+    caption:
+      es: Sensor de temperatura y humedad quemado (v1)
+      en: Burned temperature and humidity sensor (v1)
+  - src: /mdq-cyborg/mdq-cyborg-20.jpeg
+    alt:
+      es: mdq-cyborg en un día de buen clima (1)
+      en: mdq-cyborg on a good weather day (1)
+    caption:
+      es: mdq-cyborg en un día de buen clima (1)
+      en: mdq-cyborg on a good weather day (1)
+  - src: /mdq-cyborg/mdq-cyborg-21.jpeg
+    alt:
+      es: mdq-cyborg en un día de buen clima (2)
+      en: mdq-cyborg on a good weather day (2)
+    caption:
+      es: mdq-cyborg en un día de buen clima (2)
+      en: mdq-cyborg on a good weather day (2)
+  - src: /mdq-cyborg/mdq-cyborg-22.jpeg
+    alt:
+      es: mdq-cyborg en un día de mucha humedad
+      en: mdq-cyborg on a humid day
+    caption:
+      es: mdq-cyborg en un día de mucha humedad
+      en: mdq-cyborg on a humid day
+status: published
