@@ -4,7 +4,7 @@ tech:
   - React
   - Nes.CSS
 links:
-  live: https://mc-txt.netlify.app/
+  live: https://mc-txt.vercel.app/
 images:
   - src: /images/mc-txt.png
 status: published
