@@ -8,7 +8,7 @@ import { getSite } from "@/lib/content";
 import { personJsonLd, JsonLdScript } from "@/lib/jsonld";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeScript } from "@/components/theme-script";
 import "../globals.css";
 
 const jetbrainsMono = JetBrains_Mono({
@@ -63,15 +63,16 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} className={jetbrainsMono.variable} suppressHydrationWarning>
+      <head>
+        <ThemeScript />
+      </head>
       <body className="min-h-screen font-mono antialiased">
         <JsonLdScript data={personJsonLd()} />
-        <ThemeProvider>
-          <NextIntlClientProvider>
-            <SiteHeader />
-            {children}
-            <SiteFooter />
-          </NextIntlClientProvider>
-        </ThemeProvider>
+        <NextIntlClientProvider>
+          <SiteHeader />
+          {children}
+          <SiteFooter />
+        </NextIntlClientProvider>
       </body>
     </html>
   );

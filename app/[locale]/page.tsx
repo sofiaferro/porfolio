@@ -47,7 +47,7 @@ export default async function HomePage({ params }: Props) {
       : "ingeniera de software · creative technologist";
 
   return (
-    <main className="mx-auto max-w-3xl space-y-14 px-6 py-14">
+    <main className="mx-auto max-w-3xl space-y-12 px-4 py-10 sm:space-y-14 sm:px-6 sm:py-14">
       <section aria-labelledby="whoami" className="session-block">
         <PromptLine cmd="whoami" label={site.name} as="p" />
         <h1

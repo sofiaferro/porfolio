@@ -43,7 +43,7 @@ export default async function ProjectPage({ params }: Props) {
   const { meta, doc } = project;
 
   return (
-    <main className="mx-auto max-w-3xl px-6 py-12">
+    <main className="mx-auto max-w-3xl px-4 py-10 sm:px-6 sm:py-12">
       <nav aria-label="breadcrumb" className="text-sm">
         <Link href="/projects" className="text-[var(--muted)] hover:text-[var(--accent)]">
           ← {t("backToList")}
@@ -64,7 +64,7 @@ export default async function ProjectPage({ params }: Props) {
               {meta.tech.join(", ")}
             </p>
           )}
-          <ul className="mt-2 flex gap-4 text-sm">
+          <ul className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-sm">
             {meta.links.live && (
               <li>
                 <a

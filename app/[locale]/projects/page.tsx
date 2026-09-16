@@ -32,7 +32,7 @@ export default async function ProjectsPage({ params }: Props) {
   const projects = getProjects(locale as Locale);
 
   return (
-    <main className="mx-auto max-w-3xl px-6 py-12">
+    <main className="mx-auto max-w-3xl px-4 py-10 sm:px-6 sm:py-12">
       <h1 className="text-2xl font-bold tracking-tight">
         <span className="text-[var(--accent)]">$</span> ls {t("title")}/
       </h1>

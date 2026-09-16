@@ -14,7 +14,7 @@ export function SiteFooter() {
 
   return (
     <footer className="mt-20 border-t border-[var(--hairline)]">
-      <div className="mx-auto max-w-3xl space-y-3 px-6 py-10 text-sm">
+      <div className="mx-auto max-w-3xl space-y-3 px-4 py-10 text-sm sm:px-6">
         <p className="flex flex-wrap gap-x-5 gap-y-1">
           <a
             href={`mailto:${site.email}`}
