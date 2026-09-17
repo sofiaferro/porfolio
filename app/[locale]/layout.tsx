@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { JetBrains_Mono } from "next/font/google";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
@@ -43,6 +43,13 @@ export async function generateMetadata({
     description: `${tagline} ${geo}`,
   };
 }
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f3f4ed" },
+    { media: "(prefers-color-scheme: dark)", color: "#0b0c09" },
+  ],
+};
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));

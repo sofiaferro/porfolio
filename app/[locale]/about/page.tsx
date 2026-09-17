@@ -30,7 +30,7 @@ export default async function AboutPage({ params }: Props) {
   return (
     <main className="mx-auto max-w-3xl px-4 py-10 sm:px-6 sm:py-12">
       <h1 className="text-2xl font-bold tracking-tight">
-        <span className="text-[var(--accent)]">$</span> cat {about.doc.title.toLowerCase()}
+        <span className="text-[var(--accent-ink)]">$</span> cat {about.doc.title.toLowerCase()}
       </h1>
       <div className="mt-8">
         <Mdx source={about.rawMarkdown} />
@@ -38,7 +38,7 @@ export default async function AboutPage({ params }: Props) {
       <p className="mt-8 text-sm">
         <a
           href={`mailto:${site.email}`}
-          className="text-[var(--accent)] underline underline-offset-2"
+          className="link-mark"
         >
           {site.email}
         </a>

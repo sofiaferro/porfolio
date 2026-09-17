@@ -13,19 +13,19 @@ export default function AppleIcon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "#0d0d0c",
+          background: "#0b0c09",
         }}
       >
         <svg width="132" height="132" viewBox="0 0 64 64">
           <polyline
             points="15,20 29,32 15,44"
             fill="none"
-            stroke="#c6f43f"
+            stroke="#6fef49"
             strokeWidth="7"
             strokeLinecap="round"
             strokeLinejoin="round"
           />
-          <rect x="34" y="41" width="16" height="7" rx="2.5" fill="#c6f43f" />
+          <rect x="34" y="41" width="16" height="7" rx="2.5" fill="#6fef49" />
         </svg>
       </div>
     ),

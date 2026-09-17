@@ -58,7 +58,7 @@ export function ThemeToggle() {
         setTheme(next);
       }}
       aria-label={next === "dark" ? t("themeDark") : t("themeLight")}
-      className="cursor-pointer text-sm text-[var(--muted)] transition-transform duration-150 hover:text-[var(--accent)] active:scale-[0.97]"
+      className="cursor-pointer text-sm text-[var(--muted)] transition-transform duration-150 hover:text-[var(--accent-2)] active:scale-[0.97]"
     >
       [{next}]
     </button>

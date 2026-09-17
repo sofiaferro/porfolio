@@ -1,5 +1,6 @@
 import { useTranslations } from "next-intl";
 import { getSite } from "@/lib/content";
+import { MdLink } from "./md-link";
 
 function profileLabel(url: string): string {
   if (url.includes("github.com")) return "github";
@@ -18,7 +19,7 @@ export function SiteFooter() {
         <p className="flex flex-wrap gap-x-5 gap-y-1">
           <a
             href={`mailto:${site.email}`}
-            className="text-[var(--muted)] hover:text-[var(--accent)]"
+            className="text-[var(--muted)] hover:text-[var(--accent-2)]"
           >
             {site.email}
           </a>
@@ -26,19 +27,19 @@ export function SiteFooter() {
             <a
               key={url}
               href={url}
-              className="text-[var(--muted)] hover:text-[var(--accent)]"
+              className="text-[var(--muted)] hover:text-[var(--accent-2)]"
             >
               {profileLabel(url)}
             </a>
           ))}
         </p>
-        <p className="text-[13px] text-[var(--muted)]">
-          {t("agents")}{" "}
-          <a href="/llms.txt" className="hover:text-[var(--accent)]">
+        <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[13px] text-[var(--muted)]">
+          {t("agents")} <MdLink />{" "}
+          <a href="/llms.txt" className="hover:text-[var(--accent-2)]">
             /llms.txt
           </a>
           {" · "}
-          <a href="/sitemap.md" className="hover:text-[var(--accent)]">
+          <a href="/sitemap.md" className="hover:text-[var(--accent-2)]">
             /sitemap.md
           </a>
           {" · "}

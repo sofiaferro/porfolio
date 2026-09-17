@@ -45,7 +45,7 @@ export default async function ProjectPage({ params }: Props) {
   return (
     <main className="mx-auto max-w-3xl px-4 py-10 sm:px-6 sm:py-12">
       <nav aria-label="breadcrumb" className="text-sm">
-        <Link href="/projects" className="text-[var(--muted)] hover:text-[var(--accent)]">
+        <Link href="/projects" className="text-[var(--muted)] hover:text-[var(--accent-2)]">
           ← {t("backToList")}
         </Link>
       </nav>
@@ -69,7 +69,7 @@ export default async function ProjectPage({ params }: Props) {
               <li>
                 <a
                   href={meta.links.live}
-                  className="text-[var(--accent)] underline underline-offset-2"
+                  className="chip-link"
                 >
                   [{t("live")}]
                 </a>
@@ -79,7 +79,7 @@ export default async function ProjectPage({ params }: Props) {
               <li>
                 <a
                   href={meta.links.github}
-                  className="text-[var(--accent)] underline underline-offset-2"
+                  className="chip-link"
                 >
                   [{t("github")}]
                 </a>
@@ -89,7 +89,7 @@ export default async function ProjectPage({ params }: Props) {
               <li>
                 <a
                   href={meta.links.video}
-                  className="text-[var(--accent)] underline underline-offset-2"
+                  className="chip-link"
                 >
                   [{t("video")}]
                 </a>

@@ -34,7 +34,7 @@ export default async function ProjectsPage({ params }: Props) {
   return (
     <main className="mx-auto max-w-3xl px-4 py-10 sm:px-6 sm:py-12">
       <h1 className="text-2xl font-bold tracking-tight">
-        <span className="text-[var(--accent)]">$</span> ls {t("title")}/
+        <span className="text-[var(--accent-ink)]">$</span> ls {t("title")}/
       </h1>
       <ul className="mt-8 space-y-8">
         {projects.map((p) => (
@@ -43,7 +43,7 @@ export default async function ProjectsPage({ params }: Props) {
               <h2 className="text-lg font-semibold">
                 <Link
                   href={`/projects/${p.meta.slug}`}
-                  className="hover:text-[var(--accent)]"
+                  className="hover:text-[var(--accent-2)]"
                 >
                   {p.doc.title}
                 </Link>

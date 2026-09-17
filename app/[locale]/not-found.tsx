@@ -10,23 +10,23 @@ export default function NotFound() {
       <p className="mt-4 text-[var(--muted)]">{t("body")}</p>
       <ul className="mt-4 list-inside list-disc space-y-1 text-sm">
         <li>
-          <Link href="/projects" className="text-[var(--accent)] underline underline-offset-2">
+          <Link href="/projects" className="link-mark">
             /projects
           </Link>
         </li>
         <li>
-          <Link href="/manifiesto" className="text-[var(--accent)] underline underline-offset-2">
+          <Link href="/manifiesto" className="link-mark">
             /manifiesto
           </Link>
         </li>
         <li>
-          <Link href="/about" className="text-[var(--accent)] underline underline-offset-2">
+          <Link href="/about" className="link-mark">
             /about
           </Link>
         </li>
       </ul>
       <p className="mt-6">
-        <Link href="/" className="text-[var(--accent)] underline underline-offset-2">
+        <Link href="/" className="link-mark">
           {t("home")}
         </Link>
       </p>

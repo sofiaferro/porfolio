@@ -32,7 +32,8 @@
     "instalacion": "installation"
   },
   "footer": {
-    "agents": "are you an agent? i also speak markdown:"
+    "agents": "are you an agent? i also speak markdown:",
+    "thisPageMarkdown": "this page in markdown"
   },
   "notFound": {
     "title": "404 — not found",

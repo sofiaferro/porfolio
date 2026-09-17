@@ -29,12 +29,12 @@ export default async function OpengraphImage({
           flexDirection: "column",
           justifyContent: "center",
           padding: 80,
-          background: "#0d0d0c",
-          color: "#e8e8e0",
+          background: "#0b0c09",
+          color: "#e9ebe1",
           fontFamily: "monospace",
         }}
       >
-        <div style={{ fontSize: 28, color: "#c6f43f", display: "flex" }}>
+        <div style={{ fontSize: 28, color: "#6fef49", display: "flex" }}>
           svf@porfolio:~$ whoami
         </div>
         <div

@@ -14,8 +14,7 @@ export function PromptLine({
   return (
     <Tag className="text-sm">
       <span aria-hidden="true">
-        <span className="text-[var(--accent)]">svf@porfolio</span>
-        <span className="text-[var(--muted)]">:~$</span> {cmd}
+        <span className="text-[var(--muted)]">svf@porfolio:~$</span> {cmd}
       </span>
       <span className="sr-only">{label}</span>
     </Tag>

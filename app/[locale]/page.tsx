@@ -65,8 +65,7 @@ export default async function HomePage({ params }: Props) {
       <section aria-labelledby="ls-projects" className="session-block">
         <h2 id="ls-projects" className="text-sm font-normal">
           <span aria-hidden="true">
-            <span className="text-[var(--accent)]">svf@porfolio</span>
-            <span className="text-[var(--muted)]">:~$</span> ls -la projects/
+            <span className="text-[var(--muted)]">svf@porfolio:~$</span> ls -la projects/
           </span>
           <span className="sr-only">{t("projectsTitle")}</span>
         </h2>
@@ -75,20 +74,18 @@ export default async function HomePage({ params }: Props) {
             <li key={p.meta.slug}>
               <Link
                 href={`/projects/${p.meta.slug}`}
-                className="row-link group grid grid-cols-[4ch_1fr] items-baseline gap-x-5 py-2 sm:grid-cols-[4ch_22ch_1fr]"
+                className="row-link grid grid-cols-[4ch_1fr] items-baseline gap-x-5 py-2.5 sm:grid-cols-[4ch_22ch_1fr]"
               >
-                <span className="text-[13px] tabular-nums text-[var(--muted)]">
+                <span className="row-meta text-[13px] tabular-nums">
                   {p.meta.date.slice(0, 4)}
                 </span>
-                <span className="hidden truncate text-[13px] text-[var(--muted)] sm:block">
+                <span className="row-meta hidden truncate text-[13px] sm:block">
                   {tc(p.meta.category)}
                 </span>
-                <span className="truncate font-medium group-hover:text-[var(--accent)]">
+                <span className="truncate font-medium">
                   {p.doc.title}
                   {p.meta.featured && (
-                    <span aria-hidden="true" className="text-[var(--accent)]">
-                      *
-                    </span>
+                    <span aria-hidden="true" className="chip-square" />
                   )}
                 </span>
               </Link>
@@ -100,8 +97,7 @@ export default async function HomePage({ params }: Props) {
       <section aria-labelledby="head-manifiesto" className="session-block">
         <h2 id="head-manifiesto" className="text-sm font-normal">
           <span aria-hidden="true">
-            <span className="text-[var(--accent)]">svf@porfolio</span>
-            <span className="text-[var(--muted)]">:~$</span> head manifiesto
+            <span className="text-[var(--muted)]">svf@porfolio:~$</span> head manifiesto
           </span>
           <span className="sr-only">{t("manifestoTitle")}</span>
         </h2>
@@ -109,12 +105,17 @@ export default async function HomePage({ params }: Props) {
           {manifiesto.doc.summary}{" "}
           <Link
             href="/manifiesto"
-            className="whitespace-nowrap text-[var(--accent)] hover:underline hover:underline-offset-4"
+            className="link-mark whitespace-nowrap"
           >
             {t("manifestoRead")}
           </Link>
         </p>
       </section>
+
+      <p aria-hidden="true" className="session-block text-sm">
+        <span className="text-[var(--muted)]">svf@porfolio:~$</span>{" "}
+        <span className="cursor-block" />
+      </p>
     </main>
   );
 }

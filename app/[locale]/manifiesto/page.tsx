@@ -29,7 +29,7 @@ export default async function ManifiestoPage({ params }: Props) {
   return (
     <main className="mx-auto max-w-3xl px-4 py-10 sm:px-6 sm:py-12">
       <h1 className="text-2xl font-bold tracking-tight">
-        <span className="text-[var(--accent)]">$</span> cat{" "}
+        <span className="text-[var(--accent-ink)]">$</span> cat{" "}
         {page.doc.title.toLowerCase()}
       </h1>
       <article className="mt-8">
